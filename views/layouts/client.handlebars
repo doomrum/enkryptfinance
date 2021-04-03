@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../sass/krypto.css">
+    <link rel="stylesheet" href="../css/line-awesome.min.css">
+
+</head>
+<body>
+<section class="dashboard">
+    <aside class="sideBar">
+        <div class="sideBar-Top">
+            <figure>
+                <img src="../assets/logo.svg" class="logo"/>
+            </figure>
+            <input type="checkbox" checked  id="menu"/>
+            <label for="menu" class="menu">
+                <span class="menu-bar">&nbsp;</span>
+            </label>
+            <ul class="sideBar-list mgV4">
+                <li class="sideBar-item"><a class="sideBar-item-link"><i class="la la-dashboard"></i>
+
+                </a></li>
+                <li class="sideBar-item"><a class="sideBar-item-link"><i class="las la-hand-holding-usd"></i>
+
+                </a></li>
+                <li class="sideBar-item"><a class="sideBar-item-link"> <i class="las la-wallet"></i>
+
+                </a></li>
+
+                <li class="sideBar-item"><a class="sideBar-item-link"><i class="las la-question-circle"></i>
+
+                </a></li>
+
+            </ul>
+
+        </div>
+
+        <a class="logoout-link"><i class="la la-sign-out"></i></a>
+
+    </aside>
+    <main class="main-section">
+        <div class="dash-nav">
+            <a><i class="la la-bell"></i></a>
+            <h5 class="h6">John Doe</h5>
+            <a > <i class="las la-cog"></i></a>
+        </div>
+        <div class="dash-body">
+{{{body}}}
+        </div>
+
+    </main>
+</section>
+
+
+
+<!--        CHAT AREA TOGGLEABLE-->
+<!--        -->
+<!--        -->
+<div class="chat_area" id="chat_area">
+    <div class="chat_area-top">
+        <div>
+            <h2 class="h5">EhanceTrade Chat</h2>
+            <p class="h7 mgT1">Send Us a message </p>
+        </div>
+        <i class="la la-minus-circle icon24" id="toggleChatBtn"></i>
+    </div>
+    <div class="chat_area-body">
+        <div class="chat_msg-client">
+            <div class="chat_msg-client_title ">
+                <h5 class="h6">John Doe</h5>
+                <p class="h7">12:01pm</p>
+            </div>
+            <p>Hello</p>
+
+        </div>
+        <div class="chat_msg-support">
+            <div class="chat_msg-support_title ">
+                <h5 class="h6">Ehancetrade</h5>
+                <p class="h7">12:01pm</p>
+            </div>
+            <p> Hello, Michael What ma we do for you</p>
+        </div>
+
+
+    </div>
+    <div class="chart_area-msgBox">
+        <form class="chat-form">
+            <input placeholder="Type here" />
+            <button  class="chat_btn"><i class="la la-send"></i></button>
+        </form>
+    </div>
+
+</div>
+
+<div class="msg_btn" id="msg_btn">
+    <i class="la la-comment-dots"></i>
+</div>
+<script src="../js/chat.js"></script>
+</body>
+</html>

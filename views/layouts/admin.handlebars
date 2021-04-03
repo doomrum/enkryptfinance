@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../../sass/krypto.css">
+    <link rel="stylesheet" href="../../css/line-awesome.min.css">
+
+</head>
+<body>
+<section class="dashboard">
+    <aside class="sideBar">
+        <div class="sideBar-Top">
+            <figure>
+                <img src="../../assets/logo.svg" class="logo"/>
+            </figure>
+            <input type="checkbox" checked  id="menu"/>
+            <label for="menu" class="menu">
+                <span class="menu-bar">&nbsp;</span>
+            </label>
+            <ul class="sideBar-list mgV4">
+
+                <li class="sideBar-item"><a class="sideBar-item-link"><i class="la la-dashboard"></i>
+                    <!--                           <span>Dashboard</span>-->
+                </a></li>
+                <li class="sideBar-item"><a href="users.html" class="sideBar-item-link"> <i class="las la-users"></i>
+                    <!--                           <span>Add Funds</span>-->
+                </a>
+                </li>
+                <li class="sideBar-item"><a class="sideBar-item-link"><i class="las la-wallet"></i>
+                    <!--                           <span>Investment </span> -->
+                </a>
+                </li>
+                <li class="sideBar-item"><a href="./chat.html" class="sideBar-item-link"><i class="las la-comment-dots"></i>
+                    <!--                           <span>Investment </span> -->
+                </a>
+                </li>
+                <li class="sideBar-item"><a class="sideBar-item-link"><i class="las la-chart-line"></i>
+                    <!--                           <span>Analytics</span>-->
+                </a></li>
+                <li class="sideBar-item"><a class="sideBar-item-link"><i class="las la-question-circle"></i>
+                    <!--                           <span>FAQs</span>-->
+                </a>
+                </li>
+            </ul>
+
+
+
+        </div>
+        <a class="logoout-link"> <i class="la la-sign-out"></i></a>
+
+    </aside>
+    <main class="main-section">
+        {{{body}}}
+    </main>
+</section>
+
+
+
+
+<script src="../js/chat.js"></script>
+</body>
+</html>
