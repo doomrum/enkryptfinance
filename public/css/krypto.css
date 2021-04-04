@@ -43,15 +43,30 @@
   font-size: 4.8rem;
   color: #2b2b41;
 }
+@media screen and (max-width: 56.5em) {
+  .h2 {
+    font-size: 3.6rem;
+  }
+}
 
 .h3 {
   font-size: 3.6rem;
   color: #2b2b41;
 }
+@media screen and (max-width: 56.5em) {
+  .h3 {
+    font-size: 2.8rem;
+  }
+}
 
 .h4 {
   font-size: 2.4rem;
   color: #2b2b41;
+}
+@media screen and (max-width: 56.5em) {
+  .h4 {
+    font-size: 1.8rem;
+  }
 }
 
 .h5 {
@@ -449,6 +464,7 @@ html {
   .grid-item1_4 {
     flex: 1;
     width: 100%;
+    margin: 1rem 0;
   }
 }
 .grid-item2_4 {
@@ -465,6 +481,7 @@ html {
   .grid-item2_4 {
     flex: 1;
     width: 100%;
+    margin: 1rem 0;
   }
 }
 .grid-item3_4 {
@@ -481,6 +498,7 @@ html {
   .grid-item3_4 {
     flex: 1;
     width: 100%;
+    margin: 1rem 0;
   }
 }
 .grid-item1_3 {
@@ -497,6 +515,7 @@ html {
   .grid-item1_3 {
     flex: 1;
     width: 100%;
+    margin: 1rem 0;
   }
 }
 .grid-item2_3 {
@@ -513,6 +532,7 @@ html {
   .grid-item2_3 {
     flex: 1;
     width: 100%;
+    margin: 1rem 0;
   }
 }
 
@@ -780,11 +800,10 @@ html {
   transform: rotate(0deg);
 }
 
-
 .header {
   position: relative;
   background-image: url("../images/pexels-enes-ersahin-6988826.jpg");
-  height: 80vh;
+  height: 70vh;
   padding: 2rem;
   background-position: center;
   background-size: cover;
@@ -825,10 +844,22 @@ html {
   width: 70%;
   margin: 10rem auto;
 }
+@media screen and (max-width: 56.5em) {
+  .home_layout {
+    margin: 5rem auto;
+    width: 90%;
+  }
+}
 
 .liveCrypto-section {
   width: 70%;
   margin: 10rem auto;
+}
+@media screen and (max-width: 56.5em) {
+  .liveCrypto-section {
+    margin: 5rem auto;
+    width: 90%;
+  }
 }
 
 .crypto-card {
@@ -1497,4 +1528,3 @@ html {
   outline: none;
 }
 
-/*# sourceMappingURL=krypto.css.map */
