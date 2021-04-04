@@ -26,7 +26,8 @@ router.post('/register',async (req,res)=>{
 
             newUser.save()
                 .then(user=>{
-                  console.log(user);
+                  // console.log(user);
+                    res.redirect('/client',200);
                   res.send('user created ')
                 })
                 .catch(err=>{
@@ -46,7 +47,9 @@ router.post('/login',async (req,res)=>{
            const validPassword = await bcrypt.compare(req.body.password,user.password);
 //////SET COOKIE IF VALID
            if (validPassword){
-               res.status(200).send('valid user')
+
+               res.redirect('/admin',200);
+               // res.status(200).send('valid user')
            }
            else {
                res.status(403).send('error')

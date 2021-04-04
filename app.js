@@ -9,6 +9,8 @@ const db = require('./helpers/db');
 //
 var indexRouter = require('./routes/index');
 var  authRouter = require('./routes/users');
+var  clientRouter = require('./routes/client');
+var  adminRouter = require('./routes/admin');
 // const payRouter = require('./routes/payment');
 var app = express();
 
@@ -33,7 +35,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-// app.use('/', payRouter);
+app.use('/client', clientRouter);
+app.use('/admin', adminRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
