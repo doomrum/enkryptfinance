@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+
 const formatMessage = require('../helpers/messages');
 var app = require('../app');
 var debug = require('debug')('cryptotrade:server');

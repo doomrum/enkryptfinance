@@ -8,6 +8,15 @@ router.get('/signup', function(req, res, next) {
   res.render('auth/signup',{layout:'auth',title:'Enkryptfinance | sign up'});
 });
 
+router.get('/users', async function(req, res, next) {
+    userModel.find({})
+        .then(user=>{
+            res.send(user)
+        })
+        .catch(err=>res.status(401).send(err))
+});
+
+
 router.get('/login',(req,res,next)=>{
   res.render('auth/login',{layout:'auth',title:'Enkryptfinance | login'});
 });
@@ -27,7 +36,7 @@ router.post('/register',async (req,res)=>{
             newUser.save()
                 .then(user=>{
                   // console.log(user);
-                    res.redirect('/client',200);
+                    res.redirect(302,'/client');
                   res.send('user created ')
                 })
                 .catch(err=>{

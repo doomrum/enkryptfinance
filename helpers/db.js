@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config();
-// mongoose.connect(`${process.env.DBCONNECT}`,{useUnifiedTopology:true,useNewUrlParser:true})
-mongoose.connect('mongodb://localhost:27017/enkrypt', {useNewUrlParser: true, useUnifiedTopology: true});
+
+
+mongoose.connect('mongodb+srv://enkrypt:enkrypt1234@cluster0.914tq.mongodb.net/enkrypt?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+    .catch(err=>console.log(err));
 
 const db = mongoose.connection;
 db.onOpen(()=>console.log('CONNECTED'));

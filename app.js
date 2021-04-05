@@ -4,15 +4,59 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('express-handlebars');
-const db = require('./helpers/db');
+const http = require('http');
+const dotenv = require('dotenv');
+dotenv.config();
+var app = express();
+const socketio = require('socket.io');
+const formatMessage = require('./helpers/messages');
+const port = process.env.PORT | 4000;
 
+const db = require('./helpers/db');
+///
+
+
+
+
+
+const server = http.createServer(app);
 //
+
+const io = socketio(server);
+
+
+io.on('connection',socket=>{
+////emit to a single user
+    console.log('connected');
+    socket.emit('message',formatMessage('Admin', 'hello user'));
+
+////Broadcast to a single chat from the admin chat area
+    ///send to all user except the sender
+    socket.broadcast.emit('message',formatMessage('Admin','A new user just joined'));
+
+    //listen to user message and send
+    socket.on('userMessage',msg=>{
+        console.log(socket.id);
+        io.emit('message',formatMessage(msg.username,msg.text));
+    })
+    ///user leaves a chat
+    socket.on('disconnect',()=>{
+
+        ///emit to all users
+        io.emit('message',formatMessage('Admin','A user just left'));
+    });
+
+});
+
+
+
+////ROUTES
 var indexRouter = require('./routes/index');
 var  authRouter = require('./routes/users');
 var  clientRouter = require('./routes/client');
 var  adminRouter = require('./routes/admin');
 // const payRouter = require('./routes/payment');
-var app = express();
+
 
 
 
@@ -30,6 +74,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 
@@ -56,4 +101,5 @@ app.use(function(err, req, res, next) {
   // res.render('error',{});
 });
 
-module.exports = app;
+
+server.listen(port,()=> console.log(`listening on port ${port}`))
