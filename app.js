@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('express-handlebars');
 
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
+console.log()
 
 const db = require('./helpers/db');
 

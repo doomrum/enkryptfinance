@@ -2,11 +2,13 @@
 
 module.exports = {
     dburi: function () {
-        // if (process.env.type==='prod'){
+        if (process.env.NODE_ENV==='prod'){
+            console.log(process.env.type)
             return process.env.DBCONNECTPRODUCTION;
-        // }else {
-        //     return process.env.DBCONNECTLOCAL;
-        // }
+        }else {
+            console.log(process.env.type)
+            return process.env.DBCONNECTLOCAL;
+        }
 
     }
 }
