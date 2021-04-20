@@ -1,21 +1,64 @@
-<h3 class="h5">Register</h3>
+<h6 class="h4">Account Registration</h6>
 
-<form class="mgV4 auth-form" method="post" action="/auth/register">
-    <!--                <h6 class="h5">Get best rates out of this</h6>-->
-    <p class="h6 mgT1">Fill the form to create an account</p>
-    <div class="form-input-box">
-        <input class="form-input" name="fullName" placeholder="Full Name"/>
+<form class=" auth-form" method="post" action="/auth/register">
 
+    <p class="h5">Estimated time to complete your registration is 2 Minutes</p>
+    <p class="h5 mgT1">Please complete the following form using English alphabet characters only.</p>
+    <p class="h5 mgT1"> Please complete the form below by using your first name and surname as they are displayed in your identity document.</p>
+    <p class="h5 mgT1">Please make sure that emails from <em class="link">support@enkryptfinance.com</em> do not get marked as spam so that you can receive all communication emails seamlessly.
+        </p>
+    <h5 class="h5 mgV2">Personal Details</h5>
+
+    <div class="grid">
+        <div class="grid-item2_4">
+            <div class="form-input-box">
+                <input class="form-input" name="firstname" placeholder="First Name"/>
+
+            </div>
+            <div class="form-input-box">
+                <input class="form-input"  name="middle Name" placeholder="Middle Name"/>
+
+            </div>
+            <div class="form-input-box">
+                <input class="form-input" name="Last Name" placeholder="Last Name"/>
+
+            </div>
+        </div>
+        <div class="grid-item2_4">
+            <div class="form-input-box">
+               <select class="form-input">
+                   <option>Nigeria</option>
+               </select>
+
+            </div>
+            <div class="form-input-box">
+                <input class="form-input" type="email" name="email" placeholder="Email"/>
+
+            </div>
+            <div class="form-input-box">
+                <input class="form-input" name="password" type="password" placeholder="Password"/>
+
+            </div>
+        </div>
     </div>
-    <div class="form-input-box">
-        <input class="form-input" type="email" name="email" placeholder="Email"/>
+    <div class="grid">
+        <div class="grid-item2-4">
+            <div class="form-input-box">
+                <select class="form-input">
+                    <option>+234</option>
+                </select>
 
+            </div>
+            <div class="form-input-box">
+                <input class="form-input" type="tel" name="email" placeholder="phone"/>
+
+            </div>
+        </div>
     </div>
-    <div class="form-input-box">
-        <input class="form-input" name="password" type="password" placeholder="Password"/>
-
-    </div>
-
-    <button class="mgT2 btn btn-purple ">Register</button>
+  <div class="mgT2">
+      <input type="checkbox" name="terms" id="terms">
+      <label class="h5 mgL2" for="terms">I agree to receive your newsletters, company news, and product updates.</label>
+  </div>
+    <a href="/auth/signup-details" class="mgT2 btn btn-purple ">Register</a>
     <p class="h6 mgV2">Already got an Account? <a href="/auth/login" class="link">Login</a></p>
 </form>

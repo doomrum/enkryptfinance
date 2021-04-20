@@ -1,0 +1,47 @@
+$primaryBg: #eeeeee;
+$accent: #f3f3fc;
+$primary: #6335e3;
+$grey: #262626;
+$midGrey: #d5d5f3;
+$darkGrey: #2b2b41;
+$darkYellow: #807352;
+$yellow: #f3c30b;
+$white : #ffffff;
+$green:  mediumseagreen;
+$lightGreen: #5cd993;
+////
+$red:#ef3945;
+$lightRed: #d78496;
+
+
+.grey{
+  color: $grey!important;
+}
+.grey_color{
+  color: #f7f7f7!important;
+}
+.light{
+  font-weight: normal;
+}
+.red{
+  color: #ef3945!important;
+}
+.success{
+  color: mediumseagreen!important;
+}
+.pending{
+  color: coral!important;
+}
+.dark{
+  color: $darkGrey!important;
+
+}
+
+
+
+.display_flex{
+  display: flex;
+}
+.H20{
+  height: 20rem;
+}

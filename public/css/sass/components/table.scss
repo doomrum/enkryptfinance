@@ -1,0 +1,53 @@
+.transaction-table{
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  overflow: hidden;
+
+  &:hover{
+    box-shadow: 0 4px 40px rgba(0,0,0,.1);
+  }
+  thead{
+    border-bottom: 1px solid $accent;
+    th{
+      padding: 1.5rem 1.8rem;
+      background-color: white;
+      color: $grey;
+      text-transform: uppercase;
+      border-bottom: 1px solid $accent;
+      //&:hover{
+      //  transform: scale(1.1);
+      //
+      //}
+    }
+
+  }
+  tbody{
+    background-color: white;
+    tr:hover{
+      background-color: $accent;
+    }
+    td{
+      padding: 1.8rem 2rem;
+     //&:not(:last-child){
+     //  border-bottom: 1px solid $accent;
+     //}
+    }
+  }
+
+}
+.transaction-table-cont{
+  width: 100%;
+  @include respond(tabPort){
+    overflow-x: auto;
+    border-radius:1rem;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+  }
+}

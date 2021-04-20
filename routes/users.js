@@ -8,6 +8,10 @@ router.get('/signup', function(req, res, next) {
   res.render('auth/signup',{layout:'auth',title:'Enkryptfinance | sign up'});
 });
 
+router.get('/signup-details', function(req, res, next) {
+    res.render('auth/signup-det',{layout:'auth',title:'Enkryptfinance | sign up'});
+});
+
 router.get('/users', async function(req, res, next) {
     userModel.find({})
         .then(user=>{

@@ -1,0 +1,23 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto,Raleway,sans-serif;
+}
+html{
+  font-size: 50%;
+
+  @include respond(tabLand){
+    font-size: 68.75%;
+  }
+  @include respond(tabPort){
+    font-size: 62.5%;
+  }
+
+  @include respond(bigScreen){
+    font-size: 75%;
+  }
+}
+body{
+  //background-color: $accent;
+}

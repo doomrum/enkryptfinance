@@ -1,0 +1,70 @@
+.h1{
+  font-size: 7.2rem;
+  color:  #2b2b41;
+}
+.h2{
+  font-size: 4.8rem;
+  color:  #2b2b41;
+  @include respond(tabPort){
+    font-size: 3.6rem;
+  }
+}
+.h3{
+  font-size: 3.6rem;
+  color:  #2b2b41;
+  @include respond(tabPort){
+    font-size: 2.8rem;
+  }
+}
+.h4{
+  font-size: 2.4rem;
+  color:  #2b2b41;
+  //
+  @include respond(tabPort){
+    font-size: 1.8rem;
+  }
+}
+.h5{
+  font-size: 1.8rem;
+  color:  #2b2b41;
+}
+.h6{
+  font-size: 1.6rem;
+  color:  #2b2b41;
+}
+.h7{
+  font-size: 1.2rem;
+  color: #2b2b41;
+}
+
+////ICON
+.iconBTC{
+  font-size: 30rem;
+}
+.icon64{
+  font-size: 6.4rem;
+}
+.icon48{
+  font-size: 4.8rem;
+}
+.icon24{
+  font-size: 2.4rem;
+}
+.icon36{
+  font-size: 3.6rem;
+}
+.icon16{
+  font-size: 1.6rem;
+}
+.link{
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: $primary;
+  text-decoration: none;
+}
+.greyText{
+  color: #73739f!important;
+}
+.centerText{
+  text-align: center;
+}

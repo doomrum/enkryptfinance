@@ -1,0 +1,100 @@
+.mgT1{
+  margin-top: 1rem;
+   @include respond(tabPort){
+
+
+    }
+}
+.mgT2{
+  margin-top: 2rem;
+   @include respond(tabPort){
+
+
+    }
+}
+.mgT3{
+  margin-top: 3rem;
+   @include respond(tabPort){
+    margin-top: 2rem;
+
+    }
+}
+.mgT4{
+  margin-top: 4rem;
+   @include respond(tabPort){
+     margin-top: 3rem;
+
+    }
+}
+.mgV6{
+  margin: 8rem 0;
+}
+.mgV2{
+  margin:2rem 0;
+   @include respond(tabPort){
+
+
+    }
+}
+.mgV4{
+  margin: 4rem 0;
+  @include respond(tabPort){
+    margin: 3rem;
+
+  }
+}
+.mgL2{
+  margin-left: 2rem;
+}
+.pdMax{
+  padding: 6rem;
+   @include respond(tabPort){
+      padding: 3rem;
+
+    }
+}
+.pdV2{
+  padding: 0 2rem;
+   @include respond(tabPort){
+
+
+    }
+}
+.pd2{
+  padding: 2rem;
+   @include respond(tabPort){
+
+
+    }
+}
+.pd4{
+  padding: 4rem;
+   @include respond(tabPort){
+   padding: 2rem;
+
+    }
+}
+.width50{
+  width: 50%;
+   @include respond(tabPort){
+      width: 100%;
+
+    }
+}
+
+.display_flex{
+  justify-content: space-between;
+  display: flex;
+}
+.center_home{
+  margin: 10rem auto;
+}
+
+.wallet-just{
+  justify-content: normal!important;
+}
+.flowImg{
+  width: 100%;
+}
+
+

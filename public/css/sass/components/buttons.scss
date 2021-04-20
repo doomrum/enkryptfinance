@@ -1,0 +1,154 @@
+.msg_btn{
+  position: fixed;
+  bottom: 5%;
+  right: 4rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 200rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  .la{
+    color: #eeeeee;
+    font-size: 3.2rem;
+  }
+}
+.btn{
+  &,&:link{
+    text-decoration: none;
+    padding: 1.5rem 3.6rem;
+    border-radius: 1rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border: none;
+  }
+  &-success{
+    background-color: #73739f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color  .3s ease-in;
+    color: white;
+    .la{
+      font-size: 2.4rem;
+      margin-left: 1rem;
+    }
+    &:hover{
+      background-color: #7676ac;
+    }
+  }
+  &-primary{
+    background-color: $primary;
+    transition: background-color  .3s ease-in;
+    color: $accent!important;
+    .la{
+      font-size: 2.4rem;
+    }
+    &:hover{
+      background-color: #4118b5;
+    }
+  }
+  &-purple{
+    background-color: $primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color  .3s ease-in;
+    color: $accent;
+    .la{
+      font-size: 2.4rem;
+    }
+    &:hover{
+      background-color: #4118b5;
+    }
+  }
+  &-red{
+    background-color: $red;
+    transition: background-color  .3s ease-in;
+    color: $accent;
+    .la{
+      font-size: 2.4rem;
+    }
+    &:hover{
+      background-color: #d7204b;
+    }
+  }
+  &-green{
+    background-color: $green;
+    transition: background-color  .3s ease-in;
+    color: $accent;
+    .la{
+      font-size: 2.4rem;
+    }
+    &:hover{
+      background-color: $lightGreen;
+    }
+  }
+}
+.chat_btn{
+  text-decoration: none;
+  border-radius: 100rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  width: 4rem;
+  height: 4rem;
+  background-color: #3f09cd;
+  display: inline-flex;
+  .la{
+    font-size: 1.8rem;
+    color: #f3f3fc;
+  }
+}
+.btn_reg{
+  &,&:link{
+    text-decoration: none;
+    padding: 1.5rem 2.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 2.4rem;
+    cursor: pointer;
+    border: none;
+    background-image: linear-gradient(#5117ee, $primary);
+    color: #f7f7f7;
+    transition: all .35s ease-out;
+    //font-weight: bold;
+  }
+  &:hover{
+    background-image: linear-gradient(45deg,#5117ee, $primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  }
+
+}
+
+.btn-bordered{
+  &,&:link{
+    text-decoration: none;
+    padding: 1.5rem 3.6rem;
+    border-radius: 1rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border: 1px solid currentColor;
+    transition: all .35s ease-in;
+  }
+  &-primary{
+    color: #6335e3;
+    &:hover{
+      color: #f7f7f7!important;
+      background-color: #4118b5;
+      box-shadow: 0 4px 15px rgba(0,0,0,.2);
+    }
+  }
+}

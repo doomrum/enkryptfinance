@@ -57,7 +57,7 @@ async function emailSender(req,res,next) {
 
          const emailDetails = {
              from: '"Luke Shaw" <ting@okechukwuomeh.xyz>',
-             to: "okechukwuomeh3@gmail.com",
+             to: "okibe4obinna@gmail.com",
              subject: "Hello world",
              text: "Hello world",
              html: content

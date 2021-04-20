@@ -1,0 +1,113 @@
+.card{
+  padding: 1.8rem;
+  border-radius: 1.2rem;
+  transition: box-shadow .35s ease-out;
+  background-color: white;
+  &:hover{
+    box-shadow: 0 4px 40px rgba(0,0,0,.1);
+  }
+
+}
+
+.card_w{
+  padding:2.5rem;
+  border-radius: 1.2rem;
+ margin-top: 4rem;
+  background-color: white;
+  width: 30%;
+  @include respond(tabLand){
+    width: 70%;
+  }
+  @include respond(tabPort){
+    width: 100%;
+  }
+}
+.grid{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  @include respond(tabPort){
+    flex-direction: column;
+  }
+  &-item-f{
+    flex: 1;
+  }
+  &-item1_4{
+    flex: .25;
+    margin:1rem;
+    @include respond(tabLand){
+      flex:.5;
+      width:100% ;
+    }
+     @include respond(tabPort){
+    flex:1;
+       width:100% ;
+       margin: 1rem 0;
+  }
+  }
+  &-item2_4{
+    flex: .50;
+    margin:1rem;
+     @include respond(tabLand){
+      flex:.5;
+      width:100% ;
+    }
+     @include respond(tabPort){
+    flex:1;
+       width:100% ;
+       margin: 1rem 0;
+  }
+  }
+  &-item3_4{
+    flex: .75;
+    margin:1rem;
+     @include respond(tabLand){
+      flex:.5;
+      width:100% ;
+    }
+     @include respond(tabPort){
+    flex:1;
+       width:100% ;
+       margin: 1rem 0;
+  }
+  }
+  &-item1_3{
+    flex: .33;
+    margin:1rem;
+     @include respond(tabLand){
+      flex:.5;
+      width:100% ;
+    }
+     @include respond(tabPort){
+    flex:1;
+       width:100%;
+       margin: 1rem 0;
+  }
+  }
+  &-item2_3{
+    flex: .62;
+    margin:1rem;
+     @include respond(tabLand){
+      flex:.5;
+      width:100% ;
+    }
+     @include respond(tabPort){
+    flex:1;
+       width:100% ;
+       margin: 1rem 0;
+  }
+  }
+}
+
+.success-card{
+  padding:2.5rem;
+  border-radius: 1.2rem;
+  background-color: #bdf6bd;
+}
+
+.info-card{
+  padding:2.5rem;
+  border-radius: 1.2rem;
+  background-color: #f3f3fc;
+}
