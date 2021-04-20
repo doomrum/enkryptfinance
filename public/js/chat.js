@@ -66,6 +66,8 @@ const socket = io();
 const chat_form = document.getElementById('chat_form');
 
 const chatMsg  = document.querySelector('.chat_msg-support');
+
+
 socket.on('message',msg=>{
     //create div
     if(msg.username==='Admin'){

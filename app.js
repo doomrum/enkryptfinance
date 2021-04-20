@@ -6,7 +6,7 @@ var logger = require('morgan');
 const hbs = require('express-handlebars');
 
 require('dotenv').config();
-console.log()
+
 
 const db = require('./helpers/db');
 
@@ -15,7 +15,8 @@ var indexRouter = require('./routes/index');
 var  authRouter = require('./routes/users');
 var  clientRouter = require('./routes/client');
 var  adminRouter = require('./routes/admin');
-// const payRouter = require('./routes/payment');
+const payRouter = require('./routes/payment');
+const emailRouter = require('./routes/emailTest');
 var app = express();
 
 
@@ -41,6 +42,8 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/client', clientRouter);
 app.use('/admin', adminRouter);
+app.use('/p', payRouter);
+app.use('/e', emailRouter);
 
 
 // catch 404 and forward to error handler
