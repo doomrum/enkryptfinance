@@ -4,9 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('express-handlebars');
-
+const fileUpload  = require('express-fileupload');
 require('dotenv').config();
-
+// const mailHelper = require('./helpers/nodemailer')
 
 const db = require('./helpers/db');
 
@@ -24,7 +24,8 @@ var app = express();
 // view engine setup
 app.engine('handlebars', hbs(
     {
-      defaultLayout: 'main'
+      defaultLayout: 'main',
+        // helpers: mailHelper
     }
 ));
 app.set('view engine', 'handlebars');
@@ -33,7 +34,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(fileUpload())
 app.use(express.static(path.join(__dirname, 'public')));
 
 

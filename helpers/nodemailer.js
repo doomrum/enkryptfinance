@@ -1,6 +1,9 @@
 const mailer = require('nodemailer');
 
-const content = `
+
+
+function createContent(data){
+  return (`
 
 <html>
     <head>
@@ -20,61 +23,85 @@ const content = `
     }
     h2{
     font-size: 3rem;
-    color: red;
+    color: #1d158d;
+    
+    }p{
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    }
+    .sign{
+      font-size: 1.8rem;
+      margin-top: 1rem;
     }
 </style>
 </head>
 <body>
-    <h2>This is to inform u of our meeting</h2>
+    <h2>${data.header}</h2>
+     <img alt="" class="logo" src='cid:${data.cid}'/>
+    <p>${data.body}</p>
+       <img alt="" class="bodyImg" src='cid:${data.cidBody}'/>
+    <div class="sign">
+      Thanks Management
+     </div>
+  
 </body>
 </html>
-;`
+`);
+}
 
-async function emailSender(req,res,next) {
+async function emailSender(params) {
     // let testAccount = await mailer.createTestAccount();
+
         let transporter = mailer.createTransport({
             host: "mail.privateemail.com",
             port: 465,
             secure: true,
             auth:{
-                user:'ting@okechukwuomeh.xyz',
-                pass: '*omeh*4769#',
+                user: 'support@enkryptfinance.com',
+                pass:'support@12345',
             },
             dkim:{
-                domainName: 'okechukwuomeh.xyz',
+                domainName: 'enkryptfinance.com',
                 keySelector: '2017',
-                privateKey: process.env["EmailPrivateKey "],
+                privateKey: process.env["EmailPrivateKey"],
                 cacheDir: false
             },
-            attachments:[
-                {
-                    filename: 'logo.png',
-                    path: __dirname + "/logo.png",
-                    cid: 'logo.png'
-                }
-            ]
+
         });
 
          const emailDetails = {
-             from: '"Luke Shaw" <ting@okechukwuomeh.xyz>',
-             to: "okibe4obinna@gmail.com",
-             subject: "Hello world",
-             text: "Hello world",
-             html: content
+             from: `"${params.sender}" <support@enkryptfinance.com>`,
+             to: params.client,
+             subject: params.subject,
+             text: params.text,
+             html: createContent(params.data),
+             attachments:[
+                 {
+                     filename:params.data.imgName,
+                     path: params.data.imgPath,
+                     cid: params.data.cid
+                 },
+                 {
+                     filename:params.data.imgNameBody,
+                     path: params.data.imgPathBody,
+                     cid: params.data.cidBody
+                 }
+             ]
          }
-        let info = await transporter.sendMail(emailDetails,(error,data)=>{
+      await transporter.sendMail(emailDetails,(error,data)=>{
             if (error){
                 console.log(error)
-                res.send(error)
+               return error
             }else{
-                res.send('success')
+                return data
             }
 
         });
 
 
 
-    console.log("preview URL:%s", mailer.getTestMessageUrl(info))
+    // console.log("preview URL:%s", mailer.getTestMessageUrl(info))
   // next();
 }
 

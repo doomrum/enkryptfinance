@@ -1,6 +1,6 @@
 <h6 class="h4">Account Confirmation</h6>
 
-<form class=" auth-form" method="post" action="/auth/register">
+<form class=" auth-form" method="post" action="/auth/register/{{id}}"  encType="multipart/form-data">
 
 
     <div class="success-card">
@@ -28,7 +28,7 @@
     </p>
 
             <div class="form-input-box">
-                <input class="form-input" type="file" name="file" placeholder="First Name"/>
+                <input class="form-input" type="file" name="proofID" />
 
             </div>
 
@@ -38,6 +38,9 @@
     <h5 class="h4 mgT2">
         Step 2/2:
     </h5>
+    {{#if id}}
+        <p>id</p>
+    {{/if}}
     <h5 class="h5 mgT1">PROOF OF RESIDENCY:</h5>
     <p class="h6 mgT1">
         A recent utility bill (e.g. electricity, gas, water, phone, oil, Internet and/or cable TV connections),
@@ -45,7 +48,7 @@
     </p>
 
     <div class="form-input-box">
-        <input class="form-input" type="file" name="file" placeholder="First Name"/>
+        <input class="form-input" type="file" name="proofResidence" />
 
     </div>
 
@@ -55,6 +58,6 @@
 <!--        <input type="checkbox" name="terms" id="terms">-->
 <!--        <label class="h5 mgL2" for="terms">I agree to receive your newsletters, company news, and product updates.</label>-->
 <!--    </div>-->
-    <a href="/signup-details" class="mgT2 btn btn-purple ">Upload Documents</a>
+    <button  class="mgT2 btn btn-purple ">Upload Documents</button>
 
 </form>

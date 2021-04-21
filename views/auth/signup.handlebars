@@ -12,21 +12,20 @@
     <div class="grid">
         <div class="grid-item2_4">
             <div class="form-input-box">
-                <input class="form-input" name="firstname" placeholder="First Name"/>
+                <input class="form-input" name="firstName" placeholder="First Name"/>
+            </div>
+            <div class="form-input-box">
+                <input class="form-input"  name="middleName" placeholder="Middle Name"/>
 
             </div>
             <div class="form-input-box">
-                <input class="form-input"  name="middle Name" placeholder="Middle Name"/>
-
-            </div>
-            <div class="form-input-box">
-                <input class="form-input" name="Last Name" placeholder="Last Name"/>
+                <input class="form-input" name="lastName" placeholder="Last Name"/>
 
             </div>
         </div>
         <div class="grid-item2_4">
             <div class="form-input-box">
-               <select class="form-input">
+               <select name="Country" class="form-input">
                    <option>Nigeria</option>
                </select>
 
@@ -44,13 +43,13 @@
     <div class="grid">
         <div class="grid-item2-4">
             <div class="form-input-box">
-                <select class="form-input">
+                <select name="code" class="form-input">
                     <option>+234</option>
                 </select>
 
             </div>
             <div class="form-input-box">
-                <input class="form-input" type="tel" name="email" placeholder="phone"/>
+                <input class="form-input" type="tel" name="phone" placeholder="phone"/>
 
             </div>
         </div>
@@ -59,6 +58,6 @@
       <input type="checkbox" name="terms" id="terms">
       <label class="h5 mgL2" for="terms">I agree to receive your newsletters, company news, and product updates.</label>
   </div>
-    <a href="/auth/signup-details" class="mgT2 btn btn-purple ">Register</a>
+    <button  class="mgT2 btn btn-purple ">Register</button>
     <p class="h6 mgV2">Already got an Account? <a href="/auth/login" class="link">Login</a></p>
 </form>

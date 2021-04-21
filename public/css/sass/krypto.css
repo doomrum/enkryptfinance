@@ -863,7 +863,7 @@ html {
 
 .header {
   position: relative;
-  background-image: url("../images/topbg.jpg");
+  background-image: url("../../images/topbg.jpg");
   height: 70vh;
   padding: 2rem;
   background-position: center;

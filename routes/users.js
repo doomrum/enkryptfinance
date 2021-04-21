@@ -2,15 +2,76 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcrypt');
 const userModel = require('../models/user');
+const mailer = require('../helpers/nodemailer');
 const {validateLogin,validateNewUser} = require('../helpers/authValidator')
 /* GET users listing. */
 router.get('/signup', function(req, res, next) {
   res.render('auth/signup',{layout:'auth',title:'Enkryptfinance | sign up'});
 });
 
-router.get('/signup-details', function(req, res, next) {
-    res.render('auth/signup-det',{layout:'auth',title:'Enkryptfinance | sign up'});
+router.post('/register/:id', function(req, res, next) {
+
+
+    let proofIdFile;
+    let proofResidenceFile;
+    let uploadPathID;
+    let uploadPathRES;
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+
+    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+    proofIdFile =  req.files.proofID;
+    proofResidenceFile =  req.files.proofResidence;
+    uploadPathID = './public/uploads/' + proofIdFile.name;
+    uploadPathRES = './public/uploads/' + proofResidenceFile.name;
+
+    // Use the mv() method to place the file somewhere on your server
+    proofIdFile.mv(uploadPathID, function(err) {
+        if (err)
+            return res.status(500).send(err);
+        proofResidenceFile.mv(uploadPathRES,(err)=>{
+            if(!err){
+                userModel.findByIdAndUpdate({_id:req.params.id},{
+                    urlProofId: uploadPathID,
+                    urlProofResidence: uploadPathRES
+                })
+                    .then(user=>{
+                        let userInitial = user;
+                        ///Email is sent here
+                        const params = {
+                            senderName: "Okibe Obinna",
+                            sender: "EnkryptFinance",
+                            client:  user.email,
+                            text: `Hello ${user.fullName}, welcome enkryptFinance`,
+                            subject: `Welcome to enkryptFinance`,
+                            data: {
+                                header: `Hi ${user.fullName.split(' ',1)}! welcome enkryptFinance` ,
+                                body:"Welcome to a world of investment and opportunities",
+                                imgPath: './public/images/logo.png',
+                                imgPathBody: './public/images/welcome1.png',
+                                imgName: 'logo.png',
+                                imgNameBody: 'welcome1.png',
+                                cid: 'unique@enkryptfin',
+                                cidBody:'uniquebody@enkrypt'
+                            },
+
+                        };
+
+                        mailer(params);
+                    })
+                    .catch(err=>{
+                        console.log(err);
+                        res.send(err)
+                    })
+            }
+        })
+    });
+
+
 });
+
 
 router.get('/users', async function(req, res, next) {
     userModel.find({})
@@ -26,7 +87,21 @@ router.get('/login',(req,res,next)=>{
 });
 
 router.post('/register',async (req,res)=>{
-   const {error} = validateNewUser(req.body);
+
+
+    ////merging first, mid & last name to give full name
+    console.log(req.body)
+    const fullName = req.body.firstName + " "  + req.body.middleName + " " + req.body.lastName;
+    const phoneNumber = req.body.code + req.body.phone;
+    const terms = req.body.terms === 'on';
+
+   const {error} = validateNewUser({
+       fullName,
+       email:req.body.email,
+       phone:phoneNumber,
+       terms,
+       password:req.body.password
+   });
    if (!error){
       userModel.findOne({email:req.body.email})
           .then(user=>{
@@ -35,13 +110,14 @@ router.post('/register',async (req,res)=>{
           .catch(async ()=>{
             const salt = await bcrypt.genSalt(12);
             const password = await bcrypt.hash(req.body.password,salt);
-            const newUser = userModel({fullName:req.body.fullName, email:req.body.email,password});
+            const newUser = userModel({fullName, email:req.body.email,password,phone:phoneNumber,verified:false, terms});
 
             newUser.save()
-                .then(user=>{
-                  // console.log(user);
-                    res.redirect(302,'/client');
-                  res.send('user created ')
+                .then(user =>{
+
+
+                    res.render('auth/signup-det',{layout:'auth',title:'Enkryptfinance | sign up', id: user._id})
+                  // res.send(`${user} created`)
                 })
                 .catch(err=>{
                   res.send(err);
