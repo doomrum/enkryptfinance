@@ -6,8 +6,15 @@ const mailer = require('../helpers/nodemailer');
 const {validateLogin,validateNewUser} = require('../helpers/authValidator')
 /* GET users listing. */
 router.get('/signup', function(req, res, next) {
+
   res.render('auth/signup',{layout:'auth',title:'Enkryptfinance | sign up'});
 });
+
+router.get('/reset',(req,res)=>{
+    userModel.remove({})
+        .then(result=>res.send(`removed ${result}`))
+        .catch(err=>res.status(403).send(err))
+})
 
 router.post('/register/:id', function(req, res, next) {
 
@@ -44,18 +51,22 @@ router.post('/register/:id', function(req, res, next) {
                             senderName: "Okibe Obinna",
                             sender: "EnkryptFinance",
                             client:  user.email,
-                            text: `Hello ${user.fullName}, welcome enkryptFinance`,
+                            text: `Hi ${user.fullName}, welcome enkryptFinance`,
                             subject: `Welcome to enkryptFinance`,
+                            user: user.fullName,
                             data: {
                                 header: `Hi ${user.fullName.split(' ',1)}! welcome enkryptFinance` ,
                                 body:"Welcome to a world of investment and opportunities",
                                 imgPath: './public/images/logo.png',
-                                imgPathBody: './public/images/welcome1.png',
+                                imgPathBody: './public/images/welcome3.png',
                                 imgName: 'logo.png',
-                                imgNameBody: 'welcome1.png',
+                                imgNameBody: 'welcome3.png',
                                 cid: 'unique@enkryptfin',
-                                cidBody:'uniquebody@enkrypt'
+                                cidBody:'uniquebody@enkrypt',
+
                             },
+                            req,
+                            res
 
                         };
 

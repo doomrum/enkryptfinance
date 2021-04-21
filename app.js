@@ -1,7 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
 var logger = require('morgan');
 const hbs = require('express-handlebars');
 const fileUpload  = require('express-fileupload');
@@ -30,10 +31,22 @@ app.engine('handlebars', hbs(
 ));
 app.set('view engine', 'handlebars');
 
+app.use(flash());
+app.use(session({
+    secret: 'Ilovecodingthisistrue1234',
+    resave: true,
+    saveUninitialized: true,
+    // cookie: { secure: true }
+}))
+app.use((req,res,next)=>{
+    res.locals.msg = req.session.msg;
+    delete req.session.msg;
+    next()
+})
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(fileUpload())
 app.use(express.static(path.join(__dirname, 'public')));
 

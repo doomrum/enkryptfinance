@@ -1,5 +1,9 @@
 <h3 class="h5">Login</h3>
-
+{{#if msg}}
+    <div class="success-card mgT1">
+        <h2 class="h4">{{msg}}</h2>
+    </div>
+{{/if}}
 <form class="mgV4 auth-form"  method="post" action="/auth/login">
     <!--                <h6 class="h5">Get best rates out of this</h6>-->
     <p class="h6 mgT1">Fill the form to login</p>
