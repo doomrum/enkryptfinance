@@ -26,8 +26,14 @@ $lightRed: #d78496;
 .red{
   color: #ef3945!important;
 }
+.yellow{
+  color: #ecc353!important;
+}
 .success{
   color: mediumseagreen!important;
+}
+.blue{
+  color: deepskyblue!important;
 }
 .pending{
   color: coral!important;
@@ -35,6 +41,12 @@ $lightRed: #d78496;
 .dark{
   color: $darkGrey!important;
 
+}
+.bg-success{
+  background-color: #d5ffe8!important;
+}
+.bg-yell{
+  background-color: #fffbce !important;
 }
 
 

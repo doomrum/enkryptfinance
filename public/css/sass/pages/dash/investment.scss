@@ -73,3 +73,69 @@ ol{
   //  color: #2b2b41!important;
   //}
 }
+
+.form-textarea{
+  width: 100%;
+  background-color: inherit;
+  height: 10rem;
+  border:none;
+  resize: none;
+  padding: 1rem;
+  &:focus{
+    outline: none;
+  }
+}
+
+.tickets-section{}
+.tickets{
+  padding: 2rem;
+  background-color: white;
+  width: 50%;
+  margin: 2rem 0;
+  border-radius: 1.5rem;
+  @include respond(tabPort){
+    width: 100%;
+  }
+  .ticket{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.5rem;
+    transition: all .35s ease;
+
+    &:not(:first-child){
+      //border-top: 1px solid $accent;
+    }
+    &:hover{
+      background-color: $accent;
+    }
+
+  }
+
+}
+.referrals{
+  padding: 2rem 0;
+  background-color: white;
+  width: 100%;
+  margin: 1rem 0;
+  border-radius: 1.5rem;
+  @include respond(tabPort){
+    width: 100%;
+  }
+  .referral{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    transition: all .35s ease;
+    //cursor:;
+    &:not(:first-child){
+      border-top: 1px solid $accent;
+    }
+    &:hover{
+      background-color: $accent;
+    }
+
+  }
+
+}
