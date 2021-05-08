@@ -41,7 +41,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 
-    cookie: { secure: process.env.NODE_ENV !== "dev", maxAge:'1 month',expires: '1 month', },
+    cookie: { secure: process.env.NODE_ENV !== "dev", maxAge: Date.now() + (3600 * 1000), },
     store: mongoConnect.create({
         mongoUrl: dbUrl.dburi(),
     })
