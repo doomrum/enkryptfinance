@@ -4,31 +4,28 @@
 
 
         <div class="tickets mgT2">
-            <h5 class="h5">You have no tickets</h5>
-<!--            <div class="ticket">-->
-<!--                <p class="h5">Lukkke</p>-->
-<!--                <h5 class="h5">Work issue</h5>-->
-<!--                <p class="h6">1st May 2021</p>-->
-<!--            </div>-->
-<!--            <div class="ticket">-->
-<!--                <p class="h5">Lukkke</p>-->
-<!--                <h5 class="h5">Work issue</h5>-->
-<!--                <p class="h6">1st May 2021</p>-->
-<!--            </div>-->
-<!--            <div class="ticket">-->
-<!--                <p class="h5">Lukkke</p>-->
-<!--                <h5 class="h5">Work issue</h5>-->
-<!--                <p class="h6">1st May 2021</p>-->
-<!--            </div>-->
+            {{#if tickets}}
+              {{#each tickets}}
+                  <div class="ticket">
+                      <p class="h5">{{subject}}</p>
+                      <h5 class="h5">{{msg}}</h5>
+                      <p class="h6">{{date}}</p>
+                  </div>
+              {{/each}}
+            {{else}}  <h5 class="h5">You have no tickets</h5>
+            {{/if}}
+
+
+
         </div>
     </div>
     <h2 class="h4">Open a newTicket</h2>
-    <form class=" card_w width50 mgT2">
+    <form method="post" action="/client/ticket/create" class=" card_w width50 mgT2">
         <div class="form-input-box">
-            <input placeholder="Subject" class="form-input"/>
+            <input placeholder="Subject" name="subject" class="form-input"/>
         </div>
         <div class="form-input-box">
-            <textarea placeholder="Message" class="form-textarea"></textarea>
+            <textarea placeholder="Message" name="msg" class="form-textarea"></textarea>
         </div>
 
         <button class="btn btn-purple">

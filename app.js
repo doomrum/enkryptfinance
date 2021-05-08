@@ -6,6 +6,10 @@ var flash = require('connect-flash');
 var logger = require('morgan');
 const hbs = require('express-handlebars');
 const fileUpload  = require('express-fileupload');
+const cookieChecker = require('./helpers/cookieChecker');
+const mongoConnect = require('connect-mongo');
+const dbUrl = require('./helpers/dbURI');
+
 require('dotenv').config();
 // const mailHelper = require('./helpers/nodemailer')
 
@@ -17,7 +21,7 @@ var  authRouter = require('./routes/users');
 var  clientRouter = require('./routes/client');
 var  adminRouter = require('./routes/admin');
 const payRouter = require('./routes/payment');
-const emailRouter = require('./routes/emailTest');
+const emailRouter = require('./routes/emailroute');
 var app = express();
 
 
@@ -33,19 +37,21 @@ app.set('view engine', 'handlebars');
 
 app.use(flash());
 app.use(session({
-    secret: 'Ilovecodingthisistrue1234',
+    secret: process.env.secret,
     resave: true,
     saveUninitialized: true,
-    // cookie: { secure: true }
-}))
-app.use((req,res,next)=>{
-    res.locals.msg = req.session.msg;
-    delete req.session.msg;
-    next()
-})
+
+    cookie: { secure: process.env.NODE_ENV !== "dev", maxAge:'1 month',expires: '1 month', },
+    store: mongoConnect.create({
+        mongoUrl: dbUrl.dburi(),
+    })
+
+}));
+
+
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 // app.use(cookieParser());
 app.use(fileUpload())
 app.use(express.static(path.join(__dirname, 'public')));
@@ -54,10 +60,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/client', clientRouter);
+app.use('/client', cookieChecker, clientRouter);
 app.use('/admin', adminRouter);
-app.use('/p', payRouter);
-app.use('/e', emailRouter);
+app.use('/p',cookieChecker, payRouter);
+app.use('/e',cookieChecker, emailRouter);
 
 
 

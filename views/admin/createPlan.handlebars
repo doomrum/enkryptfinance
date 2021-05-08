@@ -7,31 +7,31 @@
 
     <!--                   Users SECTION-->
 
-    <h3 class="h4">Edit Plan</h3>
+    <h3 class="h4">Create Plan</h3>
     <!--            <p class="h6 mgT1"></p>-->
     <div>
         <!--               <h2 class="h6 ">Deposit Form</h2>-->
-        <form class="card_w"  method="post" action="/admin/editPlan/{{plan._id}}">
+        <form class="card_w"  method="post" action="/admin/createPlan">
             <div class="form-input-box">
-                <input placeholder="Title" value="{{plan.title}}"  name="title" class="form-input"/>
+                <input placeholder="Title" name="title" class="form-input"/>
             </div>
 
             <div class="form-input-box">
-                <input placeholder="cost" value="{{plan.cost}}" name="cost" class="form-input"/>
+                <input placeholder="cost" name="cost" class="form-input"/>
             </div>
             <div class="form-input-box">
-                <input placeholder="Duration" value="{{plan.duration}}" name="duration" class="form-input"/>
+                <input placeholder="Duration" name="duration" class="form-input"/>
             </div>
             <div class="form-input-box">
-                <input placeholder="profit" value="{{plan.profit}}" name="profit" class="form-input"/>
+                <input placeholder="profit" name="profit" class="form-input"/>
             </div>
             <div class="form-input-box">
-                <input placeholder="Description" value="{{plan.description}}" name="description" class="form-input"/>
+                <input placeholder="Description" name="description" class="form-input"/>
             </div>
             <!--                   Toggle on request validity-->
 
 
-            <button class="btn btn-purple">Edit Plan</button>
+            <button class="btn btn-purple">New Plan</button>
         </form>
     </div>
 

@@ -275,6 +275,10 @@ html {
   width: 100%;
 }
 
+.flex-dir-c {
+  flex-direction: column !important;
+}
+
 .msg_btn {
   position: fixed;
   bottom: 5%;
@@ -451,7 +455,7 @@ html {
   background-color: white;
 }
 .transaction-table tbody tr:hover {
-  background-color: #f3f3fc;
+  background-color: #f7f7f7;
 }
 .transaction-table tbody td {
   padding: 1.8rem 2rem;
@@ -907,7 +911,7 @@ html {
 
 .header {
   position: relative;
-  background-image: url("../images/topbg.jpg");
+  background-image: url("../../images/topbg.jpg");
   height: 70vh;
   padding: 2rem;
   background-position: center;

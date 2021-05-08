@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcrypt');
 const userModel = require('../models/user');
-const mailer = require('../helpers/nodemailer');
+const {emailSender} = require('../helpers/nodemailer');
 const {validateLogin,validateNewUser} = require('../helpers/authValidator')
 /* GET users listing. */
 router.get('/signup', function(req, res, next) {
@@ -70,7 +70,7 @@ router.post('/register/:id', function(req, res, next) {
 
                         };
 
-                        mailer(params);
+                        emailSender(params);
                     })
                     .catch(err=>{
                         console.log(err);
@@ -126,7 +126,7 @@ router.post('/register',async (req,res)=>{
             newUser.save()
                 .then(user =>{
 
-
+console.log(user)
                     res.render('auth/signup-det',{layout:'auth',title:'Enkryptfinance | sign up', id: user._id})
                   // res.send(`${user} created`)
                 })
@@ -147,12 +147,20 @@ router.post('/login',async (req,res)=>{
            const validPassword = await bcrypt.compare(req.body.password,user.password);
 //////SET COOKIE IF VALID
            if (validPassword){
+               req.session.access = user._id;
+            if(user.fullName==='Admin Admin Admin'){
+                res.redirect('/admin');
+            }
+            if(user.fullName==='SuperAdmin'){
+                ///super Admin
+            }
 
-               res.redirect('/admin',200);
-               // res.status(200).send('valid user')
+               req.user = user.fullName;
+               console.log(user);
+               res.redirect('/client');
            }
            else {
-               res.status(403).send('error')
+               res.status(403).send('Invalid Password',)
            }
 
           })

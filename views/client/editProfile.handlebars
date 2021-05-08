@@ -1,0 +1,45 @@
+<h6 class="h4">Edit Account</h6>
+
+<form class=" auth-form" method="post" action="/client/profile/edit/{{user._id}}">
+
+    <div class="grid">
+        <div class="grid-item2_4">
+            <div class="form-input-box">
+                <input class="form-input"value="{{user.fullName}}" name="fullName" placeholder="Full Name"/>
+            </div>
+            <div class="form-input-box">
+                <input class="form-input" type="email" value="{{user.email}}" name="email" placeholder="Email"/>
+
+            </div>
+
+        </div>
+        <div class="grid-item2_4">
+            <div class="form-input-box">
+                <select name="Country" class="form-input">
+                    <option>Nigeria</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="grid-item2-4">
+            <div class="form-input-box">
+                <select name="code" class="form-input">
+                    <option>+234</option>
+                </select>
+
+            </div>
+            <div class="form-input-box">
+                <input class="form-input" type="tel" value="{{user.phone}}" name="phone" placeholder="phone"/>
+
+            </div>
+        </div>
+    </div>
+<!--    <div class="mgT2">-->
+<!--        <input type="checkbox" name="terms" id="terms">-->
+<!--        <label class="h5 mgL2" for="terms">I agree to receive your newsletters, company news, and product updates.</label>-->
+<!--    </div>-->
+    <button  class="mgT2 btn btn-green ">Save</button>
+
+</form>
+<a class="btn btn-red mgT2">Change Password</a>

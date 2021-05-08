@@ -7,20 +7,20 @@
     <div class="mgT2">
         <div class="card width50">
             <h4 class="h5">Referral Link</h4>
-            <p class="mgT1 h6">https://enkryptFinance/adjgasauuydaudadyuayuysuuy</p>
+            <p class="mgT1 h6">{{referralLink}}</p>
             <a class="btn btn-primary mgT1">Copy</a>
         </div>
         <div class="card width50 mgT2">
             <h5 class="h4">Send Referral invitation</h5>
-            <form class="  mgT1">
+            <form method="post" action="/client/referral/em/" class="mgT1">
                 <label  class="h6 mgT1" > Friend's Email</label>
                 <div class="form-input-box">
-
-                    <input  placeholder="email" class="form-input"/>
+                    <input  placeholder="email" name="email" class="form-input"/>
+                    <input hidden  placeholder="email" value="{{referralLink}}" name="refLink" class="form-input"/>
                 </div>
                 <label  class="h6 mgT1" > A brief personal note to your Friend</label>
                 <div class="form-input-box">
-                    <textarea placeholder="Message" class="form-textarea"></textarea>
+                    <textarea placeholder="Message" class="form-textarea" name="msg" >t facere libero optio sed totam! Animi consequatur cumque debitis, dolor eius laudantium minima nihil rem ullam veritatis vero voluptatibus." class="form-textarea</textarea>
                 </div>
 
                 <button class="btn btn-purple">
@@ -36,15 +36,18 @@
     <div class="mgT2 card width50">
         <h4 class="h4"><i class="la la-list icon24"></i><span class="mgL2">My Referrals</span></h4>
 
-        <p class="h6 mgT1">You have no referrals</p>
+     {{#if referrals}}
+         <div class="referrals">
+             <div class="referral">
+                 <p class="h5">Lukkke</p>
+                 <h5 class="h5">Work issue</h5>
+                 <p class="h6">1st May 2021</p>
+             </div>
+         </div>
+     {{else}}   <p class="h6 mgT1">You have no referrals</p>
+     {{/if}}
 
-               <div class="referrals">
-                   <div class="referral">
-                       <p class="h5">Lukkke</p>
-                       <h5 class="h5">Work issue</h5>
-                       <p class="h6">1st May 2021</p>
-                   </div>
-           </div>
+
 
 
     </div>

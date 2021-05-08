@@ -1,6 +1,9 @@
 
 <!--                   STATS SECTION-->
-<h1 class="h4">Hello, John Doe</h1>
+<h1 class="h4">Hello,
+
+        {{userInfo.fullName}}
+    </h1>
 <div class="mgT2 grid">
     <div class="grid-item2_4 card display_flex">
         <div class="stats_icon-box bg-success">
@@ -8,7 +11,12 @@
         </div>
         <div class="stats_textBox">
             <h4 class="h6 light grey">Current Investment</h4>
-            <p class="h3 mgT1">$450
+            <p class="h3 mgT1">${{#if userInfo.balance}}
+                {{currentInvestments}}
+            {{else}}0
+            {{/if}}
+
+
 <!--                <i class="la la-angle-down stats_icon"></i> -->
             </p>
         </div>
@@ -19,8 +27,10 @@
         </div>
         <div class="stats_textBox">
             <h4 class="h6 light grey">Current Returns</h4>
-            <p class="h3 mgT1">$23.45
-<!--                <i class="la la-angle-up stats_icon "></i>-->
+            <p class="h3 mgT1">${{#if balance}}
+                {{currentReturns}}
+            {{else}}0
+            {{/if}}
             </p>
         </div>
     </div>
@@ -30,7 +40,10 @@
         </div>
         <div class="stats_textBox">
             <h4 class="h6 light grey">Wallet Balance</h4>
-            <p class="h3 mgT1">10.450000
+            <p class="h3 mgT1">BTC{{#if balance}}
+                {{btcBalance}}
+            {{else}} 0.0000
+            {{/if}}
 <!--                <i class="la la-angle-up stats_icon"></i>-->
             </p>
         </div>
@@ -48,18 +61,26 @@
             <tr><th>Transaction Id</th> <th>BTC Address</th><th><i class="la la-btc"></i>BTC</th><th>status</th></tr>
             </thead>
             <tbody>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td  class="success">success</td></tr>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td  class="success">success</td></tr>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td class="red">failure</td></tr>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td  class="success">success</td></tr>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td class="pending">pending</td></tr>
+
+            {{#if userInfo.transactions}}
+                {{#each userInfo.transactions}}
+
+                    <tr><td>{{_id}}</td><td>{{btcAddress}}</td><td>{{amount}}</td><td  class="{{status}}">{{status}}</td></tr>
+                {{/each}}
+            {{else}} No transaction yet
+            {{/if}}
             </tbody>
         </table>
     </div>
     <div class="grid-item1_4">
         <div class="card">
             <p class="h6 light grey">Current plan</p>
-            <h3 class="h3">Premium Silver</h3>
+            <h3 class="h3">{{#if plan}}
+               {{plan}}
+            {{else}}   Silver Plan
+            {{/if}}
+
+            </h3>
 
             <a class="btn btn-purple mgT1"><span>Upgrade </span> <i class="la la-chevron-circle-up"></i></a>
         </div>
@@ -71,8 +92,28 @@
 </div>
 
 
-<div class="card_w">
+<div class="grid">
+    <div class="grid-item3_4">
+        <div class="card">
+            <div id="chart">
 
+            </div>
+        </div>
+    </div>
+    <div class="grid-item1_4 grid flex-dir-c">
+                   <div class="card grid-item1_3 ">-->
+                        <h4 class="h6 light grey">BTC </h4>
+                        <h2 class="h4 mgT1">2.465754647</h2>
+                    </div>
+                    <div class="card grid-item1_3">
+                        <h4 class="h6 light grey">XRP </h4>
+                        <h2 class="h4 mgT1">2.465754647</h2>
+                    </div>
+                    <div class="card grid-item1_3">
+                        <h4 class="h6 light grey">ETH </h4>
+                        <h2 class="h4 mgT1">2.465754647</h2>
+                    </div>
+    </div>
 </div>
 
 

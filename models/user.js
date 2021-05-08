@@ -36,6 +36,24 @@ const schema = mongoose.Schema({
         type: String,
         default:''
     },
+    supporttickets:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'supporttickets'
+    } ],
+    transactions:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'transactions'
+    }],
+    referrals:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'referrals'
+    }],
+    referralUrl:String,
+
+    balance:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'balance'
+    },
 });
 
-module.exports = mongoose.model('user',schema);
+module.exports = mongoose.model('users',schema);

@@ -4,21 +4,24 @@
     <div class="grid-item1_3 card wallet-card">
         <div>
             <p class="h5">Current BTC Balance</p>
-            <h2 class="h2 mgT2">2.00100</h2>
+            <h2 class="h2 mgT2">BTC{{#if balance}}
+                {{balance}}
+            {{else}} 0.0000
+            {{/if}}</h2>
         </div>
         <i class="la la-chart-line"></i>
     </div>
-    <div class="grid-item1_3 card wallet-card">
-        <div>
-            <p class="h5">Total Withdrawn</p>
-            <h2 class="h2 mgT2">1.00100</h2>
-        </div>
-        <i class="la la-exchange-alt"></i>
-    </div>
+<!--    <div class="grid-item1_3 card wallet-card">-->
+<!--        <div>-->
+<!--            <p class="h5">Total Withdrawn</p>-->
+<!--            <h2 class="h2 mgT2">1.00100</h2>-->
+<!--        </div>-->
+<!--        <i class="la la-exchange-alt"></i>-->
+<!--    </div>-->
 </div>
 
 <div class="mgT3">
-    <a class="btn btn-green">Withdraw <i class="la la-exchange-alt"></i></a>
+    <a href="/client/withdraw" class="btn btn-green">Withdraw <i class="la la-exchange-alt"></i></a>
     <a class="btn btn-primary mgL2">Upgrade Plan</a>
 </div>
 
@@ -30,11 +33,13 @@
             <tr><th>Transaction Id</th> <th>BTC Address</th><th><i class="la la-btc"></i>BTC</th><th>status</th></tr>
             </thead>
             <tbody>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td  class="success">success</td></tr>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td  class="success">success</td></tr>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td class="red">failure</td></tr>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td  class="success">success</td></tr>
-            <tr><td>fd34282892</td><td>sfhffusauhheihwuuehuehueueueu</td><td>2.455555</td><td class="pending">pending</td></tr>
+           {{#if transactions}}
+               {{#each transactions}}
+                   <tr><td>{{_id}}</td><td>{{btcAddress}}</td><td>{{amount}}</td><td  class="{{status}}">{{status}}</td></tr>
+               {{/each}}
+           {{else}}You Have not transactions
+           {{/if}}
+
             </tbody>
         </table>
     </div>

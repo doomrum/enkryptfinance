@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const nodemailer = require('../helpers/nodemailer');
+// const nodemailer = require('../helpers/nodemailer');
 
 router.get('/test', async (req,res,next)=>{
-   await nodemailer();
+   // await nodemailer();
     res.send('done');
 
 });

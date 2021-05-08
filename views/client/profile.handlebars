@@ -5,15 +5,15 @@
     <div class="profile-top mgT2 width50 profile-centre">
         <figure class="centre-imgText">
             <img alt="profile image" class="profile-img" src="/images/pexels-enes-ersahin-6988826.jpg"/>
-            <a class="btn btn-primary"><i class="las la-edit"></i> <span>Edit Profile</span></a>
+            <a href="/client/profile/edit/{{user._id}}" class="btn btn-primary"><i class="las la-edit"></i> <span>Edit Profile</span></a>
         </figure>
 
     </div>
     <div class="card width50 mgT2">
         <ul class="profile-data">
-            <li class="h5">Graham</li>
-            <li class="h5">graham@gmail.com</li>
-            <li class="h5">123456790</li>
+            <li class="h5">{{user.fullName}}</li>
+            <li class="h5">{{user.email}}</li>
+            <li class="h5">{{user.phone}}</li>
             <li class="h5">Nigerian</li>
             <li class="h5">Registration Date</li>
             <li class="h5">Upline</li>
