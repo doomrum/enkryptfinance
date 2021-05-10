@@ -38,10 +38,10 @@ app.set('view engine', 'handlebars');
 app.use(flash());
 app.use(session({
     secret: process.env.secret,
-    resave: true,
+    resave: false,
     saveUninitialized: true,
-
-    cookie: { secure: process.env.NODE_ENV !== "dev", maxAge: Date.now() + (3600 * 1000), },
+    expires: Date.now() + (30 * 86400 * 1000),
+    cookie: { secure: process.env.NODE_ENV !== "dev",  },
     store: mongoConnect.create({
         mongoUrl: dbUrl.dburi(),
     })

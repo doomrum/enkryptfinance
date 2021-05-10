@@ -2,14 +2,17 @@ const router = require('express').Router();
 const UserModel = require('../models/user');
 const PlanModel = require('../models/plan');
 //
-// router.all('/',(req,res,next)=>{
-//     ///
-//     next();
-// })
+router.all('/*',(req,res,next)=>{
+    if (req.session.accessType!=='admin'){
+        res.redirect('/client');
+    }else {
+    next();}
+})
 
 router.get('/',async (req,res)=>{
    await UserModel.find({})
        .lean()
+       .populate({path:'balance',model:'balances'})
         .then(users=>{
             // const usersInfo = users;
             // console.log(users);
@@ -131,6 +134,10 @@ router.get('/users',async (req,res,next)=>{
             res.status(400).send(err) ;
         })
 
+});
+router.get('/logout',(req,res,next)=>{
+    req.session.destroy();
+    res.redirect('/auth/login');
 });
 
 

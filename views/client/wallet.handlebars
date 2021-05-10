@@ -4,8 +4,8 @@
     <div class="grid-item1_3 card wallet-card">
         <div>
             <p class="h5">Current BTC Balance</p>
-            <h2 class="h2 mgT2">BTC{{#if balance}}
-                {{balance}}
+            <h2 class="h2 mgT2">BTC{{#if btcBalance}}
+                {{btcBalance}}
             {{else}} 0.0000
             {{/if}}</h2>
         </div>
@@ -22,7 +22,7 @@
 
 <div class="mgT3">
     <a href="/client/withdraw" class="btn btn-green">Withdraw <i class="la la-exchange-alt"></i></a>
-    <a class="btn btn-primary mgL2">Upgrade Plan</a>
+    <a href="/client/upgrade" class="btn btn-primary mgL2">Upgrade Plan</a>
 </div>
 
 <div class="mgT4">
@@ -37,10 +37,16 @@
                {{#each transactions}}
                    <tr><td>{{_id}}</td><td>{{btcAddress}}</td><td>{{amount}}</td><td  class="{{status}}">{{status}}</td></tr>
                {{/each}}
-           {{else}}You Have not transactions
            {{/if}}
 
             </tbody>
         </table>
+        {{#if transactions}}
+
+        {{else}}
+             <div class="card">
+                 <h4 class="h4">You Have no transactions</h4>
+             </div>
+        {{/if}}
     </div>
 </div>

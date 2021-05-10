@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcrypt');
 const userModel = require('../models/user');
+const balanceModel = require('../models/balance');
 const {emailSender} = require('../helpers/nodemailer');
 const {validateLogin,validateNewUser} = require('../helpers/authValidator')
 /* GET users listing. */
@@ -121,13 +122,30 @@ router.post('/register',async (req,res)=>{
           .catch(async ()=>{
             const salt = await bcrypt.genSalt(12);
             const password = await bcrypt.hash(req.body.password,salt);
+
             const newUser = userModel({fullName, email:req.body.email,password,phone:phoneNumber,verified:false, terms});
 
             newUser.save()
                 .then(user =>{
+                 const newbalance = balanceModel({currentInvestment:0,currentReturns:0, btcBalance:0, owner: user._id});
+                 newbalance.save()
+                     .then(bal=>{
 
-console.log(user)
-                    res.render('auth/signup-det',{layout:'auth',title:'Enkryptfinance | sign up', id: user._id})
+                         console.log(user, bal)
+                         user.balance = newbalance;
+                         user.save()
+                             .then(u=>{
+                                 res.render('auth/signup-det',{layout:'auth',title:'Enkryptfinance | sign up', id: user._id});
+                             })
+                             .catch(e=>{
+                                 res.status(403).send(e)
+                             })
+
+                     })
+                     .catch(err=>res.status(403).send(err))
+
+
+
                   // res.send(`${user} created`)
                 })
                 .catch(err=>{
@@ -147,15 +165,19 @@ router.post('/login',async (req,res)=>{
            const validPassword = await bcrypt.compare(req.body.password,user.password);
 //////SET COOKIE IF VALID
            if (validPassword){
-               req.session.access = user._id;
+
             if(user.fullName==='Admin Admin Admin'){
+                req.session.access = user._id;
+                req.session.accessType = 'admin';
+                req.app.locals.username = user.fullName;
                 res.redirect('/admin');
             }
             if(user.fullName==='SuperAdmin'){
                 ///super Admin
             }
-
-               req.user = user.fullName;
+               req.session.access = user._id;
+               req.session.accessType = 'client';
+               req.app.locals.username = user.fullName;
                console.log(user);
                res.redirect('/client');
            }

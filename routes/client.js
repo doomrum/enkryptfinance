@@ -3,11 +3,17 @@ const userModel  = require('../models/user');
 const ticketModel  = require('../models/supportTicket');
 const referralModel  = require('../models/referral');
 const transactionModel  = require('../models/transaction');
+const balanceModel = require('../models/balance');
 // const cryptoData  = require('../helpers/userInfo');
 const cryptoData  = require('../helpers/cryptoData');
 const {sendEmail} = require('../helpers/nodemailer');
 const moment = require('moment');
-
+router.all('/*',(req,res,next)=>{
+    if (req.session.accessType!=='client'){
+        res.redirect('/admin');
+    }else {
+        next();}
+})
 
 router.get('/',async(req,res,next)=>{
 
@@ -16,19 +22,23 @@ router.get('/',async(req,res,next)=>{
 
     const ID  = req.session.access;
 
-       await userModel.findOne({_id:ID})
-           .populate('transactions')
-            .then(user=>{
-            const userInfo  = user.toJSON();
-                // console.log(req.user);
-            res.render('client/index',{layout: 'client', title:'EnkryptFinance | Client',userInfo,});
-        })
 
-            .catch(err=>err)
+         await userModel.findOne({_id:ID})
+             .populate('transactions')
+             .populate({path:'balance',model:'balances'})
+             .then(user=>{
+                 const userInfo  = user.toJSON();
+                 console.log(req.user);
+                 const fullName = req.app.locals.username;
+                 res.render('client/index',{layout: 'client', title:'EnkryptFinance | Client',userInfo,fullName });
+             })
+
+             .catch(err=>err)
+
 });
 router.get('/invest',(req,res,next)=>{
-
-    res.render('client/invest',{layout: 'client', title:'EnkryptFinance | Invest'});
+    const fullName = req.app.locals.username;
+    res.render('client/invest',{layout: 'client', title:'EnkryptFinance | Invest',fullName});
 });
 
 
@@ -38,8 +48,15 @@ router.get('/wallet',async (req,res,next)=>{
      transactionModel.find({owner:req.session.access})
          .lean()
          .then(transactions=>{
-             console.log(transactions);
-             res.render('client/wallet',{layout: 'client', title:'EnkryptFinance | wallet',transactions });
+             balanceModel.findOne({owner:req.session.access})
+                 .then(bal=>{
+                     console.log(transactions);
+                     console.log(bal);
+                     const fullName = req.app.locals.username;
+                     res.render('client/wallet',{layout: 'client', title:'EnkryptFinance | wallet',transactions ,btcBalance:bal.btcBalance,fullName});
+                 })
+                 .catch(err=>err);
+
          })
          .catch(err=>err)
 
@@ -65,8 +82,9 @@ router.get('/ticket',(req,res,next)=>{
 
              }
 
-             console.log(ticketSort(t))
-             res.render('client/ticket',{layout: 'client', title:'EnkryptFinance | Invest',tickets:ticketSort(t)});
+             console.log(ticketSort(t));
+             const fullName = req.app.locals.username;
+             res.render('client/ticket',{layout: 'client', title:'EnkryptFinance | Support Ticket',tickets:ticketSort(t),fullName});
          })
          .catch(err=> res.send(err))
 });
@@ -96,7 +114,8 @@ router.get('/profile',(req,res,next)=>{
     userModel.findOne({_id:ID}).then(user=>{
         console.log(`${user} s here`);
         const userInfo  = user.toJSON();
-        res.render('client/profile',{layout: 'client', title:'EnkryptFinance | wallet',user:userInfo});
+        const fullName = req.app.locals.username;
+        res.render('client/profile',{layout: 'client', title:'EnkryptFinance | profile',user:userInfo, fullName});
 
     })
 
@@ -107,7 +126,8 @@ router.get('/profile/edit/:_id',(req,res,next)=>{
     userModel.findOne({_id:ID}).then(user=>{
         console.log(`${user} s here`);
         const userInfo  = user.toJSON();
-        res.render('client/editProfile',{layout: 'client', title:'EnkryptFinance | wallet',user:userInfo});
+        const fullName = req.app.locals.username;
+        res.render('client/editProfile',{layout: 'client', title:'EnkryptFinance | profile',user:userInfo, fullName});
 
     })
 
@@ -119,13 +139,13 @@ router.post('/profile/edit/:_id',(req,res,next)=>{
          userModel.updateOne({_id:ID}, {fullName:req.body.fullName, email: req.body.email, phone:req.body.phone})
              .then(user=>{
                  console.log(user)
-                 res.send(user)
+                 res.render('client/editProfile',{layout: 'client', title:'EnkryptFinance | wallet',user:userInfo});
              })
              .catch(err=>{
                  res.send(err)
              });
 
-        // res.render('client/editProfile',{layout: 'client', title:'EnkryptFinance | wallet',user:userInfo});
+
 
 
 
@@ -141,7 +161,8 @@ router.get('/referral',(req,res,next)=>{
                         user.referralUrl = newReferralLink;
                         user.save()
                             .then(r=>{
-                                res.render('client/referral',{layout: 'client', title:'EnkryptFinance | Invest',referralLink:newReferralLink});
+                                const fullName = req.app.locals.username;
+                                res.render('client/referral',{layout: 'client', title:'EnkryptFinance | Referral',referralLink:newReferralLink,fullName});
                             })
                             .catch(err=>err)
 
@@ -178,7 +199,20 @@ router.post('/referral/em/',(req,res,next)=>{
 ///REFERRAL URL
 
 router.get('/withdraw',(req,res,next)=>{
-    res.render('client/withdraw',{layout: 'client', title:'EnkryptFinance | wallet'});
+    const fullName = req.app.locals.username;
+    res.render('client/withdraw',{layout: 'client', title:'EnkryptFinance | wallet',fullName});
+});
+router.get('/upgrade',(req,res,next)=>{
+    const fullName = req.app.locals.username;
+    res.render('client/upgrade',{layout: 'client', title:'EnkryptFinance | Upgrade Plan',fullName});
+});
+router.get('/editPassword',(req,res,next)=>{
+    const fullName = req.app.locals.username;
+    res.render('client/editPassword',{layout: 'client', title:'EnkryptFinance | Upgrade Plan',fullName});
+});
+router.get('/logout',(req,res,next)=>{
+    req.session.destroy();
+    res.redirect('/auth/login');
 });
 
 module.exports = router;

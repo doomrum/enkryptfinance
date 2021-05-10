@@ -54,6 +54,10 @@ const schema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'balance'
     },
+    plan:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'plan'
+    }
 });
 
 module.exports = mongoose.model('users',schema);

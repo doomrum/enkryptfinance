@@ -12,7 +12,7 @@
         <div class="stats_textBox">
             <h4 class="h6 light grey">Current Investment</h4>
             <p class="h3 mgT1">${{#if userInfo.balance}}
-                {{currentInvestments}}
+                {{userInfo.balance.currentInvestment}}
             {{else}}0
             {{/if}}
 
@@ -27,8 +27,8 @@
         </div>
         <div class="stats_textBox">
             <h4 class="h6 light grey">Current Returns</h4>
-            <p class="h3 mgT1">${{#if balance}}
-                {{currentReturns}}
+            <p class="h3 mgT1">${{#if userInfo.balance}}
+                {{userInfo.balance.currentReturns}}
             {{else}}0
             {{/if}}
             </p>
@@ -40,8 +40,8 @@
         </div>
         <div class="stats_textBox">
             <h4 class="h6 light grey">Wallet Balance</h4>
-            <p class="h3 mgT1">BTC{{#if balance}}
-                {{btcBalance}}
+            <p class="h3 mgT1">BTC{{#if userInfo.balance}}
+                {{userInfo.balance.btcBalance}}
             {{else}} 0.0000
             {{/if}}
 <!--                <i class="la la-angle-up stats_icon"></i>-->
@@ -67,10 +67,15 @@
 
                     <tr><td>{{_id}}</td><td>{{btcAddress}}</td><td>{{amount}}</td><td  class="{{status}}">{{status}}</td></tr>
                 {{/each}}
-            {{else}} No transaction yet
             {{/if}}
             </tbody>
         </table>
+        {{#if userInfo.transactions}}
+
+        {{else}}  <div class="card">
+            <h4 class="h4">You Have no transactions</h4>
+        </div>
+        {{/if}}
     </div>
     <div class="grid-item1_4">
         <div class="card">
@@ -101,7 +106,7 @@
         </div>
     </div>
     <div class="grid-item1_4 grid flex-dir-c">
-                   <div class="card grid-item1_3 ">-->
+                   <div class="card grid-item1_3 ">
                         <h4 class="h6 light grey">BTC </h4>
                         <h2 class="h4 mgT1">2.465754647</h2>
                     </div>
