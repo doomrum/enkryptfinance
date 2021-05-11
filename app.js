@@ -44,6 +44,7 @@ app.use(session({
     secret: process.env.Secret,
     resave: false,
     saveUninitialized: true,
+    name:'enkryptlogs',
     expires:  30 * 86400 * 1000,
     cookie: { secure: process.env.NODE_ENV !== "dev", httpOnly:  true, maxAge: 30 * 86400 * 1000,},
     store: mongoConnect.create({
