@@ -159,9 +159,10 @@ router.post('/register',async (req,res)=>{
 
 
 router.post('/login',async (req,res)=>{
+
    const {error} = validateLogin(req.body);
    if (!error){
-     await userModel.findOne({email:req.body.email})
+      userModel.findOne({email:req.body.email})
           .then(async (user)=>{
            const validPassword = await bcrypt.compare(req.body.password,user.password);
 //////SET COOKIE IF VALID
@@ -176,11 +177,13 @@ router.post('/login',async (req,res)=>{
             if(user.fullName==='SuperAdmin'){
                 ///super Admin
             }
-               req.session.access = user._id;
-               req.session.accessType = 'client';
-               req.app.locals.username = user.fullName;
-               console.log(user);
-               res.redirect('/client');
+               else{
+                req.session.access = user._id;
+                req.session.accessType = 'client';
+                req.app.locals.username = user.fullName;
+                console.log(user);
+                res.redirect('/client');
+            }
            }
            else {
                res.status(403).send('Invalid Password',)
@@ -188,8 +191,12 @@ router.post('/login',async (req,res)=>{
 
           })
           .catch( err=>{
-            res.send(err)
+
+            res.send('not a valid user')
           });
+   }
+   else{
+       res.send(error)
    }
 
 })

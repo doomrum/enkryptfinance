@@ -12,7 +12,7 @@ function validateNewUser(data) {
 }
 function validateLogin(data) {
      const schema = joi.object({
-         email:joi.string().email().required().min(6),
+         email:joi.string().email().required().min(6).lowercase(),
          password:joi.string().required().min(8)
      });
      return schema.validate(data);

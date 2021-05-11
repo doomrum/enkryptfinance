@@ -28,7 +28,7 @@ router.get('/',async(req,res,next)=>{
              .populate({path:'balance',model:'balances'})
              .then(user=>{
                  const userInfo  = user.toJSON();
-                 console.log(req.user);
+                 console.log(user)
                  const fullName = req.app.locals.username;
                  res.render('client/index',{layout: 'client', title:'EnkryptFinance | Client',userInfo,fullName });
              })

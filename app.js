@@ -26,7 +26,7 @@ var app = express();
 
 
 // if (process.env["NODE_ENV "]==='production'){
-   app.use(enforce.HTTPS({ trustProtoHeader: true }));
+//    app.use(enforce.HTTPS({ trustProtoHeader: true }));
 // }
 // view engine setup
 app.engine('handlebars', hbs(
