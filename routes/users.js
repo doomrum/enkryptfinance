@@ -116,7 +116,7 @@ router.post('/register',async (req,res)=>{
        password:req.body.password
    });
    if (!error){
-      userModel.findOne({email:req.body.email})
+      userModel.findOne({email:req.body.email.toLowerCase()})
           .then(user=>{
             res.send(`user with email${user.email} exists`);
           })
@@ -124,11 +124,11 @@ router.post('/register',async (req,res)=>{
             const salt = await bcrypt.genSalt(12);
             const password = await bcrypt.hash(req.body.password,salt);
 
-            const newUser = userModel({fullName, email:req.body.email,password,phone:phoneNumber,verified:false, terms});
+            const newUser = new userModel({fullName, email:req.body.email.toLowerCase(),password,phone:phoneNumber,verified:false, terms});
 
             newUser.save()
                 .then(user =>{
-                 const newbalance = balanceModel({currentInvestment:0,currentReturns:0, btcBalance:0, owner: user._id});
+                 const newbalance = new balanceModel({currentInvestment:0,currentReturns:0, btcBalance:0, owner: user._id});
                  newbalance.save()
                      .then(bal=>{
 
