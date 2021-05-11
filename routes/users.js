@@ -131,7 +131,6 @@ router.post('/register',async (req,res)=>{
                  const newbalance = new balanceModel({currentInvestment:0,currentReturns:0, btcBalance:0, owner: user._id});
                  newbalance.save()
                      .then(bal=>{
-
                          console.log(user, bal)
                          user.balance = newbalance;
                          user.save()
@@ -186,6 +185,7 @@ router.post('/login',async (req,res)=>{
             }
            }
            else {
+               console.log(validPassword)
                res.status(403).send('Invalid Password',)
            }
 
