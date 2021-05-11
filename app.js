@@ -65,7 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 
-app.use('/client', cookieChecker, clientRouter);
+app.use('/client', clientRouter);
 app.use('/admin',cookieChecker, adminRouter);
 app.use('/p',cookieChecker, payRouter);
 app.use('/e',cookieChecker, emailRouter);
