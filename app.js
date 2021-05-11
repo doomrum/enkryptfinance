@@ -37,7 +37,7 @@ app.set('view engine', 'handlebars');
 
 app.use(flash());
 app.use(session({
-    secret: process.env.secret,
+    secret: process.env.Secret,
     resave: false,
     saveUninitialized: true,
     expires: Date.now() + (30 * 86400 * 1000),
