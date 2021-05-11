@@ -25,9 +25,9 @@ const emailRouter = require('./routes/emailroute');
 var app = express();
 
 
-if (process.env["NODE_ENV "]==='production'){
+// if (process.env["NODE_ENV "]==='production'){
    app.use(enforce.HTTPS({ trustProtoHeader: true }));
-}
+// }
 // view engine setup
 app.engine('handlebars', hbs(
     {
