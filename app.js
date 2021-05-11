@@ -9,7 +9,7 @@ const fileUpload  = require('express-fileupload');
 const cookieChecker = require('./helpers/cookieChecker');
 const mongoConnect = require('connect-mongo');
 const dbUrl = require('./helpers/dbURI');
-
+const enforce =  require('express-sslify');
 require('dotenv').config();
 // const mailHelper = require('./helpers/nodemailer')
 
@@ -25,7 +25,9 @@ const emailRouter = require('./routes/emailroute');
 var app = express();
 
 
-
+if (process.env["NODE_ENV "]==='production'){
+   app.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
 // view engine setup
 app.engine('handlebars', hbs(
     {
