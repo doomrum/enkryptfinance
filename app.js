@@ -59,13 +59,13 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(cookieParser());
 app.use(fileUpload())
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.set('trust proxy', 1)
 
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 
-app.use('/client', clientRouter);
+app.use('/client', cookieChecker, clientRouter);
 app.use('/admin',cookieChecker, adminRouter);
 app.use('/p',cookieChecker, payRouter);
 app.use('/e',cookieChecker, emailRouter);
