@@ -174,9 +174,9 @@ router.post('/login',async (req,res)=>{
                 req.app.locals.username = user.fullName;
                 res.redirect('/admin');
             }
-            if(user.fullName==='SuperAdmin'){
-                ///super Admin
-            }
+            // if(user.fullName==='SuperAdmin'){
+            //     ///super Admin
+            // }
             else{
                 req.session.access = user._id;
                 req.session.accessType = 'client';
