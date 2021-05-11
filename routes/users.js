@@ -177,7 +177,7 @@ router.post('/login',async (req,res)=>{
             if(user.fullName==='SuperAdmin'){
                 ///super Admin
             }
-               else{
+            else{
                 req.session.access = user._id;
                 req.session.accessType = 'client';
                 req.app.locals.username = user.fullName;

@@ -9,10 +9,13 @@ const cryptoData  = require('../helpers/cryptoData');
 const {sendEmail} = require('../helpers/nodemailer');
 const moment = require('moment');
 router.all('/*',(req,res,next)=>{
-    if (req.session.accessType!=='client'){
+    if (req.session.accessType !=='client'){
         res.redirect('/admin');
-    }else {
-        next();}
+    }
+    else {
+            next();
+    }
+
 })
 
 router.get('/',async(req,res,next)=>{
@@ -21,14 +24,15 @@ router.get('/',async(req,res,next)=>{
     //when a request s sent and there's no cookie with the session ID it will result in the failure of the request
 
     const ID  = req.session.access;
-
+    const IDType  = req.session.accessType;
 
          await userModel.findOne({_id:ID})
              .populate('transactions')
              .populate({path:'balance',model:'balances'})
              .then(user=>{
+
                  const userInfo  = user.toJSON();
-                 console.log(user)
+                 // console.log(user)
                  const fullName = req.app.locals.username;
                  res.render('client/index',{layout: 'client', title:'EnkryptFinance | Client',userInfo,fullName });
              })
@@ -36,6 +40,8 @@ router.get('/',async(req,res,next)=>{
              .catch(err=>err)
 
 });
+
+
 router.get('/invest',(req,res,next)=>{
     const fullName = req.app.locals.username;
     res.render('client/invest',{layout: 'client', title:'EnkryptFinance | Invest',fullName});
