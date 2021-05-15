@@ -167,7 +167,7 @@ router.post('/login',async (req,res)=>{
 //////SET COOKIE IF VALID
            if (validPassword){
 
-            if(user.fullName==='Admin Admin Admin'){
+            if(user.email==='admin@enkrypt.com'){
                 req.session.access = user._id;
                 req.session.accessType = 'admin';
                 req.app.locals.username = user.fullName;
