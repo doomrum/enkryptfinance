@@ -9,126 +9,34 @@
                 Especially on pricing. Get the answers you're looking for. </p>
         </div>
         <h4 class="h4 mgT4 ">BTC Mining</h4>
-        <div class="grid mgT4">
-            <div class="grid-item1_3 plan-card">
-                <div class="overlayText">
-                    <span>Starter Pack</span>
-                </div>
-                <img class="flowImgP" src="/images/pexels-enes-ersahin-6988826.jpg"/>
-                <h3 class="h4 mgV2">Premium Gold</h3>
-                <h4 class="h2 mgV2 plan-card-h">$10000</h4>
-                <div class="mgV2 plan-details">
-                    <ul>
-                        <li>25% Roi</li>
-                        <li>Ability to fly</li>
-                        <li>Running on Water</li>
-                    </ul>
-                </div>
-                <a class="btn btn-plan">
-                    Register <i class="las la-arrow-right"></i>
-                </a>
-
-            </div><div class="grid-item1_3 plan-card">
-                <div class="overlayText">
-                    <span>Starter Pack</span>
-                </div>
-                <img class="flowImgP" src="/images/pexels-enes-ersahin-6988826.jpg"/>
-                <h3 class="h4 mgV2">Premium Gold</h3>
-                <h4 class="h2 mgV2 plan-card-h">$10000</h4>
-                <div class="mgV2 plan-details">
-                    <ul>
-                        <li>25% Roi</li>
-                        <li>Ability to fly</li>
-                        <li>Running on Water</li>
-                    </ul>
-                </div>
-                <a class="btn btn-plan">
-                    Register <i class="las la-arrow-right"></i>
-                </a>
-
-            </div><div class="grid-item1_3 plan-card">
-                <div class="overlayText">
-                    <span>Starter Pack</span>
-                </div>
-                <img class="flowImgP" src="/images/pexels-enes-ersahin-6988826.jpg"/>
-                <h3 class="h4 mgV2">Premium Gold</h3>
-                <h4 class="h2 mgV2 plan-card-h">$10000</h4>
-                <div class="mgV2 plan-details">
-                    <ul>
-                        <li>25% Roi</li>
-                        <li>Ability to fly</li>
-                        <li>Running on Water</li>
-                    </ul>
-                </div>
-                <a class="btn btn-plan">
-                    Register <i class="las la-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-
-        </div>
 
         <div class="grid mgT4">
-            <div class="grid-item1_3 plan-card">
-                <div class="overlayText">
-                    <span>Starter Pack</span>
-                </div>
-                <img class="flowImgP" src="/images/pexels-enes-ersahin-6988826.jpg"/>
-                <h3 class="h4 mgV2">Premium Gold</h3>
-                <h4 class="h2 mgV2 plan-card-h">$10000</h4>
-                <div class="mgV2 plan-details">
-                    <ul>
-                        <li>25% Roi</li>
-                        <li>Ability to fly</li>
-                        <li>Running on Water</li>
-                    </ul>
-                </div>
-                <a class="btn btn-plan">
-                    Register <i class="las la-arrow-right"></i>
-                </a>
-
-            </div><div class="grid-item1_3 plan-card">
-            <div class="overlayText">
-                <span>Starter Pack</span>
-            </div>
-            <img class="flowImgP" src="/images/pexels-enes-ersahin-6988826.jpg"/>
-            <h3 class="h4 mgV2">Premium Gold</h3>
-            <h4 class="h2 mgV2 plan-card-h">$10000</h4>
-            <div class="mgV2 plan-details">
-                <ul>
-                    <li>25% Roi</li>
-                    <li>Ability to fly</li>
-                    <li>Running on Water</li>
-                </ul>
-            </div>
-            <a class="btn btn-plan">
-                Register <i class="las la-arrow-right"></i>
-            </a>
-
-        </div><div class="grid-item1_3 plan-card">
-            <div class="overlayText">
-                <span>Starter Pack</span>
-            </div>
-            <img class="flowImgP" src="/images/pexels-enes-ersahin-6988826.jpg"/>
-            <h3 class="h4 mgV2">Premium Gold</h3>
-            <h4 class="h2 mgV2 plan-card-h">$10000</h4>
-            <div class="mgV2 plan-details">
-                <ul>
-                    <li>25% Roi</li>
-                    <li>Ability to fly</li>
-                    <li>Running on Water</li>
-                </ul>
-            </div>
-            <a class="btn btn-plan">
-                Register <i class="las la-arrow-right"></i>
-            </a>
-
-        </div>
 
 
 
+            {{#if plan}}
+                {{#each plan}}
+                    <div class="grid-item1_3 plan-card">
+                        <div class="overlayText">
+                            <span>Starter Pack</span>
+                        </div>
+                        <img class="flowImgP" src="/images/pexels-enes-ersahin-6988826.jpg"/>
+                        <h3 class="h4 mgV2">{{title}}</h3>
+                        <h4 class="h2 mgV2 plan-card-h">${{cost}}</h4>
+                        <div class="mgV2 plan-details">
+                            <ul>
+                                <li>{{profit}}</li>
+                                <li>{{description}}</li>
+                                <!--                            <li>Running on Water</li>-->
+                            </ul>
+                        </div>
+                        <a class="btn btn-plan">
+                            Register <i class="las la-arrow-right"></i>
+                        </a>
+
+                    </div>
+                {{/each}}
+            {{/if}}
         </div>
         <div class="mgT4">
             <h3 class="h4 centerText">Detailed Pricing</h3>
@@ -144,33 +52,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>ESOP</td>
-                        <td>500 USD - 599 USD</td>
-                        <td>4%</td>
-                        <td>12 Days</td>
-                    </tr>
-                    <tr>
-                        <td>ESOP</td>
-                        <td>500 USD - 599 USD</td>
-                        <td>4%</td>
-                        <td>12 Days</td>
-                    </tr>  <tr>
-                        <td>ESOP</td>
-                        <td>500 USD - 599 USD</td>
-                        <td>4%</td>
-                        <td>12 Days</td>
-                    </tr>  <tr>
-                        <td>ESOP</td>
-                        <td>500 USD - 599 USD</td>
-                        <td>4%</td>
-                        <td>12 Days</td>
-                    </tr>  <tr>
-                        <td>ESOP</td>
-                        <td>500 USD - 599 USD</td>
-                        <td>4%</td>
-                        <td>12 Days</td>
-                    </tr>
+                   {{#each plan}}
+                       <tr>
+                           <td>{{title}}</td>
+                           <td>{{cost}}</td>
+                           <td>{{profits}}</td>
+                           <td>{{duration}}</td>
+
+                       </tr>
+
+                   {{/each}}
 
                     </tbody>
                 </table>

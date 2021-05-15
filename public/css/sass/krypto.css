@@ -643,6 +643,7 @@ html {
   transition: all 0.35s;
   border: 1px solid lavender;
   position: relative;
+  min-width: 30rem;
 }
 .plan-card .overlayText {
   position: absolute;

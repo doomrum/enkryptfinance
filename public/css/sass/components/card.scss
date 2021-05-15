@@ -120,6 +120,7 @@
   transition: all .35s;
   border: 1px solid lavender;
   position: relative;
+  min-width: 30rem;
   .overlayText{
     position: absolute;
     top: -1rem;

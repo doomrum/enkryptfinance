@@ -1,10 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios');
+const planModel = require('../models/plan');
 /* GET home page. */
 router.get('/',async function(req, res, next) {
-
-    res.render('home',{title:'EnkryptFinance | Landing Page'})
+   planModel.find({})
+       .lean()
+       .then(plan=>{
+           console.log(plan)
+           res.render('home',{title:'EnkryptFinance | Landing Page',plan})
+       })
+       .catch(err=>{
+           res.status(403).send(err);
+       })
 });
 
 router.get('/about',async function(req, res, next) {
@@ -22,8 +30,16 @@ router.get('/faqs',async function(req, res, next) {
 });
 
 router.get('/plans',async function(req, res, next) {
+    planModel.find({})
+        .lean()
+        .then(plan=>{
 
-    res.render('plans',{title:'EnkryptFinance | Plans', layout: 'index'})
+            res.render('plans',{title:'EnkryptFinance | Plans', layout: 'index',plan})
+        })
+        .catch(err=>{
+            res.status(403).send(err);
+        })
+
 });
 
 
