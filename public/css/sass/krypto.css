@@ -139,6 +139,10 @@
   text-align: center;
 }
 
+.white {
+  color: #f7f7f7;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -275,6 +279,12 @@ html {
   width: 100%;
 }
 
+.flowImgP {
+  height: 20rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .flex-dir-c {
   flex-direction: column !important;
 }
@@ -309,6 +319,14 @@ html {
   font-size: 1.6rem;
   cursor: pointer;
   border: none;
+  transition: all 0.35s cubic-bezier(1, 0, 0.34, 0);
+}
+.btn-plan {
+  background-image: linear-gradient(#4233ff, #9938fa);
+  color: #f7f7f7;
+}
+.btn-plan:hover {
+  background-image: linear-gradient(-45deg, #4233ff, #c637fa);
 }
 .btn-success {
   background-color: #73739f;
@@ -615,6 +633,48 @@ html {
   padding: 2.5rem;
   border-radius: 1.2rem;
   background-color: #f3f3fc;
+}
+
+.plan-card {
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 1.2rem;
+  padding: 2.5rem;
+  transition: all 0.35s;
+  border: 1px solid lavender;
+  position: relative;
+}
+.plan-card .overlayText {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  padding: 1.5rem;
+  border-radius: 0 1rem 1rem 1rem;
+  font-size: 1.8rem;
+  color: #f7f7f7;
+  background-image: linear-gradient(#4233ff, #5a35f3);
+}
+.plan-card .plan-card-h {
+  background-image: linear-gradient(#4233ff, #c637fa);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.plan-card .plan-details {
+  padding: 1rem;
+  border-radius: 1.2rem;
+  background-color: #f3f3fc;
+}
+.plan-card .plan-details ul {
+  list-style: none;
+}
+.plan-card .plan-details ul li {
+  padding: 2rem 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.plan-card:hover {
+  transform: translateY(-0.5rem) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .error-msg {
@@ -1009,29 +1069,6 @@ html {
 
 .plan-section {
   padding: 2rem;
-}
-.plan-section .plan-card {
-  text-align: center;
-  background-color: #ffffff;
-  border-radius: 1.2rem;
-  padding: 2.5rem;
-  transition: all 0.35s;
-}
-.plan-section .plan-card .plan-details {
-  padding: 1rem;
-  border-radius: 1.2rem;
-  background-color: #f3f3fc;
-}
-.plan-section .plan-card .plan-details ul {
-  list-style: none;
-}
-.plan-section .plan-card .plan-details ul li {
-  padding: 2rem 0;
-  font-size: 1.8rem;
-}
-.plan-section .plan-card:hover {
-  transform: translateY(-0.5rem) scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 footer {
@@ -1595,6 +1632,24 @@ footer .footer-links ul li a:hover {
   background-color: #f3f3fc;
   padding: 1.5rem;
   border-radius: 1.5rem;
+}
+
+.aboutbg {
+  background-color: #2b2b41;
+  background-image: url("../../images/bg2.jpg");
+  background-size: cover;
+  text-align: center;
+  vertical-align: center;
+  height: 40rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.videoBox {
+  height: 40rem;
+  background-color: #2b2b41;
 }
 
 .profile-img {

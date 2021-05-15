@@ -28,6 +28,14 @@
     font-size: 1.6rem;
     cursor: pointer;
     border: none;
+    transition: all .35s cubic-bezier(1,0,.34,0);
+  }
+  &-plan{
+    background-image: linear-gradient(#4233ff, #9938fa);
+    color: #f7f7f7;
+    &:hover{
+      background-image: linear-gradient(-45deg,#4233ff, #c637fa);
+    }
   }
   &-success{
     background-color: #73739f;
