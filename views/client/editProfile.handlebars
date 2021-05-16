@@ -1,11 +1,11 @@
 <h6 class="h4">Edit Account</h6>
 
-<form class=" auth-form" method="post" action="/client/profile/edit/{{user._id}}">
+<form class="card auth-form" method="post" action="/client/profile/edit/{{user._id}}">
 
     <div class="grid">
         <div class="grid-item2_4">
             <div class="form-input-box">
-                <input class="form-input"value="{{user.fullName}}" name="fullName" placeholder="Full Name"/>
+                <input class="form-input" value="{{user.fullName}}" name="fullName" placeholder="Full Name"/>
             </div>
             <div class="form-input-box">
                 <input class="form-input" type="email" value="{{user.email}}" name="email" placeholder="Email"/>
@@ -39,7 +39,7 @@
 <!--        <input type="checkbox" name="terms" id="terms">-->
 <!--        <label class="h5 mgL2" for="terms">I agree to receive your newsletters, company news, and product updates.</label>-->
 <!--    </div>-->
-    <button  class="mgT2 btn btn-green ">Save</button>
+    <button  class="mgT2 btn btn-green">Save</button>
 
 </form>
 <a href="/client/editPassword" class="btn btn-red mgT2">Change Password</a>

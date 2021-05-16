@@ -4,6 +4,7 @@ const ticketModel  = require('../models/supportTicket');
 const referralModel  = require('../models/referral');
 const transactionModel  = require('../models/transaction');
 const balanceModel = require('../models/balance');
+const planModel = require('../models/plan');
 // const cryptoData  = require('../helpers/userInfo');
 const cryptoData  = require('../helpers/cryptoData');
 const {sendEmail} = require('../helpers/nodemailer');
@@ -129,13 +130,14 @@ router.get('/profile',(req,res,next)=>{
 router.get('/profile/edit/:_id',(req,res,next)=>{
     const ID  = req.session.access;
 
-    userModel.findOne({_id:ID}).then(user=>{
-        console.log(`${user} s here`);
+    userModel.findOne({_id:ID})
+        .then(user=>{
         const userInfo  = user.toJSON();
         const fullName = req.app.locals.username;
-        res.render('client/editProfile',{layout: 'client', title:'EnkryptFinance | profile',user:userInfo, fullName});
+        res.render('client/editProfile',{layout: 'client', title:'EnkryptFinance | Edit profile',user:userInfo, fullName});
 
     })
+        .catch(err=>res.send(err));
 
 });
 
@@ -144,8 +146,8 @@ router.post('/profile/edit/:_id',(req,res,next)=>{
 
          userModel.updateOne({_id:ID}, {fullName:req.body.fullName, email: req.body.email, phone:req.body.phone})
              .then(user=>{
-                 console.log(user)
-                 res.render('client/editProfile',{layout: 'client', title:'EnkryptFinance | wallet',user:userInfo});
+
+                 res.redirect('/client/');
              })
              .catch(err=>{
                  res.send(err)
@@ -210,7 +212,11 @@ router.get('/withdraw',(req,res,next)=>{
 });
 router.get('/upgrade',(req,res,next)=>{
     const fullName = req.app.locals.username;
-    res.render('client/upgrade',{layout: 'client', title:'EnkryptFinance | Upgrade Plan',fullName});
+    planModel.find({})
+        .lean()
+        .then(plan=>{
+            res.render('client/upgrade',{layout: 'client', title:'EnkryptFinance | Upgrade Plan',fullName, plan});
+        })
 });
 router.get('/editPassword',(req,res,next)=>{
     const fullName = req.app.locals.username;
