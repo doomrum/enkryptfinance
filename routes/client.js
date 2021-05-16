@@ -49,9 +49,7 @@ router.get('/invest',async (req,res,next)=>{
     const fullName = req.app.locals.username;
     planModel.find({})
         .lean()
-        .then(plans=>{
-            const plan = plans.toJSON();
-            console.log(plans)
+        .then(plan=>{
             res.render('client/invest',{layout: 'client', title:'EnkryptFinance | Invest',fullName,plan});
         })
         .catch(err=>err)

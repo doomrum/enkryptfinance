@@ -129,7 +129,8 @@ router.post('/register',async (req,res)=>{
        email:req.body.email,
        phone:phoneNumber,
        terms,
-       password:req.body.password
+       password:req.body.password,
+
    });
    if (!error){
       userModel.findOne({email:req.body.email.toLowerCase()})
@@ -140,7 +141,8 @@ router.post('/register',async (req,res)=>{
             const salt = await bcrypt.genSalt(12);
             const password = await bcrypt.hash(req.body.password,salt);
 
-            const newUser = new userModel({fullName, email:req.body.email.toLowerCase(),password,phone:phoneNumber,verified:false, terms});
+            const newUser = new userModel({fullName, email:req.body.email.toLowerCase(),password,phone:phoneNumber,verified:false, terms,code: req.body.code,
+                country:req.body.country,});
 
             newUser.save()
                 .then(user =>{

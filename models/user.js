@@ -57,7 +57,13 @@ const schema = mongoose.Schema({
     plan:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'plan'
-    }
+    },
+    country:{
+        type: String
+    },
+    code:{
+        type: String
+    },
 });
 
 module.exports = mongoose.model('users',schema);
