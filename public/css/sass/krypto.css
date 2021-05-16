@@ -651,7 +651,7 @@ select {
   transition: all 0.35s;
   border: 1px solid lavender;
   position: relative;
-  min-width: 30rem;
+  min-width: 38rem;
 }
 .plan-card .overlayText {
   position: absolute;
@@ -1019,7 +1019,7 @@ select {
 }
 
 .home_layout {
-  width: 80%;
+  width: 70%;
   margin: 10rem auto;
 }
 @media screen and (max-width: 56.5em) {
