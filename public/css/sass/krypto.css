@@ -1019,7 +1019,7 @@ select {
 }
 
 .home_layout {
-  width: 70%;
+  width: 80%;
   margin: 10rem auto;
 }
 @media screen and (max-width: 56.5em) {
