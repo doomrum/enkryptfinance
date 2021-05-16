@@ -5,8 +5,8 @@ const referralModel  = require('../models/referral');
 const transactionModel  = require('../models/transaction');
 const balanceModel = require('../models/balance');
 const planModel = require('../models/plan');
+const qr = require('qrcode');
 // const cryptoData  = require('../helpers/userInfo');
-const cryptoData  = require('../helpers/cryptoData');
 const {sendEmail} = require('../helpers/nodemailer');
 const moment = require('moment');
 router.all('/*',(req,res,next)=>{
@@ -30,9 +30,11 @@ router.get('/',async(req,res,next)=>{
          await userModel.findOne({_id:ID})
              .populate('transactions')
              .populate({path:'balance',model:'balances'})
+             .populate({path:'plan',model: 'plans'})
              .then(user=>{
 
                  const userInfo  = user.toJSON();
+                 console.log(user.plan)
                  // console.log(user)
                  const fullName = req.app.locals.username;
                  res.render('client/index',{layout: 'client', title:'EnkryptFinance | Client',userInfo,fullName });
@@ -43,9 +45,16 @@ router.get('/',async(req,res,next)=>{
 });
 
 
-router.get('/invest',(req,res,next)=>{
+router.get('/invest',async (req,res,next)=>{
     const fullName = req.app.locals.username;
-    res.render('client/invest',{layout: 'client', title:'EnkryptFinance | Invest',fullName});
+    planModel.find({})
+        .lean()
+        .then(plans=>{
+            const plan = plans.toJSON();
+            console.log(plans)
+            res.render('client/invest',{layout: 'client', title:'EnkryptFinance | Invest',fullName,plan});
+        })
+        .catch(err=>err)
 });
 
 
@@ -212,11 +221,32 @@ router.get('/withdraw',(req,res,next)=>{
 });
 router.get('/upgrade',(req,res,next)=>{
     const fullName = req.app.locals.username;
+    const userId = req.session.access;
     planModel.find({})
         .lean()
         .then(plan=>{
-            res.render('client/upgrade',{layout: 'client', title:'EnkryptFinance | Upgrade Plan',fullName, plan});
+            res.render('client/upgrade',{layout: 'client', title:'EnkryptFinance | Upgrade Plan',fullName, plan,userId });
         })
+});
+router.post('/upgrade/:id',(req,res,next)=>{
+    const fullName = req.app.locals.username;
+    console.log(req.params.id);
+    userModel.findById(req.params.id)
+        .then(user=>{
+           planModel.findOne({title:req.body.plan})
+               .then(plan=>{
+                   console.log(plan);
+                   user.plan = plan._id;
+
+                   user.save()
+                       .then(user=>{
+                           res.redirect('/client')
+                       })
+                       .catch(err=>res.status(403).send(`${err} in user`))
+               })
+               .catch(err=>res.status(403).send(`${err} in plan`))
+        })
+        .catch(err=>res.status(403).send(err))
 });
 router.get('/editPassword',(req,res,next)=>{
     const fullName = req.app.locals.username;

@@ -26,7 +26,9 @@
         <div class="grid-item2_4">
             <div class="form-input-box">
                <select name="Country" class="form-input">
-                   <option>Nigeria</option>
+                   {{#each country}}
+                       <option>{{name}}</option>
+                   {{/each}}
                </select>
 
             </div>
@@ -44,7 +46,9 @@
         <div class="grid-item2-4">
             <div class="form-input-box">
                 <select name="code" class="form-input">
-                    <option>+234</option>
+                    {{#each country}}
+                        <option value="{{code}}">{{name}}&nbsp; {{code}}</option>
+                    {{/each}}
                 </select>
 
             </div>

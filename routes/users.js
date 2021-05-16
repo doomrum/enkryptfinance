@@ -5,10 +5,26 @@ const userModel = require('../models/user');
 const balanceModel = require('../models/balance');
 const {emailSender} = require('../helpers/nodemailer');
 const {validateLogin,validateNewUser} = require('../helpers/authValidator')
+const axios = require('axios');
 /* GET users listing. */
-router.get('/signup', function(req, res, next) {
+router.get('/signup',async function(req, res, next) {
 
-  res.render('auth/signup',{layout:'auth',title:'Enkryptfinance | sign up'});
+  await  axios.get('https://restcountries.eu/rest/v2/all')
+        .then(response=>{
+
+            const countryInfo = response.data;
+            let country = [];
+            for (let i = 0;i<countryInfo.length;i++){
+               let item = countryInfo[i];
+                country.push({
+                    name: item['name'],
+                    code: item['callingCodes'][0],
+                })
+            }
+            console.log(country);
+            res.render('auth/signup',{layout:'auth',title:'Enkryptfinance | sign up', country});
+        })
+
 });
 
 router.get('/reset',(req,res)=>{

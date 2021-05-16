@@ -80,14 +80,14 @@
     <div class="grid-item1_4">
         <div class="card">
             <p class="h6 light grey">Current plan</p>
-            <h3 class="h3">{{#if plan}}
-               {{plan}}
+            <h3 class="h3">{{#if userInfo.plan}}
+               {{userInfo.plan.title}}
             {{else}}   Silver Plan
             {{/if}}
 
             </h3>
 
-            <a class="btn btn-purple mgT1"><span>Upgrade </span> <i class="la la-chevron-circle-up"></i></a>
+            <a href="/client/upgrade" class="btn btn-purple mgT1"><span>Upgrade </span> <i class="la la-chevron-circle-up"></i></a>
         </div>
         <!--                           <div class="card mgT2">-->
 
