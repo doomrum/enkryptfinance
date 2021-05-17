@@ -30,7 +30,9 @@
            </div>
        {{/if}}
 
-        <button class="btn btn-purple">Scan or Copy to Pay</button>
+        <button class="btn btn-purple">{{#if data}}
+            Scan or Copy to Pay{{else}}pay
+        {{/if}}</button>
     </form>
 </div>
 

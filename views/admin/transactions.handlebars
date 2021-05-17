@@ -1,0 +1,56 @@
+<div class="dash-nav">
+    <a><i class="la la-bell"></i></a>
+    <h5 class="h6">Admin</h5>
+    <a > <i class="las la-cog"></i></a>
+</div>
+<div class="dash-body">
+
+    <!--                   Users SECTION-->
+
+    <h3 class="h3">User Transactions</h3>
+    <p class="h6">Below You will find a list of valid Users and transactions</p>
+    <form class="mgV2">
+        <div class="searchBox">
+            <input placeholder="search" class="search_input" />
+            <button class="search_input-icon"><i class="la la-search"></i></button>
+        </div>
+    </form>
+    <div class="mgT4 transaction-table-cont">
+        <table class="transaction-table">
+            <thead>
+            <tr>
+                <th>Transaction Id</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Btc Address</th>
+                <th>Owner</th>
+                <th></th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+
+{{#each transactions}}
+    <tr>
+        <td>{{_id}}</td>
+        <td>{{type}}</td>
+
+        <td>{{amount}}</td>
+
+        <td>{{status}}</td>
+        <td>{{btcAddress}}</td>
+        <td>{{ owner.fullName}}</td>
+        <td>
+            <a href="/admin/transactions/edit/{{_id}}" class="btn btn-success">Update</a>
+
+        </td>
+    </tr>
+{{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>

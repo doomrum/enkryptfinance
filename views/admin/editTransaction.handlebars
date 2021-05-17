@@ -1,0 +1,23 @@
+<div class="dash-nav">
+    <a><i class="la la-bell"></i></a>
+    <h5 class="h6">Admin</h5>
+    <a > <i class="las la-cog"></i></a>
+</div>
+<div class="dash-body">
+
+    <!--                   Users SECTION-->
+
+    <h3 class="h4">Edit Transaction</h3>
+
+    <div>
+        <form class="card_w"  method="post" action="/admin/transactions/edit/{{transaction._id}}">
+            <div class="form-input-box">
+                <input placeholder="status" value="{{transaction.title}}"  name="status" class="form-input"/>
+            </div>
+
+            <button class="btn btn-purple mgT1">Save</button>
+        </form>
+    </div>
+
+
+</div>

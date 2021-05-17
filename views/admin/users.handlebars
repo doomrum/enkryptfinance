@@ -1,6 +1,6 @@
 <div class="dash-nav">
     <a><i class="la la-bell"></i></a>
-    <h5 class="h6">John Doe</h5>
+    <h5 class="h6">Admin</h5>
     <a > <i class="las la-cog"></i></a>
 </div>
 <div class="dash-body">
@@ -24,9 +24,8 @@
                 <th>User Name </th>
                 <!--                          ADD IMAGE SPACE-->
                 <th>Current Plan</th>
-                <th>Current Profit</th>
+                <th>Current Returns</th>
                 <th>Btc Balance</th>
-                <th>Real Estate Balance</th>
                 <th>Total Invested</th>
                 <th></th>
                 <th> </th>
@@ -42,16 +41,15 @@
         <td>{{_id}}</td>
         <td>{{fullName}}</td>
 
-        <td>Premium Silver</td>
-        <td>0.0056000</td>
-        <td>1.0000003</td>
-        <td>0.0067000</td>
-        <td>1.0000000</td>
+        <td>{{plan.title}}</td>
+        <td>{{balance.currentReturns}}</td>
+        <td>{{balance.btcBalance}}</td>
+        <td>{{balance.currentInvestment}}</td>
         <td>
-            <a class="btn btn-success">Update</a>
+            <a href="/admin/users/edit/{{_id}}" class="btn btn-success">Update</a>
 
         </td>
-        <td><a class="btn btn-red">Delete</a></td>
+        <td><a  href="/admin/users/deleteUser/{{_id}}" class="btn btn-red">Delete</a></td>
     </tr>
 {{/each}}
             </tbody>
