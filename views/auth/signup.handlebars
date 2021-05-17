@@ -1,6 +1,6 @@
 <h6 class="h4">Account Registration</h6>
 
-<form class=" auth-form" method="post" action="/auth/register">
+<form id="signup" class=" auth-form" method="post" action="/auth/register">
 
     <p class="h5">Estimated time to complete your registration is 2 Minutes</p>
     <p class="h5 mgT1">Please complete the following form using English alphabet characters only.</p>
@@ -58,10 +58,21 @@
             </div>
         </div>
     </div>
+    <div>
+        <label for="plan" class="h6">Select Plan</label>
+        <div class="form-input-box">
+            <select id="plan" name="plan" class="form-input">
+                {{#each plan}}
+                    <option value="{{_id}}">{{title}}</option>
+                {{/each}}
+            </select>
+
+        </div>
+    </div>
   <div class="mgT2">
       <input type="checkbox" name="terms" id="terms">
       <label class="h5 mgL2" for="terms">I agree to receive your newsletters, company news, and product updates.</label>
   </div>
-    <button  class="mgT2 btn btn-purple ">Register</button>
+    <button id="authBtn"   class="mgT2 btn btn-purple ">Register</button>
     <p class="h6 mgV2">Already got an Account? <a href="/auth/login" class="link">Login</a></p>
 </form>

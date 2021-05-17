@@ -205,11 +205,9 @@ async function emailSender(params) {
                 console.log(error)
                return error
             }else{
-                params.req.session.msg = "success account confirmed"
+                params.req.flash('success_message','account created successfully');
                 params.res.redirect('/auth/login');
-                // params.req.flash('success_message', `${params.user} welcome to enkrypt Finance`);
-                // params.res.render('auth/login',{layout:'auth',title:'Enkryptfinance | login', success_msg: params.req.flash('success_message')});
-                // return data
+
             }
 
         });
@@ -253,9 +251,8 @@ async function sendEmail(params) {
                 console.log(error)
                return error
             }else{
-                params.req.session.msg = "success account confirmed"
+                params.req.flash('success_message','account created successfully');
                 params.res.redirect('/auth/login');
-
             }
 
         });

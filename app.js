@@ -39,7 +39,7 @@ app.engine('handlebars', hbs(
 ));
 app.set('view engine', 'handlebars');
 
-app.use(flash());
+
 app.use(session({
     secret: process.env.Secret,
     resave: false,
@@ -52,7 +52,13 @@ app.use(session({
     })
 
 }));
-
+app.use(flash());
+///Flash Message
+app.use((req,res,next)=>{
+    res.locals.success_message = req.flash('success_message');
+    res.locals.failure_message = req.flash('failure_message');
+    next();
+})
 
 app.use(logger('dev'));
 app.use(express.json());

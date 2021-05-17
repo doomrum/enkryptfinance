@@ -1,7 +1,7 @@
 <h3 class="h5">Login</h3>
-{{#if msg}}
+{{#if success_message}}
     <div class="success-card mgT1">
-        <h2 class="h4">{{msg}}</h2>
+        <h2 class="h5">{{success_message}}</h2>
     </div>
 {{/if}}
 <form class="mgV4 auth-form"  method="post" action="/auth/login">

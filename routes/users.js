@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcrypt');
 const userModel = require('../models/user');
+const planModel = require('../models/plan');
 const balanceModel = require('../models/balance');
 const {emailSender} = require('../helpers/nodemailer');
 const {validateLogin,validateNewUser} = require('../helpers/authValidator')
@@ -11,18 +12,28 @@ router.get('/signup',async function(req, res, next) {
 
   await  axios.get('https://restcountries.eu/rest/v2/all')
         .then(response=>{
+            planModel.find({})
+                .lean()
+                .then(plan=>{
+                    console.log(plan)
+                    const countryInfo = response.data;
+                    let country = [];
+                    for (let i = 0;i<countryInfo.length;i++){
+                        let item = countryInfo[i];
+                        country.push({
+                            name: item['name'],
+                            code: item['callingCodes'][0],
+                        })
+                    }
+                    console.log(country);
 
-            const countryInfo = response.data;
-            let country = [];
-            for (let i = 0;i<countryInfo.length;i++){
-               let item = countryInfo[i];
-                country.push({
-                    name: item['name'],
-                    code: item['callingCodes'][0],
+                    res.render('auth/signup',{layout:'auth',title:'Enkryptfinance | sign up', country, plan});
                 })
-            }
-            console.log(country);
-            res.render('auth/signup',{layout:'auth',title:'Enkryptfinance | sign up', country});
+                .catch(err=>{
+                    res.status(403).send(err);
+                })
+
+
         })
 
 });
@@ -42,7 +53,10 @@ router.post('/register/:id', function(req, res, next) {
     let uploadPathRES;
 
     if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('No files were uploaded.');
+
+       req.flash('failure_message', 'Please upload documents');
+       res.redirect('/auth/register');
+
     }
 
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
@@ -61,7 +75,7 @@ router.post('/register/:id', function(req, res, next) {
                     urlProofId: uploadPathID,
                     urlProofResidence: uploadPathRES
                 })
-                    .then(user=>{
+                    .then(async (user)=>{
                         let userInitial = user;
                         ///Email is sent here
                         const params = {
@@ -72,7 +86,7 @@ router.post('/register/:id', function(req, res, next) {
                             subject: `Welcome to enkryptFinance`,
                             user: user.fullName,
                             data: {
-                                header: `Hi ${user.fullName.split(' ',1)}! welcome enkryptFinance` ,
+                                header: `Hi ${user.fullName.split(' ',1)}! welcome to enkryptFinance` ,
                                 body:"Welcome to a world of investment and opportunities",
                                 imgPath: './public/images/logo.png',
                                 imgPathBody: './public/images/welcome3.png',
@@ -87,7 +101,9 @@ router.post('/register/:id', function(req, res, next) {
 
                         };
 
-                        emailSender(params);
+                      await emailSender(params);
+
+
                     })
                     .catch(err=>{
                         console.log(err);
@@ -142,7 +158,7 @@ router.post('/register',async (req,res)=>{
             const password = await bcrypt.hash(req.body.password,salt);
 
             const newUser = new userModel({fullName, email:req.body.email.toLowerCase(),password,phone:phoneNumber,verified:false, terms,code: req.body.code,
-                country:req.body.country,});
+                country:req.body.country, plan: req.body.plan});
 
             newUser.save()
                 .then(user =>{
@@ -189,6 +205,7 @@ router.post('/login',async (req,res)=>{
                 req.session.access = user._id;
                 req.session.accessType = 'admin';
                 req.app.locals.username = user.fullName;
+                req.flash('success_message','welcome ')
                 res.redirect('/admin');
             }
             // if(user.fullName==='SuperAdmin'){
@@ -198,6 +215,7 @@ router.post('/login',async (req,res)=>{
                 req.session.access = user._id;
                 req.session.accessType = 'client';
                 req.app.locals.username = user.fullName;
+                req.flash('success_message','welcome ')
                 console.log(user);
                 res.redirect('/client');
             }
