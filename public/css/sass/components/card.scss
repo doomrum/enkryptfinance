@@ -29,6 +29,7 @@
   flex-wrap: wrap;
   @include respond(tabPort){
     flex-direction: column;
+    align-items: center;
   }
   &-item-f{
     flex: 1;
@@ -112,15 +113,27 @@
   background-color: #f3f3fc;
 }
 
+.plan-btn{
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translate(-50%,5%);
+  z-index: 80;
+}
+
 .plan-card{
   text-align: center;
   background-color: #ffffff;
-  border-radius: 1.2rem;
+  border-radius: 3rem;
   padding: 2.5rem;
   transition: all .35s;
   border: 1px solid lavender;
   position: relative;
-  min-width: 38rem;
+  min-width: 30rem;
+  margin: 2rem 4rem;
+  @include respond(tabPort){
+    margin:1rem auto;
+  }
   .overlayText{
     position: absolute;
     top: -1rem;
@@ -139,13 +152,15 @@
   .plan-details{
     padding: 1rem;
     border-radius: 1.2rem;
-    background-color: #f3f3fc;
+    //background-color: #f3f3fc;
     ul{
       list-style: none;
+      padding: 1rem 0;
+     border-top: 1px solid lavender;
       li{
-        padding: 2rem 0;
-        font-size: 1.8rem;
-        font-weight: bold;
+        padding: 1rem 0;
+        font-size: 2.4rem;
+
       }
     }
   }

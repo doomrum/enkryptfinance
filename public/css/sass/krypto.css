@@ -320,20 +320,25 @@ select {
 
 .btn, .btn:link {
   text-decoration: none;
-  padding: 1.5rem 3.6rem;
-  border-radius: 1rem;
+  padding: 1.6rem 3.6rem;
+  border-radius: 100rem;
   text-align: center;
   display: inline-block;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   cursor: pointer;
   border: none;
-  transition: all 0.35s cubic-bezier(1, 0, 0.34, 0);
+  transition: all 0.4s cubic-bezier(1, 0.2, 0.54, 0);
 }
 .btn-plan {
+  padding: 2.4rem 3.6rem !important;
+  display: block;
+  width: 60%;
+  box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
   background-image: linear-gradient(#4233ff, #9938fa);
   color: #f7f7f7;
 }
 .btn-plan:hover {
+  box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
   background-image: linear-gradient(-45deg, #4233ff, #c637fa);
 }
 .btn-success {
@@ -420,7 +425,7 @@ select {
 .btn_reg, .btn_reg:link {
   text-decoration: none;
   padding: 1.5rem 2.5rem;
-  border-radius: 1rem;
+  border-radius: 100rem;
   text-align: center;
   display: inline-block;
   font-size: 2.4rem;
@@ -463,6 +468,7 @@ select {
   border-radius: 1rem;
   padding: 1.5rem;
   overflow: hidden;
+  transition: all 0.35s;
 }
 .transaction-table:hover {
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
@@ -489,6 +495,7 @@ select {
 
 .transaction-table-cont {
   width: 100%;
+  transition: all 0.35s;
 }
 @media screen and (max-width: 56.5em) {
   .transaction-table-cont {
@@ -504,7 +511,7 @@ select {
 }
 
 .crypto-icons {
-  width: 2rem;
+  width: 3rem;
 }
 
 .card {
@@ -544,6 +551,7 @@ select {
 @media screen and (max-width: 56.5em) {
   .grid {
     flex-direction: column;
+    align-items: center;
   }
 }
 .grid-item-f {
@@ -647,15 +655,29 @@ select {
   background-color: #f3f3fc;
 }
 
+.plan-btn {
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translate(-50%, 5%);
+  z-index: 80;
+}
+
 .plan-card {
   text-align: center;
   background-color: #ffffff;
-  border-radius: 1.2rem;
+  border-radius: 3rem;
   padding: 2.5rem;
   transition: all 0.35s;
   border: 1px solid lavender;
   position: relative;
-  min-width: 38rem;
+  min-width: 30rem;
+  margin: 2rem 4rem;
+}
+@media screen and (max-width: 56.5em) {
+  .plan-card {
+    margin: 1rem auto;
+  }
 }
 .plan-card .overlayText {
   position: absolute;
@@ -675,15 +697,15 @@ select {
 .plan-card .plan-details {
   padding: 1rem;
   border-radius: 1.2rem;
-  background-color: #f3f3fc;
 }
 .plan-card .plan-details ul {
   list-style: none;
+  padding: 1rem 0;
+  border-top: 1px solid lavender;
 }
 .plan-card .plan-details ul li {
-  padding: 2rem 0;
-  font-size: 1.8rem;
-  font-weight: bold;
+  padding: 1rem 0;
+  font-size: 2.4rem;
 }
 .plan-card:hover {
   transform: translateY(-0.5rem) scale(1.05);
@@ -1023,7 +1045,7 @@ select {
 }
 
 .home_layout {
-  width: 70%;
+  width: 80%;
   margin: 10rem auto;
 }
 @media screen and (max-width: 56.5em) {
@@ -1034,7 +1056,7 @@ select {
 }
 
 .liveCrypto-section {
-  width: 70%;
+  width: 80%;
   margin: 10rem auto;
 }
 @media screen and (max-width: 56.5em) {

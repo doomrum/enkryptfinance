@@ -44,7 +44,7 @@ const io = socket(server);
   io.on('connection',socket=>{
     setInterval(()=>{
 
-      const url = "https://api.nomics.com/v1/currencies/ticker?key=873ae0cc86815e29c223f548bcae6cd5&ids=BTC,ETH,XRP,DOGE,USDT,USDC&interval=1d,30d&convert=USD&per-page=100&page=1"
+      const url = "https://api.nomics.com/v1/currencies/ticker?key=873ae0cc86815e29c223f548bcae6cd5&ids=BTC,ETH,BNB,XRP,LINK,DOGE,USDT,USDC,BCH,LTC,ADA&interval=1d,30d&convert=USD&per-page=100&page=1"
       axios.get( url)
           .then(async (result)=>{
             socket.emit('liveChat',result.data)
@@ -54,7 +54,7 @@ const io = socket(server);
             socket.emit('liveError','Error Found')
           })
       ;
-    },5000)
+    },1000)
 
   });
 /**

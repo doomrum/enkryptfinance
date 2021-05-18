@@ -13,14 +13,34 @@ const test = {
 }
 
 const tableRow = function (data) {
-   return  `
-  <tr>    
-                    <td><img class="crypto-icons" src="${data.logo_url}"/></td>
-                    <td>${data.currency}</td>
-                    <td>$ ${data.price}</td>
+   let textColor = 'success';
+   let icon = 'las la-arrow-up';
+   let marketCp = parseInt(data.market_cap).toFixed(5);
+   let price = data.price;
+   let supply = data.circulating_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (data['1d'].price_change_pct.startsWith('-')){
+        textColor = 'red';
+        icon = 'las la-arrow-down';
+    }
+    if (data.market_cap>1000000000){
+        marketCp = (parseInt(data.market_cap)/1000000000).toString().split('.',2)[0] + 'B';
+    }
+    if (data.price>1000){
+        price = (parseInt(data.price)/1000).toString().split('.',2)[0] + 'K';
+    }
 
-                    <td>${data.price_timestamp}</td>
-                    <td>${data.price_date}</td>
+
+   return  `
+  <tr>             <td class="h6 bold">${data.rank}</td>
+                    <td class="h6 bold"><img class="crypto-icons" src="${data.logo_url}"/></td>
+                           <td>${data.symbol}</td>
+                    <td class="h6 bold">${data.name}</td>
+                  
+           
+                    <td class="h5 bold">$${price}</td>
+                    <td class="h6 bold">$${marketCp}</td>
+                    <td class="h6 bold">${supply}</td>
+                    <td class="${textColor} h5 bold"><i class="${icon}"></i> ${data['1d'].price_change_pct}</td>
 
              
                    
