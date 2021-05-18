@@ -8,7 +8,7 @@ router.get('/',async function(req, res, next) {
        .lean()
        .then(plan=>{
            console.log(plan)
-           res.render('home',{title:'EnkryptFinance | Landing Page',plan})
+           res.render('home',{title:'EnkryptFinance | Home',plan})
        })
        .catch(err=>{
            res.status(403).send(err);

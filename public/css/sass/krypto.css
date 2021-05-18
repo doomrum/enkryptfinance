@@ -682,10 +682,10 @@ select {
 }
 .plan-card .overlayText {
   position: absolute;
-  top: -1rem;
+  top: 2.4rem;
   left: -1rem;
   padding: 1.5rem;
-  border-radius: 0 1rem 1rem 1rem;
+  border-radius: 0 3rem 3rem 0;
   font-size: 1.8rem;
   color: #f7f7f7;
   background-image: linear-gradient(#4233ff, #5a35f3);
