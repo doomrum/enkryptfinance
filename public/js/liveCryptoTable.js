@@ -17,7 +17,7 @@ const tableRow = function (data) {
   <tr>    
                     <td><img class="crypto-icons" src="${data.logo_url}"/></td>
                     <td>${data.currency}</td>
-                    <td>${data.price}</td>
+                    <td>$ ${data.price}</td>
 
                     <td>${data.price_timestamp}</td>
                     <td>${data.price_date}</td>
