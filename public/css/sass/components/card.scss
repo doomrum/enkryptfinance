@@ -129,8 +129,8 @@
   transition: all .35s;
   border: 1px solid lavender;
   position: relative;
-  min-width: 30rem;
-  margin: 2rem 4rem;
+  min-width: 35rem;
+  margin: 2rem 1rem;
   @include respond(tabPort){
     margin:1rem auto;
   }

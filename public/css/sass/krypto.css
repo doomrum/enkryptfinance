@@ -672,8 +672,8 @@ select {
   transition: all 0.35s;
   border: 1px solid lavender;
   position: relative;
-  min-width: 30rem;
-  margin: 2rem 4rem;
+  min-width: 35rem;
+  margin: 2rem 1rem;
 }
 @media screen and (max-width: 56.5em) {
   .plan-card {
