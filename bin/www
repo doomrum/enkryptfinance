@@ -9,8 +9,8 @@ const formatMessage = require('../helpers/messages');
 var app = require('../app');
 var debug = require('debug')('cryptotrade:server');
 var http = require('http');
-const socketio = require('socket.io')
-
+const socket = require('socket.io')
+const axios  =  require('axios');
 
 
 /**
@@ -38,29 +38,23 @@ var server = http.createServer(app);
 *
 *
 * */
-const io = socketio(server);
+const io = socket(server);
 
 
   io.on('connection',socket=>{
-////emit to a single user
-    console.log('connected');
-    socket.emit('message',formatMessage('Admin', 'hello user'));
+    setInterval(()=>{
 
-////Broadcast to a single chat from the admin chat area
-    ///send to all user except the sender
-    socket.broadcast.emit('message',formatMessage('Admin','A new user just joined'));
+      const url = "https://api.nomics.com/v1/currencies/ticker?key=873ae0cc86815e29c223f548bcae6cd5&ids=BTC,ETH,XRP,DOGE,USDT,USDC&interval=1d,30d&convert=USD&per-page=100&page=1"
+      axios.get( url)
+          .then(async (result)=>{
+            socket.emit('liveChat',result.data)
+          })
 
-    //listen to user message and send
-    socket.on('userMessage',msg=>{
-      console.log(socket.id);
-      io.emit('message',formatMessage(msg.username,msg.text));
-    })
-    ///user leaves a chat
-    socket.on('disconnect',()=>{
-
-      ///emit to all users
-      io.emit('message',formatMessage('Admin','A user just left'));
-    });
+          .catch(err=>{
+            socket.emit('liveError','Error Found')
+          })
+      ;
+    },5000)
 
   });
 /**
@@ -90,6 +84,31 @@ function normalizePort(val) {
 
   return false;
 }
+
+/*
+////emit to a single user
+//     socket.emit('message',formatMessage('Admin', `Hello user ${socket.id}`));
+//
+// ////Broadcast to a single chat from the admin chat area
+//     ///send to all user except the sender
+//     socket.broadcast.emit('message', formatMessage('Admin','A new user just joined'));
+//
+//     //listen to user message and send
+//     socket.on('userMessage',msg=>{
+//       console.log(socket.id);
+//       io.emit('message',formatMessage(msg.username,msg.text));
+//     })
+    ///user leaves a chat
+    // socket.on('disconnect',()=>{
+    //
+    //   ///emit to all users
+    //   io.emit('message',formatMessage('Admin','A user just left'));
+    // });
+
+    //socket
+
+ */
+
 
 /**
  * Event listener for HTTP server "error" event.

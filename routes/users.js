@@ -205,8 +205,9 @@ router.post('/login',async (req,res)=>{
                 req.session.access = user._id;
                 req.session.accessType = 'admin';
                 req.app.locals.username = user.fullName;
-                req.flash('success_message','welcome ')
+                req.flash('success_message','welcome')
                 res.redirect('/admin');
+
             }
             // if(user.fullName==='SuperAdmin'){
             //     ///super Admin
