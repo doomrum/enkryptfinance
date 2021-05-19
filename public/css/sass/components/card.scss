@@ -127,10 +127,11 @@
   border-radius: 3rem;
   padding: 2.8rem;
   transition: all .35s;
-  border: 1px solid lavender;
+  //border: 1px solid lavender;
   position: relative;
   min-width: 35rem;
   margin: 2.4rem 1rem;
+  box-shadow: 0 2px 20px rgba(0,0,0,.1);
   @include respond(tabPort){
     margin:1rem auto;
   }
