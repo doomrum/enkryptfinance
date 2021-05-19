@@ -59,18 +59,21 @@
     }
   }
   &-primary{
-    background-color: $primary;
-    transition: background-color  .3s ease-in;
+    box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
+    background-image: linear-gradient(#4233ff, #9938fa);
+    transition: all .3s ease-in;
     color: $accent!important;
     .la{
       font-size: 2.4rem;
     }
     &:hover{
-      background-color: #4118b5;
+      box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
+      background-image: linear-gradient(-45deg,#4233ff, #9938fa);
     }
   }
   &-purple{
-    background-color: $primary;
+    box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
+    background-image: linear-gradient(#4233ff, #9938fa);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +83,8 @@
       font-size: 2.4rem;
     }
     &:hover{
-      background-color: #4118b5;
+      box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
+      background-image: linear-gradient(-45deg,#4233ff, #9938fa);
     }
   }
   &-red{
@@ -133,14 +137,17 @@
     font-size: 2.4rem;
     cursor: pointer;
     border: none;
-    background-image: linear-gradient(#5117ee, $primary);
+    box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
+    background-image: linear-gradient(#4233ff, #9938fa);
     color: #f7f7f7;
     transition: all .35s ease-out;
     //font-weight: bold;
   }
+
+  color: #f7f7f7;
   &:hover{
-    background-image: linear-gradient(45deg,#5117ee, $primary);
-    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
+    background-image: linear-gradient(-45deg,#4233ff, #c637fa);
   }
 
 }
@@ -149,7 +156,7 @@
   &,&:link{
     text-decoration: none;
     padding: 1.5rem 3.6rem;
-    border-radius: 1rem;
+    border-radius: 100rem;
     text-align: center;
     display: inline-block;
     font-size: 1.8rem;
