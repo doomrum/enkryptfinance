@@ -31,21 +31,34 @@
     transition: all .4s cubic-bezier(1,.2,.54,0);
   }
   &-plan{
-    padding: 1.6rem 2.4rem!important;
-    display: block;
+    padding: 0!important;
+    display: inline-flex;
     width: 60%;
     font-weight: bold;
     box-shadow: 0 2px 24px rgba(153, 56, 250, 0.2);
     background-image: linear-gradient(#4233ff, #9938fa);
     color: #f7f7f7;
     font-size: 2.4rem;
-    .la{
+    justify-content: space-between;
+    text-align: center;
+    .las{
       font-size: 2.8rem;
+      background-color: white;
+      color: #6335e3;
+      margin: 1rem;
+      border-radius: 200rem;
+      padding: 1rem;
+      transform: translateX(4rem);
+      transition: all .35s ease;
     }
     &:hover{
 
-      box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
+      box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7),0 -4px 24px rgba(56, 104, 250, 0.7) inset;
       background-image: linear-gradient(-45deg,#4233ff, #c637fa);
+      .las{
+        transform: translateX(2rem);
+      }
+
     }
   }
   &-success{

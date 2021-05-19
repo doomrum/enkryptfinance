@@ -23,24 +23,33 @@
     flex: .5;
     @include respond(tabPort){
       flex: 1;
-      width: 50%;
+      width: 100%;
       padding: 2rem;
       justify-content: space-between;
       align-items: center;
       flex-direction: column;
-      border-radius: .8rem;
       position: absolute;
       //flex: 1;
       z-index: 6;
-      top: 8rem;
-      right: -1rem;
-      height: 60vh;
+      top: 0;
+      right: 0;
+      height: 100vh;
       border: 1px solid lavender;
       background-color: white ;
     }
 
     &-item{
       cursor: pointer;
+      @include respond(tabPort){
+         border-bottom: 2px solid lavender;
+         width: 100%;
+        padding: 1.6rem;
+        &:last-child,&:nth-child(6){
+          border-bottom: none;
+        }
+      }
+
+
 
       &-link{
         text-decoration: none;
@@ -73,6 +82,7 @@
   width: 2.5rem;
   margin-right: .5rem;
   border-radius: 1rem;
+  z-index: 20;
   &-bar{
     &,&:before,&:after{
       width: 2.4rem;
@@ -238,7 +248,7 @@
 ///PLAN SECTION
 
 .plan-section{
-  padding: 2rem;
+  padding: 2rem;;
 
 
 }
