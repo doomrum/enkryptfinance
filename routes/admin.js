@@ -138,6 +138,7 @@ router.post('/users/edit/:id', async (req,res)=>{
                     console.log(b)
                     b.currentReturns = req.body.currentReturns;
                     b.btcBalance = req.body.btcBalance;
+                    b.currentInvestment = req.body.currentInvestment;
                    b.save()
                        .then(result=>{
                            console.log(result)
