@@ -95,13 +95,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color  .3s ease-in;
+    transition: all  .3s ease;
     color: $accent;
     .la{
       font-size: 2.4rem;
     }
     &:hover{
-      box-shadow: 0 4px 24px rgba(153, 56, 250, 0.7);
+      box-shadow: 0 2px 8px rgba(153, 56, 250, 0.2);
       background-image: linear-gradient(-45deg,#4233ff, #9938fa);
     }
   }

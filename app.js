@@ -78,6 +78,9 @@ app.use('/admin',cookieChecker, adminRouter);
 app.use('/p',cookieChecker, payRouter);
 app.use('/e',cookieChecker, emailRouter);
 app.use('/r', referralRouter);
+app.use(function (req, res, next) {
+    res.render('404page')
+});
 
 
 
