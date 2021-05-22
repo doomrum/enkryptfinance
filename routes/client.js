@@ -165,11 +165,41 @@ router.post('/profile/edit/:_id',(req,res,next)=>{
 
 
 });
+
+
+
+
+
+
 router.get('/referral',(req,res,next)=>{
 
     userModel.findOne({_id:req.session.access})
         .then(user=>{
-            const newReferralLink = `http://:4000${req.baseUrl}/r/${user.fullName.split(' ')[0]}`;
+            const newReferralLink = process.env.NODE_ENV==='production'?`https://enkryptfinance/r/${user.fullName.split(' ')[0]}`:`http://:4000/r/${user.fullName.split(' ')[0]}`;
+            const newReferral =  referralModel({link:newReferralLink,owner:req.session.access});
+                newReferral.save()
+                    .then(ref=>{
+                        user.referralUrl = newReferralLink;
+                        user.save()
+                            .then(r=>{
+                                const fullName = req.app.locals.username;
+                                res.render('client/referral',{layout: 'client', title:'EnkryptFinance | Referral',referralLink:newReferralLink,fullName});
+                            })
+                            .catch(err=>err)
+
+                    })
+                    .catch(err=>err)
+
+        })
+
+});
+
+
+router.get('/referral',(req,res,next)=>{
+
+    userModel.findOne({_id:req.session.access})
+        .then(user=>{
+            const newReferralLink = process.env.NODE_ENV==='production'?`https://enkryptfinance${req.baseUrl}/r/${user.fullName.split(' ')[0]}`:`http://:4000${req.baseUrl}/r/${user.fullName.split(' ')[0]}`;
             const newReferral =  referralModel({link:newReferralLink,owner:req.session.access});
                 newReferral.save()
                     .then(ref=>{
@@ -209,6 +239,17 @@ router.post('/referral/em/',(req,res,next)=>{
     };
       sendEmail(params)
 });
+
+
+
+
+
+
+
+
+
+
+
 
 
 ///REFERRAL URL

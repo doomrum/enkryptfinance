@@ -22,6 +22,7 @@ var  clientRouter = require('./routes/client');
 var  adminRouter = require('./routes/admin');
 const payRouter = require('./routes/payment');
 const emailRouter = require('./routes/emailroute');
+const referralRouter = require('./routes/referall');
 var app = express();
 
 
@@ -76,6 +77,7 @@ app.use('/client', cookieChecker, clientRouter);
 app.use('/admin',cookieChecker, adminRouter);
 app.use('/p',cookieChecker, payRouter);
 app.use('/e',cookieChecker, emailRouter);
+app.use('/r', referralRouter);
 
 
 
