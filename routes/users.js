@@ -151,7 +151,8 @@ router.post('/register',async (req,res)=>{
    if (!error){
       userModel.findOne({email:req.body.email.toLowerCase()})
           .then(user=>{
-            res.send(`user with email${user.email} exists`);
+              req.flash('failure_message',`user with email ${user.email} exists Please Try again with another Email or Login`)
+              res.redirect('/auth/signup');
           })
           .catch(async ()=>{
             const salt = await bcrypt.genSalt(12);
@@ -217,23 +218,24 @@ router.post('/login',async (req,res)=>{
                 req.session.accessType = 'client';
                 req.app.locals.username = user.fullName;
                 req.flash('success_message','welcome ')
-                console.log(user);
+
                 res.redirect('/client');
             }
            }
            else {
-               console.log(validPassword)
-               res.status(403).send('Invalid Password',)
+               req.flash('failure_message',`Password  is not correct!`)
+               res.redirect('/auth/login');
            }
 
           })
           .catch( err=>{
-
-            res.send('not a valid user')
+              req.flash('failure_message',`Invalid User`)
+              res.redirect('/auth/login');
           });
    }
    else{
-       res.send(error)
+       req.flash('failure_message',`${error}`)
+       res.redirect('/auth/login');
    }
 
 })

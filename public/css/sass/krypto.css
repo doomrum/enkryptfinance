@@ -670,9 +670,18 @@ select {
 }
 
 .success-card {
-  padding: 2.5rem;
-  border-radius: 1.2rem;
-  background-color: #bdf6bd;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  background-color: #d4fdea;
+  width: 80%;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  display: inline-block;
+  transition: all 0.35s;
+  z-index: 250;
+}
+.success-card h1, .success-card h2, .success-card h3, .success-card h4, .success-card h5, .success-card h6, .success-card p, .success-card a {
+  color: mediumseagreen;
 }
 
 .info-card {
@@ -744,14 +753,12 @@ select {
 }
 
 .error-msg {
-  padding: 1.5rem;
-  font-size: 1.8rem;
-  background-color: #EABAC5;
-  position: fixed;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 1rem;
+  padding: 2.4rem;
+  background-color: #ffeff4;
+  color: #ef3945;
+  display: inline-block;
+  font-size: 3.6rem;
+  margin-left: 1rem;
   transition: all 0.35s;
   z-index: 250;
 }
@@ -762,12 +769,13 @@ select {
 .success-msg {
   padding: 1.5rem;
   font-size: 1.8rem;
-  background-color: #a9eacb;
+  background-color: #d4fdea;
   position: fixed;
   top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 1rem;
+  display: inline-block;
   transition: all 0.35s;
   z-index: 250;
 }
@@ -785,6 +793,28 @@ select {
 }
 .info-msg h1, .info-msg h2, .info-msg h3, .info-msg h4, .info-msg h5, .info-msg h6, .info-msg p, .info-msg a {
   color: #336727;
+}
+
+.form-error {
+  padding: 0.5rem;
+  background-color: #ffeff4;
+  color: #ef3945;
+  display: inline-block;
+  font-size: 1.45rem;
+  margin-left: 1rem;
+}
+
+#small_error {
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  background-color: #EABAC5;
+  border-radius: 1rem;
+  display: inline-block;
+  transition: all 0.35s;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .fade {
@@ -1936,6 +1966,10 @@ ol li {
     top: 2rem;
     left: 2rem;
   }
+}
+
+.form-msg {
+  padding: 1.8rem 2rem;
 }
 
 /*# sourceMappingURL=krypto.css.map */

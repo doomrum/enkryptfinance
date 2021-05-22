@@ -1,12 +1,10 @@
 .error-msg{
-  padding: 1.5rem;
-  font-size: 1.8rem;
-  background-color: #EABAC5;
-  position: fixed;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  border-radius: 1rem;
+  padding: 2.4rem;
+  background-color: #ffeff4;
+  color: #ef3945;
+  display: inline-block;
+  font-size: 3.6rem;
+  margin-left: 1rem;
   transition: all .35s;
   h1,h2,h3,h4,h5,h6,p,a{
     color: $red;
@@ -16,12 +14,13 @@
 .success-msg{
   padding: 1.5rem;
   font-size: 1.8rem;
-  background-color: #a9eacb;
+  background-color: #d4fdea;
   position: fixed;
   top: 10%;
   left: 50%;
   transform: translate(-50%,-50%);
   border-radius: 1rem;
+  display: inline-block;
   transition: all .35s;
   h1,h2,h3,h4,h5,h6,p,a{
     color: $green;
@@ -39,4 +38,26 @@
     color: #336727;
   }
 
+}
+
+.form-error{
+  padding: .5rem;
+  background-color: #ffeff4;
+  color: #ef3945;
+  display: inline-block;
+  font-size: 1.45rem;
+  margin-left: 1rem;
+}
+
+#small_error{
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  background-color: #EABAC5;
+  border-radius: 1rem;
+  display: inline-block;
+  transition: all .35s;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }

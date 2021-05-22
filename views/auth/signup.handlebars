@@ -1,5 +1,11 @@
 <h6 class="h4">Account Registration</h6>
 
+
+{{#if failure_message}}
+    <div class="error-msg mgT2">
+        <h2 class="h6">{{failure_message}}</h2>
+    </div>
+{{/if}}
 <form id="signup" class=" auth-form" method="post" action="/auth/register">
 
     <p class="h5">Estimated time to complete your registration is 2 Minutes</p>
@@ -12,20 +18,20 @@
     <div class="grid">
         <div class="grid-item2_4">
             <div class="form-input-box">
-                <input class="form-input" name="firstName" placeholder="First Name"/>
+                <input id="first" class="form-input" name="firstName" placeholder="First Name"/>
             </div>
             <div class="form-input-box">
-                <input class="form-input"  name="middleName" placeholder="Middle Name"/>
+                <input id="middle" class="form-input"  name="middleName" placeholder="Middle Name"/>
 
             </div>
             <div class="form-input-box">
-                <input class="form-input" name="lastName" placeholder="Last Name"/>
+                <input id="last" class="form-input" name="lastName" placeholder="Last Name"/>
 
             </div>
         </div>
         <div class="grid-item2_4">
             <div class="form-input-box">
-               <select name="country" class="form-input">
+               <select id="country" name="country" class="form-input">
                    {{#each country}}
                        <option>{{name}}</option>
                    {{/each}}
@@ -33,31 +39,26 @@
 
             </div>
             <div class="form-input-box">
-                <input class="form-input" type="email" name="email" placeholder="Email"/>
+                <input class="form-input" id="email" type="email" name="email" placeholder="Email"/>
 
             </div>
             <div class="form-input-box">
-                <input class="form-input" name="password" type="password" placeholder="Password"/>
+                <input class="form-input" id="password" name="password" type="password" placeholder="Password"/>
 
             </div>
         </div>
     </div>
-    <div class="grid">
-        <div class="grid-item2-4">
             <div class="form-input-box">
-                <select name="code" class="form-input">
+                <select name="code" id="code" class="form-input">
                     {{#each country}}
-                        <option value="{{code}}">{{name}}&nbsp; {{code}}</option>
+                        <option value="{{code}}">{{name}}&nbsp; +{{code}}</option>
                     {{/each}}
                 </select>
 
             </div>
-            <div class="form-input-box">
-                <input class="form-input" type="tel" name="phone" placeholder="phone"/>
-
+            <div class="form-input-box width50">
+                <input class="form-input" id="phone" type="tel" name="phone" placeholder="phone -- 805 567 5556 "/>
             </div>
-        </div>
-    </div>
     <div>
         <label for="plan" class="h6">Select Plan</label>
         <div class="form-input-box">
@@ -70,7 +71,7 @@
         </div>
     </div>
   <div class="mgT2">
-      <input type="checkbox" name="terms" id="terms">
+      <input type="checkbox"  name="terms" id="terms">
       <label class="h5 mgL2" for="terms">I agree to receive your newsletters, company news, and product updates.</label>
   </div>
     <button id="authBtn"   class="mgT2 btn btn-purple ">Register</button>
