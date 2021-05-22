@@ -194,9 +194,9 @@ router.post('/register',async (req,res)=>{
 
 router.post('/login',async (req,res)=>{
 
-   const {error} = validateLogin(req.body);
+   const {error} = validateLogin({email:req.body.email.trim().toLowerCase(),password:req.body.password});
    if (!error){
-      userModel.findOne({email:req.body.email})
+      userModel.findOne({email:req.body.email.trim().toLowerCase()})
           .then(async (user)=>{
            const validPassword = await bcrypt.compare(req.body.password,user.password);
 //////SET COOKIE IF VALID
