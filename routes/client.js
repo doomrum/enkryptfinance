@@ -175,7 +175,7 @@ router.get('/referral',(req,res,next)=>{
 
     userModel.findOne({_id:req.session.access})
         .then(user=>{
-            const newReferralLink = process.env.NODE_ENV==='production'?`https://enkryptfinance.com/r/${user.fullName.split(' ')[0]}`:`http://:4000/r/${user.fullName.split(' ')[0]}`;
+            const newReferralLink = process.env.NODE_ENV==='production'?`https://enkryptfinance.com/r/referral/${user.fullName.split(' ')[0]}`:`http://:4000/r/${user.fullName.split(' ')[0]}`;
             const newReferral =  referralModel({link:newReferralLink,owner:req.session.access});
                 newReferral.save()
                     .then(ref=>{

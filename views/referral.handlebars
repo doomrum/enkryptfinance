@@ -3,7 +3,9 @@
 </div>
 <div class=" home_layout">
     <h4 class="fancy-H">Referral Discount</h4>
-    <h4 class="h5 greyText2 mgT1">Sign Up to get Payed</h4>
+    {{#if referral}}
+        <h4 class="h5 greyText2 mgT1">Sign Up to get Payed</h4>
+    {{/if}}
 
     {{#if success_message}}
         <div class="success-card mgT1">
