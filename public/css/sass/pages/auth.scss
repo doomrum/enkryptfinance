@@ -1,96 +1,126 @@
-.Auth-box{
+// .Auth-box {
+//   &-side {
+//     padding: 2rem;
+//     //background-image:linear-gradient(60deg, rgba(172, 156, 229, 1),#6335e3) ;
+//     //url("./images/bg2.jpg");
+//     background-size: cover;
+//     background-position: center;
+//     flex: 0.2;
+//     min-height: 100vh;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     background-color: #210e51;
+//     @include respond(tabPort) {
+//       flex: 0.2;
+//       display: none;
+//     }
+//     &-link {
+//       //font: 1.4rem;
+//       color: #f3f3fc;
+//       a {
+//         text-decoration: none;
+//         color: #73739f;
+//       }
+//     }
+//   }
+//   &-main {
+//     padding: 4rem;
 
+//     display: flex;
+//     align-items: flex-start;
+//     justify-content: center;
+//     flex-direction: column;
+//     margin: 0 auto;
+//     position: relative;
+//     @include respond(tabPort) {
+//       width: 100%;
+//     }
+//   }
+// }
+// .auth
 
-  //&-side{
-  //  padding: 2rem;
-  //  //background-image:linear-gradient(60deg, rgba(172, 156, 229, 1),#6335e3) ;
-  ////url("./images/bg2.jpg");
-  //  background-size:cover;
-  //  background-position: center;
-  //  flex: .2;
-  //  min-height:100vh;
-  //  display: flex;
-  //  flex-direction: column;
-  //  justify-content: space-between;
-  //  background-color: #210e51;
-  //  @include respond(tabPort){
-  //    flex: .2;
-  //    display: none;
-  //  }
-  //  &-link{
-  //    font-size: 1.4rem;
-  //    color: #f3f3fc;
-  //    a {
-  //      text-decoration: none;
-  //      color: #73739f;
-  //    }
-  //  }
-  //}
-  &-main{
-    padding: 4rem;
+// .logo-auth {
+//   @include respond(tabPort) {
+//     position: fixed;
+//     top: 2rem;
+//     left: 2rem;
+//   }
+// }
 
+.auth {
+  &__form {
+    width: 50%;
+    margin: 3rem 0;
+    padding: 0 2em;
+    @include respond(tabLand) {
+      width: 80%;
+    }
+    @include respond(tabPort) {
+      width: 100%;
+      padding: 0 1em;
+    }
+  }
+  &__banner {
+    background-color: #2b2b41;
+    background-image: url("../../images/account.jpg");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    vertical-align: center;
+    height: 60vh;
+    padding: 2rem;
     display: flex;
-    align-items: flex-start;
     justify-content: center;
-    flex-direction: column;
-    margin: 0 auto;
-    position: relative;
-    @include respond(tabPort){
+    align-items: center;
+  }
+  &__heading {
+    color: #fff;
+  }
+  &__inputBox {
+    width: 100%;
+    border-radius: 1rem;
+    background-color: #f7f7f7;
+    &:not(:first-child) {
+      margin: 1em 0;
+    }
+    .form-input {
+      border: none;
+      padding: 1rem 1.6rem;
+      background-color: inherit;
       width: 100%;
 
+      &:active,
+      &:focus {
+        outline: none;
+      }
+    }
+    .form-input-select {
+      border: none;
+      padding: 1rem 1.6rem;
+      background-color: inherit;
+      width: 100%;
+      option {
+        &:focus {
+          outline: none;
+        }
+      }
     }
   }
-}
-.auth-form{
-  width: 50%;
-  margin-top: 3rem;
-  @include respond(tabLand){
-    width: 80%;
-  }
-@include respond(tabPort){
-  width: 100%;
-}
-
-}
-.form-input-box{
-  padding: 1rem 0;
-  width: 100%;
-  border-radius: 1rem;
-  background-color: #f7f7f7;
-  //border-radius: 1rem;
-&:not(:first-child){
-  margin: 2rem 0;
-
-}
-  .form-input{
-    border: none;
-    padding:1rem 1.6rem ;
-    background-color: inherit;
-    width: 100%;
-
-    &:active,&:focus{
-
-      outline: none;
+  &__forget {
+    display: flex;
+    margin-bottom: 1em;
+    flex-wrap: wrap;
+    a {
+      margin-left: 1em;
+      text-decoration: none;
     }
   }
-  .form-input-select{
-    border: none;
-    padding:1rem 1.6rem ;
-    background-color: inherit;
-    width: 100%;
-    option{
-
-&:focus{
-  outline: none;
-}
+  &__account {
+    display: flex;
+    flex-wrap: wrap;
+    a {
+      margin-left: 1em;
     }
-  }
-}
-
-.logo-auth{
-  @include respond(tabPort){
-    position: fixed;
-    top: 2rem;
-    left: 2rem;
   }
 }

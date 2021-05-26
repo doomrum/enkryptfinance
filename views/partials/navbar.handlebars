@@ -1,0 +1,39 @@
+<nav class="home-nav" id="top_nav">
+    <figure class="mg-0">
+        <a href="/" class="link"> <img src="/images/lgo.jpg" class="logo" /></a>
+    </figure>
+    <input checked type="checkbox" id="menu_home" />
+    <label for="menu_home" class="menu_home">
+        <span class="menu_home-bar">&nbsp;</span>
+    </label>
+    <ul class="home-nav-list mg-0">
+        <li class="home-nav-list-item">
+            <a href="/" class="home-nav-list-item-link">Home</a>
+        </li>
+        <li class="home-nav-list-item">
+            <a href="/plans" class="home-nav-list-item-link">Plans</a>
+        </li>
+        <li class="home-nav-list-item">
+            <a href="/about" class="home-nav-list-item-link">About</a>
+        </li>
+        <li class="home-nav-list-item">
+            <a href="/faqs" class="home-nav-list-item-link">FAQs</a>
+        </li>
+        <li class="home-nav-list-item">
+            <a href="/terms" class="home-nav-list-item-link">Terms & Policy</a>
+        </li>
+        {{#if access }}
+        <li class="home-nav-list-item">
+            <a href="/auth/logout" class="btn btn-purple">logout</a>
+        </li>
+        {{else}}
+        <li class="home-nav-list-item">
+            <a href="/auth/signup" class="btn btn-purple">Sign up</a>
+        </li>
+        <li class="home-nav-list-item">
+            <a href="/auth/login" class="btn btn-purple">login</a>
+        </li>
+
+        {{/if}}
+    </ul>
+</nav>

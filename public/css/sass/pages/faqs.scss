@@ -1,0 +1,19 @@
+.faqs{
+
+    &__banner{
+        background-color: #2b2b41;
+        background-image: url("../../images/bg2.jpg");
+       background-size: cover;
+       background-position: center;
+      text-align: center;
+      vertical-align: center;
+    height: 60vh;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+&__heading{
+    color: #fff;
+}
+}

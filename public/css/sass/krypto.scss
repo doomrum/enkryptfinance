@@ -1,5 +1,5 @@
-@import "helpers/mixins";
 @import "helpers/variables";
+@import "helpers/mixins";
 @import "helpers/typography";
 @import "base/base";
 @import "helpers/spacers";
@@ -8,12 +8,14 @@
 @import "components/card";
 @import "components/alerts";
 @import "components/chat_popup";
+@import "components/footer";
+@import "components/owl";
+@import "components/faqs";
 @import "layout/home";
 @import "pages/dash/dashboard";
 @import "pages/dash/admin";
 @import "pages/about";
+@import "pages/faqs";
 @import "pages/dash/profile";
 @import "pages/dash/investment";
 @import "pages/auth";
-
-
