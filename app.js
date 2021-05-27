@@ -68,6 +68,7 @@ app.use((req, res, next) => {
 // user is authenticated
 app.use((req, res, next) => {
   res.locals.access = req.session.access;
+  console.log(req.session)
   next();
 });
 

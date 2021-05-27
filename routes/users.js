@@ -146,7 +146,7 @@ router.post("/register", async (req, res) => {
     userModel
       .findOne({ email: req.body.email.toLowerCase() })
       .then((user) => {
-        res.send(`user with email${user.email} exists`);
+        res.send(`user with email ${user.email} exists`);
       })
       .catch(async () => {
         const salt = await bcrypt.genSalt(12);

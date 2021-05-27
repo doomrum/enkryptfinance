@@ -1,19 +1,101 @@
-.faqs{
-
-    &__banner{
-        background-color: #2b2b41;
-        background-image: url("../../images/bg2.jpg");
-       background-size: cover;
-       background-position: center;
-      text-align: center;
-      vertical-align: center;
+.faqs {
+  &__banner {
+    background-color: $bg-dark;
+    background-image: url("../../images/bg2.jpg");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    vertical-align: center;
     height: 60vh;
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__heading {
+    color: $primary;
+  }
+  &__subheading {
+    color: $primary;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  input.checkbox {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  // Layout
+  .row {
+    display: flex;
+    .col {
+      flex: 1;
+      &:last-child {
+        margin-left: 1em;
+      }
     }
-&__heading{
-    color: #fff;
-}
+  }
+  /* Accordion styles */
+  .tabs {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .tab {
+    width: 100%;
+    color: white;
+    overflow: hidden;
+    &-label {
+      display: flex;
+      justify-content: space-between;
+      padding: 1em;
+      background: $bg-dark;
+      font-weight: bold;
+      margin-bottom: 0 !important;
+      cursor: pointer;
+      /* Icon */
+      &:hover {
+        background: $bg-dark;
+      }
+      &::after {
+        content: "\276F";
+        width: 1em;
+        height: 1em;
+        text-align: center;
+        transition: all 0.35s;
+      }
+    }
+    &-content {
+      max-height: 0;
+      padding: 0 1em;
+      color: $text-color;
+      background: $white;
+      transition: all 0.35s;
+    }
+    &-close {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1em;
+      font-size: 0.75em;
+      // background: $primary;
+      cursor: pointer;
+      &:hover {
+        // background: $primary;
+      }
+    }
+  }
+
+  // :checked
+  input:checked {
+    + .tab-label {
+      // background: $primary;
+      &::after {
+        transform: rotate(90deg);
+      }
+    }
+    ~ .tab-content {
+      max-height: 100vh;
+      padding: 1em;
+    }
+  }
 }

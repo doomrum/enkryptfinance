@@ -6,29 +6,31 @@
         </div>
     </header>
     {{#if success_message}}
-    <div class="success-card mgT1">
+    <div class="success-card mt-1">
         <h2 class="h5">{{success_message}}</h2>
     </div>
     {{/if}}
-    <form class="auth__form" method="post" action="/auth/login">
-        <div>
-            <p class="h6 mgT1">Fill the form to login</p>
-        </div>
-        <div class="auth__inputBox">
-            <input type="text" class="form-input" name="email" placeholder="Email" />
+    <div class="auth__container">
+        <form class="auth__form" method="post" action="/auth/login">
+            <div>
+                <h1 class="text-primary h1">Account Login</h1>
+            </div>
+            <div class="auth__inputBox">
+                <input type="email" class="form-input" name="email" placeholder="Email" required />
 
-        </div>
-        <div class="auth__inputBox">
-            <input type="password" class="form-input" name="password" placeholder="Password" />
-        </div>
-        <div class="auth__forget">
-            <p class="h6 red">Forgot Password?</p>
-            <a href="">Reset Password</a>
-        </div>
-        <button class="btn btn-purple">Login</button>
-        <div class="auth__account">
-            <p>Don't got an Account?</p>
-            <a href="/auth/signup">Register</a>
-        </div>
-    </form>
+            </div>
+            <div class="auth__inputBox">
+                <input type="password" class="form-input" name="password" placeholder="Password" />
+            </div>
+            <div class="auth__forget">
+                <p class="text">Forgot Password?</p>
+                <a href="" class="auth__reset">Reset Password</a>
+            </div>
+            <button class="mb-2 btn btn-reg" type="submit">Login</button>
+            <div class="auth__account">
+                <p>Don't have an Account?</p>
+                <a href="/auth/signup" class="auth__register">Register</a>
+            </div>
+        </form>
+    </div>
 </main>

@@ -52,9 +52,9 @@
         text-decoration: none;
         //font: 1.6rem;
         font-weight: 400;
-        color: #f7f7f7;
+        color: $white;
         &:hover {
-          color: #9e69f5;
+          color: lighten($primary, 3%);
           @include respond(tabPort) {
             font-weight: bold;
             //font: 1.8rem;
@@ -153,10 +153,10 @@
   }
 
   p {
-    color: #f7f7f7;
+    color: $white;
 
     a {
-      color: #f7f7f7;
+      color: $white;
       text-decoration: none;
       //font: 1.2rem;
       @include respond(phone) {
@@ -238,8 +238,8 @@
 }
 
 footer {
-  background-color: #424267;
-  border-top: 4px solid #6335e3;
+  background-color: $bg-dark;
+  border-top: 4px solid $dark-light;
   .footer_cont {
     margin: 10rem auto 0 auto;
     width: 70%;
@@ -250,7 +250,7 @@ footer {
   }
   p,
   h4 {
-    color: #f7f7f7 !important;
+    color: $white !important;
   }
   ol {
     li {
@@ -281,7 +281,7 @@ footer {
           //font: 1.8rem;
           cursor: pointer;
           transition: all 0.35s;
-          color: #f7f7f7;
+          color: $white;
           &:hover {
             color: #73739f;
           }
@@ -291,7 +291,6 @@ footer {
   }
 }
 .about {
-  //padding: 2rem 0;
   &-card {
     padding: 1.5rem;
     cursor: pointer;
@@ -300,7 +299,7 @@ footer {
       margin: 2rem 0;
     }
     .la {
-      color: #6335e3;
+      color: $dark-light;
       font-weight: bold;
       font-size: 3rem;
       transition: all 0.3s ease-in;
@@ -321,44 +320,87 @@ footer {
 ///COVID
 .covid {
   padding: 3rem;
-  //width: 80%;
   margin: 0 auto;
   text-align: center;
-  background-color: #2b2b41;
-  color: #f7f7f7;
-  border-bottom: 4px solid #6335e3;
-  border-top: 4px solid #6335e3;
-  h2,
+  background-color: $bg-dark;
+  border-bottom: 4px solid $dark-light;
+  // border-top: 4px solid $bg-dark;
+  h2 {
+    font-size: 1.5em;
+    color: $white !important;
+  }
   p {
-    color: #f7f7f7 !important;
+    font-size: 1em;
+    color: $white !important;
   }
   a {
-    color: #7e5def !important;
+    color: $primary !important;
+    cursor: pointer;
+    font-size: 1em;
+  }
+}
+.service {
+  background-color: $bg-dark;
+  padding: 3rem;
+  color: $primary;
+  &__heading {
+    color: $white;
+    font-size: 2em;
+  }
+  ol {
+    font-size: 1em;
   }
 }
 .black-box {
   padding: 3rem;
   width: 100%;
   text-align: center;
-  background-color: #2b2b41;
-  color: #f7f7f7;
-  border-bottom: 4px solid #6335e3;
+  background-color: $bg-dark;
+  color: $white;
+  border-bottom: 4px solid $dark-light;
   h2,
   p {
-    color: #f7f7f7 !important;
+    color: $white !important;
+  }
+  .offer_link {
+    color: $primary;
+    font-size: 0.8em;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .offer_link:hover {
+    color: lighten($primary, 8%);
   }
 }
-
+.choice {
+  &__heading {
+    font-size: 2em;
+    color: primary;
+  }
+  .image__part {
+    width: auto;
+  }
+  &__img {
+    height: 600px;
+    width: auto;
+    @include media-query($large-down) {
+      height: 500px;
+    }
+    @include media-query($medium-down) {
+      height: 300px;
+    }
+  }
+}
 .process-section {
   background-color: $accent;
-  padding: 6rem 0;
+  padding: 3rem 0;
   display: flex;
   justify-content: center;
   align-self: center;
 }
 .growth-section {
   padding: 6rem 0;
-  background-color: #f7f7f7;
+  background-color: $white;
   // img {
   //   height: 50rem;
   //   @include respond(phone) {
