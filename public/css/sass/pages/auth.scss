@@ -1,53 +1,3 @@
-// .Auth-box {
-//   &-side {
-//     padding: 2rem;
-//     //background-image:linear-gradient(60deg, rgba(172, 156, 229, 1),#6335e3) ;
-//     //url("./images/bg2.jpg");
-//     background-size: cover;
-//     background-position: center;
-//     flex: 0.2;
-//     min-height: 100vh;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//     background-color: #210e51;
-//     @include respond(tabPort) {
-//       flex: 0.2;
-//       display: none;
-//     }
-//     &-link {
-//       //font: 1.4rem;
-//       color: #f3f3fc;
-//       a {
-//         text-decoration: none;
-//         color: #73739f;
-//       }
-//     }
-//   }
-//   &-main {
-//     padding: 4rem;
-
-//     display: flex;
-//     align-items: flex-start;
-//     justify-content: center;
-//     flex-direction: column;
-//     margin: 0 auto;
-//     position: relative;
-//     @include respond(tabPort) {
-//       width: 100%;
-//     }
-//   }
-// }
-// .auth
-
-// .logo-auth {
-//   @include respond(tabPort) {
-//     position: fixed;
-//     top: 2rem;
-//     left: 2rem;
-//   }
-// }
-
 .auth {
   &__container {
     margin: 0 auto;
@@ -143,6 +93,9 @@
     }
   }
   &__agree {
-    font-size: .9em;
+    font-size: 0.9em;
   }
+}
+.form-msg {
+  padding: 1.8rem 2rem;
 }

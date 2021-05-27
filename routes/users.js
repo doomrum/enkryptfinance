@@ -146,7 +146,11 @@ router.post("/register", async (req, res) => {
     userModel
       .findOne({ email: req.body.email.toLowerCase() })
       .then((user) => {
-        res.send(`user with email ${user.email} exists`);
+        req.flash(
+          "failure_message",
+          `user with email ${user.email} exists Please Try again with another Email or Login`
+        );
+        res.redirect("/auth/signup");
       })
       .catch(async () => {
         const salt = await bcrypt.genSalt(12);
@@ -203,10 +207,13 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { error } = validateLogin(req.body);
+  const { error } = validateLogin({
+    email: req.body.email.trim().toLowerCase(),
+    password: req.body.password,
+  });
   if (!error) {
     userModel
-      .findOne({ email: req.body.email })
+      .findOne({ email: req.body.email.trim().toLowerCase() })
       .then(async (user) => {
         const validPassword = await bcrypt.compare(
           req.body.password,
@@ -220,34 +227,30 @@ router.post("/login", async (req, res) => {
             req.app.locals.username = user.fullName;
             req.flash("success_message", "welcome");
             res.redirect("/admin");
-          } else {
+          }
+          // if(user.fullName==='SuperAdmin'){
+          //     ///super Admin
+          // }
+          else {
             req.session.access = user._id;
             req.session.accessType = "client";
             req.app.locals.username = user.fullName;
             req.flash("success_message", "welcome ");
+
             res.redirect("/client");
           }
         } else {
-          req.flash("failure_message", "Invalid Username or password");
-          return res.status(403).render("auth/login", {
-            layout: "auth",
-            title: "Enkryptfinance | login",
-          });
+          req.flash("failure_message", `Password  is not correct!`);
+          res.redirect("/auth/login");
         }
       })
       .catch((err) => {
-        req.flash("failure_message", "Not a valid user");
-        return res.render("auth/login", {
-          layout: "auth",
-          title: "Enkryptfinance | login",
-        });
+        req.flash("failure_message", `Invalid User`);
+        res.redirect("/auth/login");
       });
   } else {
-    req.flash("failure_message", error.message);
-    return res.status(500).render("auth/login", {
-      layout: "auth",
-      title: "Enkryptfinance | login",
-    });
+    req.flash("failure_message", `${error}`);
+    res.redirect("/auth/login");
   }
 });
 

@@ -147,22 +147,69 @@ router.get("/profile", (req, res, next) => {
     });
   });
 });
-router.get("/profile/edit/:_id", (req, res, next) => {
-  const ID = req.session.access;
 
-  userModel
-    .findOne({ _id: ID })
-    .then((user) => {
-      const userInfo = user.toJSON();
-      const fullName = req.app.locals.username;
-      res.render("client/editProfile", {
-        layout: "client",
-        title: "EnkryptFinance | Edit profile",
-        user: userInfo,
-        fullName,
-      });
-    })
-    .catch((err) => res.send(err));
+router.get("/referral", (req, res, next) => {
+  userModel.findOne({ _id: req.session.access }).then((user) => {
+    const newReferralLink =
+      process.env.NODE_ENV === "production"
+        ? `https://enkryptfinance.com/r/referral/${user.fullName.split(" ")[0]}`
+        : `http://:4000/r/${user.fullName.split(" ")[0]}`;
+    const newReferral = referralModel({
+      link: newReferralLink,
+      owner: req.session.access,
+    });
+    newReferral
+      .save()
+      .then((ref) => {
+        user.referralUrl = newReferralLink;
+        user
+          .save()
+          .then((r) => {
+            const fullName = req.app.locals.username;
+            res.render("client/referral", {
+              layout: "client",
+              title: "EnkryptFinance | Referral",
+              referralLink: newReferralLink,
+              fullName,
+            });
+          })
+          .catch((err) => err);
+      })
+      .catch((err) => err);
+  });
+});
+
+router.get("/referral", (req, res, next) => {
+  userModel.findOne({ _id: req.session.access }).then((user) => {
+    const newReferralLink =
+      process.env.NODE_ENV === "production"
+        ? `https://enkryptfinance${req.baseUrl}/r/${
+            user.fullName.split(" ")[0]
+          }`
+        : `http://:4000${req.baseUrl}/r/${user.fullName.split(" ")[0]}`;
+    const newReferral = referralModel({
+      link: newReferralLink,
+      owner: req.session.access,
+    });
+    newReferral
+      .save()
+      .then((ref) => {
+        user.referralUrl = newReferralLink;
+        user
+          .save()
+          .then((r) => {
+            const fullName = req.app.locals.username;
+            res.render("client/referral", {
+              layout: "client",
+              title: "EnkryptFinance | Referral",
+              referralLink: newReferralLink,
+              fullName,
+            });
+          })
+          .catch((err) => err);
+      })
+      .catch((err) => err);
+  });
 });
 
 router.post("/profile/edit/:_id", (req, res, next) => {

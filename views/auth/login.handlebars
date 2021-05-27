@@ -10,6 +10,11 @@
         <h2 class="h5">{{success_message}}</h2>
     </div>
     {{/if}}
+    {{#if failure_message}}
+    <div class="error-msg mgT2">
+        <h2 class="h6">{{failure_message}}</h2>
+    </div>
+    {{/if}}
     <div class="auth__container">
         <form class="auth__form" method="post" action="/auth/login">
             <div>
@@ -26,7 +31,7 @@
                 <p class="text">Forgot Password?</p>
                 <a href="" class="auth__reset">Reset Password</a>
             </div>
-            <button class="mb-2 btn btn-reg" type="submit">Login</button>
+            <button class="mb-2 btn btn-reg" type="sumit">Login</button>
             <div class="auth__account">
                 <p>Don't have an Account?</p>
                 <a href="/auth/signup" class="auth__register">Register</a>

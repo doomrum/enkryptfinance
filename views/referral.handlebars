@@ -1,0 +1,41 @@
+<div class="black-box">
+    <!--        <h2 class="h4"></h2>-->
+</div>
+<div class=" home_layout">
+    <h4 class="fancy-H">Referral Discount</h4>
+    {{#if referral}}
+        <h4 class="h5 greyText2 mgT1">Sign Up to get Payed</h4>
+    {{/if}}
+
+    {{#if success_message}}
+        <div class="success-card mgT1">
+            <h2 class="h5">{{success_message}}</h2>
+        </div>
+    {{/if}}
+
+    {{#if failure_message}}
+        <div class="error-msg mgT2">
+            <h2 class="h6">{{failure_message}}</h2>
+        </div>
+    {{/if}}
+    <div class="pending-msg">
+            <h5>Sorry Referral Not Yet Available In Your Country <i class="las la-exclamation-triangle"></i></h5>
+    </div>
+   {{#if referral}}
+       <form class="mgV4 auth-form"  method="post" action="/auth/register">
+           <div class="referral-coupon">
+               <p class="h3">465656df</p>
+           </div>
+           <div class="form-input-box">
+               <input class="form-input" name="referral" placeholder="Referral Code"/>
+
+           </div>
+
+           <div class="form-input-box">
+               <input class="form-input" name="email" placeholder="Email"/>
+           </div>
+
+           <button class="mgT2 btn btn-purple ">Get Referral Discount</button>
+       </form>
+   {{/if}}
+</div>

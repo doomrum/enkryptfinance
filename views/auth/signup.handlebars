@@ -10,8 +10,12 @@
         <h2 class="h5">{{success_message}}</h2>
     </div>
     {{/if}}
+    {{#if failure_message}}
+    <div class="error-msg mgT2">
+        <h2 class="h6">{{failure_message}}</h2>
+    </div>
+    {{/if}}
     <div class="auth__container">
-
 
         <form id="signup" class=" auth__form" method="post" action="/auth/register">
             <h1 class="text-primary h1">Account Registration</h1>
@@ -65,7 +69,7 @@
             </div>
             <div class="flex-column">
                 <div class="auth__inputBox">
-                    <select name="code" class="form-input">
+                    <select name="code" id="code" class="form-input">
                         {{#each country}}
                         <option value="{{code}}">{{name}}&nbsp; {{code}}</option>
                         {{/each}}

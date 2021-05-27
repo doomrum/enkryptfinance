@@ -106,6 +106,24 @@
   padding: 1rem;
   border-radius: 1.2rem;
   background-color: #bdf6bd;
+  background-image: linear-gradient(#d4fdea, #c8fae1);
+  width: 80%;
+  margin: 2rem auto;
+  //transform: translate(-50%,-50%);
+  border-radius: 1rem;
+  display: inline-block;
+  transition: all 0.35s;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a {
+    color: $green;
+  }
+  z-index: 250;
 }
 
 .info-card {
@@ -171,5 +189,29 @@
   &:hover {
     transform: translateY(-0.5rem) scale(1.05);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.referral-coupon {
+  background-color: lavender;
+  padding: 2.4rem;
+  border-radius: 20rem;
+  text-align: center;
+  background-image: linear-gradient(#aca6ff, #e299ff);
+}
+.pending-msg {
+  background-color: #bb80091a;
+  color: #e3b341;
+  padding: 2.4rem;
+  font-size: 2.4rem;
+  display: inline-block;
+  margin-top: 2rem;
+  h5 {
+    display: flex;
+    align-items: center;
+  }
+  .las {
+    font-size: 4.8rem;
+    color: #e3b341;
   }
 }

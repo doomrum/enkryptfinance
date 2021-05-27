@@ -16,12 +16,13 @@ require("dotenv").config();
 const db = require("./helpers/db");
 
 //
-var indexRouter = require("./routes/index");
-var authRouter = require("./routes/users");
-var clientRouter = require("./routes/client");
-var adminRouter = require("./routes/admin");
-const payRouter = require("./routes/payment");
-const emailRouter = require("./routes/emailroute");
+var indexRouter = require('./routes/index');
+var  authRouter = require('./routes/users');
+var  clientRouter = require('./routes/client');
+var  adminRouter = require('./routes/admin');
+const payRouter = require('./routes/payment');
+const emailRouter = require('./routes/emailroute');
+const referralRouter = require('./routes/referall');
 var app = express();
 
 if (process.env.NODE_ENV === "production") {
@@ -68,7 +69,6 @@ app.use((req, res, next) => {
 // user is authenticated
 app.use((req, res, next) => {
   res.locals.access = req.session.access;
-  console.log(req.session)
   next();
 });
 
@@ -80,13 +80,19 @@ app.use(fileUpload());
 app.use(express.static(path.join(__dirname, "public")));
 app.set("trust proxy", 1);
 
-app.use("/", indexRouter);
-app.use("/auth", authRouter);
 
-app.use("/client", cookieChecker, clientRouter);
-app.use("/admin", cookieChecker, adminRouter);
-app.use("/p", cookieChecker, payRouter);
-app.use("/e", cookieChecker, emailRouter);
+app.use('/', indexRouter);
+app.use('/auth', authRouter);
+
+app.use('/client', cookieChecker, clientRouter);
+app.use('/admin',cookieChecker, adminRouter);
+app.use('/p',cookieChecker, payRouter);
+app.use('/e',cookieChecker, emailRouter);
+app.use('/r', referralRouter);
+app.use(function (req, res, next) {
+    res.render('404page')
+});
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
