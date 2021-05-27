@@ -1,22 +1,222 @@
-@mixin respond($bre){
-  @if($bre==phone){
-    @media screen and (max-width: 37.5em ){
-      @content
+@use 'sass:math';
+
+@mixin respond($bre) {
+  @if ($bre==phone) {
+    @media screen and (max-width: 37.5em) {
+      @content;
     }
   }
-  @if($bre==tabPort){
-    @media screen and (max-width: 56.5em ){
-      @content
+  @if ($bre==tabPort) {
+    @media screen and (max-width: 56.5em) {
+      @content;
     }
   }
-  @if($bre==tabLand){
-    @media screen and (max-width: 75em ){
-      @content
+  @if ($bre==tabLand) {
+    @media screen and (max-width: 75em) {
+      @content;
     }
   }
-  @if($bre==bigScreen){
-    @media screen and (min-width: 112.5em ){
-      @content
+  @if ($bre==bigScreen) {
+    @media screen and (min-width: 112.5em) {
+      @content;
     }
+  }
+}
+
+@mixin media-query($media-query) {
+  $breakpoint-found: false;
+
+  @each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $declaration: nth($breakpoint, 2);
+
+    @if $media-query == $name and $declaration {
+      $breakpoint-found: true;
+
+      @media only screen and #{$declaration} {
+        @content;
+      }
+    }
+  }
+
+  @if not $breakpoint-found {
+    @warn "Breakpoint ‘#{$media-query}’ does not exist";
+  }
+}
+
+$spaces: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+$sides: (top, right, bottom, left);
+
+// Bootstrap utility classes:
+// p-0: [padding: 0rem]
+// ml-0: [margin-left: 0rem]
+
+// pl-1 : [ padding-left: 0.25rem ]
+// mr-2 : [ margin-right: 0.5rem ]
+// pt-3 : [ padding-top: 0.75rem ]
+// mb-4 : [ margin-bottom: 1rem ]
+
+// pl-5 : [ padding-left: 1.25rem ]
+// mr-6 : [ margin-right: 1.5rem ]
+// pt-7 : [ padding-top: 1.75rem ]
+// mb-8 : [ margin-bottom: 2rem ]
+
+@each $space in $spaces {
+  .m-#{$space} {
+    margin: #{math.div($space, 4)}rem;
+  }
+  .p-#{$space} {
+    padding: #{math.div($space, 4)}rem;
+  }
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{math.div($space, 4)}rem !important;
+    }
+    .p#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{math.div($space, 4)}rem !important;
+    }
+  }
+}
+
+// Bootstrap style of row, cols spacing ( Every row contains 12 columns )
+// Large screen: .col-lg-#{space}
+// Medium screen: col-md-#{space}
+// Small screen: col-sm-#{space}
+// Extremely small screen: col-xs-#{space}
+// Utilization
+// <div class="row">
+//   <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"></div>
+//   <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"></div>
+//   <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"></div>
+//   <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"></div>
+// </div>
+
+$grid__bp-sm: 576;
+$grid__bp-md: 768;
+$grid__bp-lg: 992;
+$grid__bp-xl: 1200;
+$grid__cols: 12;
+
+$map-grid-props: (
+  "": 0,
+  "-sm": $grid__bp-sm,
+  "-md": $grid__bp-md,
+  "-lg": $grid__bp-lg,
+  "-xl": $grid__bp-xl,
+);
+
+@mixin create-mq($breakpoint, $min-or-max) {
+  @if ($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (#{$min-or-max}-width: $breakpoint *1px) {
+      @content;
+    }
+  }
+}
+
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
+  @include create-mq($breakpoint, "min") {
+    &__col#{$modifier}-offset-0 {
+      margin-left: 0;
+    }
+    @for $i from 1 through $grid-cols {
+      &__col#{$modifier}-#{$i} {
+        flex-basis: math.div(100, math.div($grid-cols, $i)) * 1%;
+        width: math.div(100, math.div($grid-cols, $i)) * 1%;
+      }
+      &__col#{$modifier}-offset-#{$i} {
+        margin-left: math.div(100, math.div($grid-cols, $i)) * 1%;
+      }
+    }
+  }
+}
+
+@each $modifier, $breakpoint in $map-grid-props {
+  @if ($modifier == "") {
+    $modifier: "-xs";
+  }
+  @include create-mq($breakpoint - 1, "max") {
+    .hidden#{$modifier}-down {
+      display: none !important;
+    }
+  }
+  @include create-mq($breakpoint, "min") {
+    .hidden#{$modifier}-up {
+      display: none !important;
+    }
+  }
+}
+
+.container {
+  // max-width: $grid__bp-md * 1px;
+  margin: 0 auto;
+  height: inherit;
+  &--fluid {
+    margin: 0;
+    max-width: 100%;
+    height: inherit;
+    padding: 0 2em;
+  }
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: inherit;
+  }
+  @each $modifier, $breakpoint in $map-grid-props {
+    @include create-col-classes($modifier, $grid__cols, $breakpoint);
+  }
+}
+
+// .row {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+//   height: inherit;
+// }
+// $cols: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+
+// @media only screen and (max-width: 600px) {
+//   @each $col in $cols {
+//     .col-xs-#{$col} {
+//       flex-basis: (100 / (12 / $col)) * 1%;
+//     }
+//   }
+// }
+
+// @media only screen and (min-width: 600px) {
+//   @each $col in $cols {
+//     .col-sm-#{$col} {
+//       flex-basis: (100 / (12 / $col)) * 1%;
+//     }
+//   }
+// }
+
+// @media only screen and (min-width: 768px) and (max-width: 1200px) {
+//   @each $col in $cols {
+//     .col-md-#{$col} {
+//       flex-basis: (100 / (12 / $col)) * 1%;
+//     }
+//   }
+// }
+
+// @media only screen and (min-width: 1200px) {
+//   @each $col in $cols {
+//     .col-lg-#{$col} {
+//       flex-basis: (100 / (12 / $col)) * 1%;
+//     }
+//   }
+// }
+
+@mixin button($bg, $size) {
+  font-size: $size;
+  background: $bg;
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
   }
 }

@@ -1,97 +1,84 @@
-.mgT1{
+.mg-0 {
+  margin: 0 !important;
+}
+.mgT1 {
   margin-top: 1rem;
-   @include respond(tabPort){
-
-
-    }
-}
-.mgT2{
-  margin-top: 2rem;
-   @include respond(tabPort){
-
-
-    }
-}
-.mgT3{
-  margin-top: 3rem;
-   @include respond(tabPort){
-    margin-top: 2rem;
-
-    }
-}
-.mgT4{
-  margin-top: 4rem;
-   @include respond(tabPort){
-     margin-top: 3rem;
-
-    }
-}
-.mgV6{
-  margin: 8rem 0;
-}
-.mgV2{
-  margin:2rem 0;
-   @include respond(tabPort){
-
-
-    }
-}
-.mgV4{
-  margin: 4rem 0;
-  @include respond(tabPort){
-    margin: 3rem;
-
+  @include respond(tabPort) {
   }
 }
-.mgL2{
+.mgT2 {
+  margin-top: 2rem;
+  @include respond(tabPort) {
+  }
+}
+.mgT3 {
+  margin-top: 3rem;
+  @include respond(tabPort) {
+    margin-top: 2rem;
+  }
+}
+.mgT4 {
+  margin-top: 4rem;
+  @include respond(tabPort) {
+    margin-top: 3rem;
+  }
+}
+.mgV6 {
+  margin: 8rem 0;
+}
+.mgV2 {
+  margin: 2rem 0;
+  @include respond(tabPort) {
+  }
+}
+.mgV4 {
+  margin: 4rem 0;
+  @include respond(tabPort) {
+    margin: 3rem;
+  }
+}
+.mgL2 {
   margin-left: 2rem;
 }
-.pdMax{
+.pdMax {
   padding: 6rem;
-   @include respond(tabPort){
-      padding: 3rem;
-
-    }
+  @include respond(tabPort) {
+    padding: 3rem;
+  }
 }
-.pdV2{
+.pdV2 {
   padding: 0 2rem;
-   @include respond(tabPort){
-
-
-    }
+  @include respond(tabPort) {
+  }
 }
-.pd2{
+.pd2 {
   padding: 2rem;
-   @include respond(tabPort){
-
-
-    }
+  @include respond(tabPort) {
+  }
 }
-.pd4{
+.pd4 {
   padding: 4rem;
-   @include respond(tabPort){
-   padding: 2rem;
-
-    }
+  @include respond(tabPort) {
+    padding: 2rem;
+  }
 }
-.width50{
+.width50 {
   width: 50%;
-   @include respond(tabPort){
-      width: 100%;
-
-    }
+  @include respond(tabPort) {
+    width: 100%;
+  }
 }
 
-.display_flex{
+.display_flex {
   justify-content: space-between;
   display: flex;
 }
-.profile-centre{
+.profile-centre {
   justify-content: center;
   display: flex;
   align-items: center;
 }
-.centre-imgText{
+.centre-imgText {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,24 +88,22 @@
   width: 100%;
 }
 
-
-.center_home{
+.center_home {
   margin: 10rem auto;
 }
 
-.wallet-just{
-  justify-content: normal!important;
+.wallet-just {
+  justify-content: normal !important;
 }
-.flowImg{
+.flowImg {
   width: 100%;
 }
-.flowImgP{
+.flowImgP {
   //height: 20rem;
   margin: 0 auto;
   width: 100%;
   border-radius: 1rem;
 }
-.flex-dir-c{
-  flex-direction: column!important;
+.flex-dir-c {
+  flex-direction: column !important;
 }
-

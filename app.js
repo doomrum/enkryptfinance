@@ -1,19 +1,19 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var session = require('express-session');
-var flash = require('connect-flash');
-var logger = require('morgan');
-const hbs = require('express-handlebars');
-const fileUpload  = require('express-fileupload');
-const cookieChecker = require('./helpers/cookieChecker');
-const mongoConnect = require('connect-mongo');
-const dbUrl = require('./helpers/dbURI');
-const enforce =  require('express-sslify');
-require('dotenv').config();
+var createError = require("http-errors");
+var express = require("express");
+var path = require("path");
+var session = require("express-session");
+var flash = require("connect-flash");
+var logger = require("morgan");
+const hbs = require("express-handlebars");
+const fileUpload = require("express-fileupload");
+const cookieChecker = require("./helpers/cookieChecker");
+const mongoConnect = require("connect-mongo");
+const dbUrl = require("./helpers/dbURI");
+const enforce = require("express-sslify");
+require("dotenv").config();
 // const mailHelper = require('./helpers/nodemailer')
 
-const db = require('./helpers/db');
+const db = require("./helpers/db");
 
 //
 var indexRouter = require('./routes/index');
@@ -25,49 +25,60 @@ const emailRouter = require('./routes/emailroute');
 const referralRouter = require('./routes/referall');
 var app = express();
 
-
-if (process.env.NODE_ENV==='production'){
-   app.use(enforce.HTTPS({ trustProtoHeader: true }));
+if (process.env.NODE_ENV === "production") {
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
 
-
 // view engine setup
-app.engine('handlebars', hbs(
-    {
-      defaultLayout: 'main',
-        // helpers: mailHelper
-    }
-));
-app.set('view engine', 'handlebars');
+app.engine(
+  "handlebars",
+  hbs({
+    defaultLayout: "main",
+    layoutsDir: __dirname + "/views/layouts",
+    partialsDir: ["views/partials/"],
+    // helpers: mailHelper
+  })
+);
+app.set("view engine", "handlebars");
 
-
-app.use(session({
+app.use(
+  session({
     secret: process.env.Secret,
     resave: false,
     saveUninitialized: true,
-    name:'enkryptlogs',
-    expires:  7 * 86400 * 1000,
-    cookie: { secure: process.env.NODE_ENV !== "dev", httpOnly:  true, maxAge: 7 * 86400 * 1000,},
+    name: "enkryptlogs",
+    // expires: 7 * 86400 * 1000,
+    // cookie: {
+    //   secure: process.env.NODE_ENV !== "dev",
+    //   httpOnly: true,
+    //   maxAge: 7 * 86400 * 1000,
+    // },
     store: mongoConnect.create({
-        mongoUrl: dbUrl.dburi(),
-    })
-
-}));
+      mongoUrl: dbUrl.dburi(),
+    }),
+  })
+);
 app.use(flash());
 ///Flash Message
-app.use((req,res,next)=>{
-    res.locals.success_message = req.flash('success_message');
-    res.locals.failure_message = req.flash('failure_message');
-    next();
-})
+app.use((req, res, next) => {
+  res.locals.success_message = req.flash("success_message");
+  res.locals.failure_message = req.flash("failure_message");
+  next();
+});
 
-app.use(logger('dev'));
+// user is authenticated
+app.use((req, res, next) => {
+  res.locals.access = req.session.access;
+  next();
+});
+
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(cookieParser());
-app.use(fileUpload())
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('trust proxy', 1)
+app.use(fileUpload());
+app.use(express.static(path.join(__dirname, "public")));
+app.set("trust proxy", 1);
 
 
 app.use('/', indexRouter);
@@ -83,17 +94,16 @@ app.use(function (req, res, next) {
 });
 
 
-
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
 
@@ -102,4 +112,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-

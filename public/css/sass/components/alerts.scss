@@ -11,14 +11,14 @@
   }
   z-index: 250;
 }
-.success-msg{
+.success-msg {
   padding: 1.5rem;
   font-size: 1.8rem;
   background-color: #d4fdea;
   position: fixed;
   top: 10%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   border-radius: 1rem;
   display: inline-block;
   transition: all .35s;
@@ -27,14 +27,21 @@
   }
   z-index: 250;
 }
-.info-msg{
+.info-msg {
   padding: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   background-color: #b0efa0;
   border-radius: 1rem;
   display: inline-block;
-  transition: all .35s;
-  h1,h2,h3,h4,h5,h6,p,a{
+  transition: all 0.35s;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a {
     color: #336727;
   }
 

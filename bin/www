@@ -10,7 +10,7 @@ var app = require('../app');
 var debug = require('debug')('cryptotrade:server');
 var http = require('http');
 const socket = require('socket.io')
-const axios  =  require('axios');
+const axios = require('axios');
 
 
 /**
@@ -31,32 +31,31 @@ var server = http.createServer(app);
 
 
 /*socket,io
-*
-*
-*
-*
-*
-*
-* */
+ *
+ *
+ *
+ *
+ *
+ *
+ * */
 const io = socket(server);
 
 
-  io.on('connection',socket=>{
-    setInterval(()=>{
+io.on('connection', socket => {
+  setInterval(() => {
 
-      const url = "https://api.nomics.com/v1/currencies/ticker?key=873ae0cc86815e29c223f548bcae6cd5&ids=BTC,ETH,BNB,XRP,LINK,DOGE,USDT,USDC,BCH,LTC,ADA&interval=1d,30d&convert=USD&per-page=100&page=1"
-      axios.get( url)
-          .then(async (result)=>{
-            socket.emit('liveChat',result.data)
-          })
+    const url = "https://api.nomics.com/v1/currencies/ticker?key=873ae0cc86815e29c223f548bcae6cd5&ids=BTC,ETH,BNB,XRP,LINK,DOGE,USDT,USDC,BCH,LTC,ADA&interval=1d,30d&convert=USD&per-page=100&page=1"
+    axios.get(url)
+      .then(async (result) => {
+        socket.emit('liveChat', result.data)
+      })
 
-          .catch(err=>{
-            socket.emit('liveError','Error Found')
-          })
-      ;
-    },1000)
+      .catch(err => {
+        socket.emit('liveError', 'Error Found')
+      });
+  }, 1000)
 
-  });
+});
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -119,9 +118,9 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  var bind = typeof port === 'string' ?
+    'Pipe ' + port :
+    'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -144,8 +143,8 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  var bind = typeof addr === 'string' ?
+    'pipe ' + addr :
+    'port ' + addr.port;
   debug('Listening on ' + bind);
 }

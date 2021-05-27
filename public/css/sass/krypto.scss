@@ -1,5 +1,6 @@
-@import "helpers/mixins";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700;800&display=swap');
 @import "helpers/variables";
+@import "helpers/mixins";
 @import "helpers/typography";
 @import "base/base";
 @import "helpers/spacers";
@@ -8,12 +9,13 @@
 @import "components/card";
 @import "components/alerts";
 @import "components/chat_popup";
+@import "components/footer";
+@import "components/owl";
 @import "layout/home";
 @import "pages/dash/dashboard";
 @import "pages/dash/admin";
 @import "pages/about";
+@import "pages/faqs";
 @import "pages/dash/profile";
 @import "pages/dash/investment";
 @import "pages/auth";
-
-
