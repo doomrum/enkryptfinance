@@ -2985,6 +2985,7 @@ footer .footer-links ul li a:hover {
   align-items: center;
 }
 .dashboard .main-section .dash-body .stats_icon-box .la {
+  font-size: 2em;
   color: #2b2b41;
 }
 
@@ -3020,6 +3021,7 @@ footer .footer-links ul li a:hover {
   justify-content: space-between;
 }
 .wallet-card .la {
+  font-size: 2em;
   color: #5cd993;
   padding: 2rem;
   background-color: #f7f7f7;
