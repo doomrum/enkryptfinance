@@ -4,35 +4,34 @@
 <p class="h6 mgT1">Fund your wallet with a few clicks</p>
 <div>
     <!--               <h2 class="h6 ">Deposit Form</h2>-->
-    <form action="/p/pay" method="post" class="card_w" >
+    <form action="/p/pay" method="post" class="card_w">
 
 
 
         <!--                   Toggle on request validity-->
-       {{#if data}}
-           <div class="form-btc_box">
-               <img src="{{data}}" />
-           </div>
-           <div class="form-input-box">
-               <input name="btcAddress" value="{{walletAddress}}" class="form-input h6">
-           </div>
-       {{else}}
-           <div class="form-input-box">
-               <select name="investmentType" class="form-input-select">
-                  {{#each plan}}
-                      <option value="{{title}}">{{title}}</option>
+        {{#if data}}
+        <div class="form-btc_box">
+            <img src="{{data}}" />
+        </div>
+        <div class="auth__inputBox">
+            <input name="btcAddress" value="{{walletAddress}}" class="form-input h6">
+        </div>
+        {{else}}
+        <div class="auth__inputBox">
+            <select name="investmentType" class="form-input-select">
+                {{#each plan}}
+                <option value="{{title}}">{{title}}</option>
 
-                  {{/each}}
-               </select>
-           </div>
-           <div class="form-input-box">
-               <input name="amount" placeholder="Amount" class="form-input"/>
-           </div>
-       {{/if}}
+                {{/each}}
+            </select>
+        </div>
+        <div class="auth__inputBox">
+            <input name="amount" placeholder="Amount" class="form-input" />
+        </div>
+        {{/if}}
 
-        <button class="btn btn-purple">{{#if data}}
+        <button class="btn btn-primary">{{#if data}}
             Scan or Copy to Pay{{else}}pay
-        {{/if}}</button>
+            {{/if}}</button>
     </form>
 </div>
-

@@ -83,8 +83,8 @@
                                 technology and wanted to build their own farm, only to realize all their friends wanted
                                 to participate as well.</p>
                             <div class="mt-7">
-                                <div class="container__row">
-                                    <div class="container__col-lg-3">
+                                <div class="container__row text-md-center">
+                                    <div class="container__col-sm-12  container__col-md-12 container__col-lg-3 ">
                                         <img src="/images/1.png" alt="active management" width="auto" height="70px" />
                                     </div>
                                     <div class="container__col-lg-9">
@@ -94,8 +94,8 @@
                                             clients' assets.</p>
                                     </div>
                                 </div>
-                                <div class="container__row mt-4">
-                                    <div class="container__col-lg-3">
+                                <div class="container__row mt-4 text-md-center">
+                                    <div class="container__col-sm-12 container__col-md-12 container__col-lg-3 ">
                                         <img src="/images/2.png" alt="innovation" width="auto" height="70px" />
                                     </div>
                                     <div class="container__col-lg-9">
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container__col-sm-12 container__col-md-6 container__col-lg-6   ">
+                    <div class="container__col-sm-12 container__col-md-6 container__col-lg-6 text-md-center ">
                         <div class="image__part">
                             <img src="/images/why-choose-us.jpg" alt="why choose us" class="choice__img" />
                         </div>
@@ -279,25 +279,24 @@
         </section>
 
 
-        <section class="plan-section">
+        <section class="plan">
             <div class="container">
                 <div>
                     <h4 class="text-center">Investment & Mining Prices</h4>
-                    <div class="grid mt-4">
+                    <div class="plan__grid mt-4">
                         {{#if plan}}
                         {{#each plan}}
-                        <div class="grid-item1_3 plan-card">
+                        <div class=" plan-card">
                             <div class="overlayText">
                                 <span>{{title}}</span>
                             </div>
                             <img class="flowImgP" src="/images/btc.jpg" />
-                            <h3 class="h4 mgV2">{{title}}</h3>
-                            <h4 class="h2 mgV2 plan-card-h">${{cost}}</h4>
-                            <div class="mgV2 plan-details">
+                            <h3 class="mt-1">{{title}}</h3>
+                            <h4 class="mt-2 plan-card-h">${{cost}}</h4>
+                            <div class="mt-2 plan-details">
                                 <ul>
                                     <li>{{profit}}</li>
                                     <li>{{description}}</li>
-                                    <!--                            <li>Running on Water</li>-->
                                 </ul>
                             </div>
                             <a href="/auth/signup" class="btn btn-plan plan-btn">

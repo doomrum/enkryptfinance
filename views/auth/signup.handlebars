@@ -5,19 +5,19 @@
             <h2 class="auth__heading">Login</h2>
         </div>
     </header>
-    {{#if success_message}}
-    <div class="success-card mt-1">
-        <h2 class="h5">{{success_message}}</h2>
-    </div>
-    {{/if}}
-    {{#if failure_message}}
-    <div class="error-msg mgT2">
-        <h2 class="h6">{{failure_message}}</h2>
-    </div>
-    {{/if}}
     <div class="auth__container">
+        {{#if success_message}}
+        <div class="success-card mt-1">
+            <h2 class="h5">{{success_message}}</h2>
+        </div>
+        {{/if}}
+        {{#if failure_message}}
+        <div class="error-msg mgT2">
+            <h2 class="h6">{{failure_message}}</h2>
+        </div>
+        {{/if}}
 
-        <form id="signup" class=" auth__form" method="post" action="/auth/register">
+        <form id="signup" class="auth__form" method="post" action="/auth/register">
             <h1 class="text-primary h1">Account Registration</h1>
 
             <p class="mt-1 mb-3">Estimated time to complete your registration is 2 Minutes</p>
@@ -61,10 +61,7 @@
                         <input class="form-input" type="email" name="email" placeholder="Email" required />
 
                     </div>
-                    <div class="auth__inputBox">
-                        <input class="form-input" name="password" type="password" placeholder="Password" required />
 
-                    </div>
                 </div>
             </div>
             <div class="flex-column">
@@ -91,12 +88,17 @@
 
                 </div>
             </div>
+            <div class="auth__inputBox">
+                <input class="form-input" name="password" type="password" placeholder="Password" required />
+
+            </div>
+
             <div class="d-flex auth__agree">
                 <input type="checkbox" name="terms" id="terms">
                 <label for="terms">I agree to receive your newsletters, company news, and product
                     updates.</label>
             </div>
-            <button id="authBtn" class="btn btn-reg mt-2 mb-2" type="submit">Register</button>
+            <button id="authBtn" class="btn btn-reg mt-2 mb-2">Register</button>
             <div class="auth__account mt-3">
                 <p>Already got an Account? </p>
                 <a href="/auth/login" class="auth__register">Login</a>

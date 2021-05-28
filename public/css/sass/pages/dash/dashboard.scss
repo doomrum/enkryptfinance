@@ -47,7 +47,6 @@
     flex-direction: column;
   }
   .sideBar {
-    flex: 0.09;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -142,6 +141,7 @@
         cursor: pointer;
         justify-content: center;
         align-items: center;
+        font-size: 1.2em;
         text-decoration: none;
         padding: 1.2rem 1.8rem;
         &:active {
@@ -198,7 +198,7 @@
       }
     }
     .dash-body {
-      margin-top: 4rem;
+      // margin-top: 4rem;
 
       padding: 1.5rem 3.5rem;
       @include respond(tabPort) {
@@ -235,10 +235,11 @@
   color: $primary;
   padding: 1.2rem 1.8rem;
   cursor: pointer;
+  font-size: 1.2em;
   @include respond(tabPort) {
-    padding: 1.2rem;
-    align-self: flex-end;
-    //background-color: #d7204b;
+    // padding: 1.2rem;
+    // align-self: flex-end;
+    // background-color: #d7204b;
   }
   span {
     //font: 1.8rem;

@@ -2,9 +2,6 @@
     display: flex;
     flex-wrap: wrap;
     padding: 2em;
-    div {
-        flex: 1 1 0px;
-    }
     &__links {
         display: flex;
         flex-direction: column;
@@ -18,6 +15,9 @@
                 color: white;
                 text-decoration: none;
             }
+        }
+        @include media-query($medium-down) {
+            margin-top: 2em;
         }
     }
     &__copy {

@@ -38,7 +38,7 @@
 }
 .owl-carousel .owl-slide-title {
   font-size: 40px;
-  color: $primary;
+  color: darken($primary, 9%);
 }
 .owl-carousel .owl-slide-subtitle.is-transitioned {
   transition-delay: 0.35s;

@@ -1450,6 +1450,13 @@ select {
   margin: 12rem auto;
 }
 
+@media only screen and (max-width: 749px) {
+  .text-md-center {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
 .mg-0 {
   margin: 0 !important;
 }
@@ -1633,6 +1640,63 @@ select {
 }
 .btn-reg:active {
   background: #765800;
+}
+.btn-plan {
+  padding: 0 !important;
+  display: inline-flex;
+  width: 100%;
+  background-image: linear-gradient(#4233ff, #9938fa);
+  color: #f7f7f7;
+  justify-content: space-between;
+  text-align: center;
+}
+.btn-plan .las {
+  background-color: white;
+  color: #6335e3;
+  margin: 1rem;
+  border-radius: 200rem;
+  padding: 1rem;
+  transform: translateX(4rem);
+  transition: all 0.35s ease;
+}
+.btn-plan:hover {
+  background-image: linear-gradient(-45deg, #4233ff, #c637fa);
+}
+.btn-plan:hover .las {
+  transform: translateX(2rem);
+}
+.btn-success {
+  background-color: #73739f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in;
+  color: white;
+  font-size: 1em;
+}
+.btn-success .la {
+  margin-left: 1rem;
+}
+.btn-success:hover {
+  background-color: #7676ac;
+}
+.btn-red {
+  background-color: #ef3945;
+  transition: background-color 0.3s ease-in;
+  color: #f3f3fc;
+  font-size: 1em;
+}
+.btn-red:hover {
+  background-color: #d7204b;
+}
+.btn-green {
+  background-color: mediumseagreen;
+  transition: background-color 0.3s ease-in;
+  font-size: 1em;
+  color: #f3f3fc;
+}
+.btn-green:hover {
+  background-color: #5cd993;
 }
 
 .btn_reg, .btn_reg:link {
@@ -1914,11 +1978,9 @@ select {
 .plan-card {
   text-align: center;
   background-color: #ffffff;
-  border-radius: 3rem;
-  padding: 2.8rem;
+  padding: 2rem;
   transition: all 0.35s;
   position: relative;
-  min-width: 35rem;
   margin: 2.4rem 1rem;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
@@ -1992,7 +2054,7 @@ select {
   background-color: #ffeff4;
   color: #ef3945;
   display: inline-block;
-  font-size: 3.6rem;
+  font-size: 1rem;
   margin-left: 1rem;
   transition: all 0.35s;
   z-index: 250;
@@ -2003,7 +2065,7 @@ select {
 
 .success-msg {
   padding: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 1rem;
   background-color: #d4fdea;
   position: fixed;
   top: 10%;
@@ -2020,7 +2082,7 @@ select {
 
 .info-msg {
   padding: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   background-color: #b0efa0;
   border-radius: 1rem;
   display: inline-block;
@@ -2042,13 +2104,13 @@ select {
   background-color: #ffeff4;
   color: #ef3945;
   display: inline-block;
-  font-size: 1.45rem;
+  font-size: 1rem;
   margin-left: 1rem;
 }
 
 #small_error {
   padding: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 1rem;
   background-color: #EABAC5;
   border-radius: 1rem;
   display: inline-block;
@@ -2195,9 +2257,6 @@ select {
   flex-wrap: wrap;
   padding: 2em;
 }
-.footer div {
-  flex: 1 1 0px;
-}
 .footer__links {
   display: flex;
   flex-direction: column;
@@ -2211,6 +2270,11 @@ select {
 .footer__links li a {
   color: white;
   text-decoration: none;
+}
+@media only screen and (max-width: 989px) {
+  .footer__links {
+    margin-top: 2em;
+  }
 }
 .footer__copy {
   background: black;
@@ -2257,7 +2321,7 @@ select {
 
 .owl-carousel .owl-slide-title {
   font-size: 40px;
-  color: #f5b700;
+  color: #c79500;
 }
 
 .owl-carousel .owl-slide-subtitle.is-transitioned {
@@ -2522,8 +2586,9 @@ select {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.plan-section {
-  padding: 2rem;
+.plan__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 footer {
@@ -2763,7 +2828,6 @@ footer .footer-links ul li a:hover {
   }
 }
 .dashboard .sideBar {
-  flex: 0.09;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -2856,6 +2920,7 @@ footer .footer-links ul li a:hover {
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  font-size: 1.2em;
   text-decoration: none;
   padding: 1.2rem 1.8rem;
 }
@@ -2901,7 +2966,6 @@ footer .footer-links ul li a:hover {
   }
 }
 .dashboard .main-section .dash-body {
-  margin-top: 4rem;
   padding: 1.5rem 3.5rem;
 }
 @media screen and (max-width: 56.5em) {
@@ -2934,12 +2998,7 @@ footer .footer-links ul li a:hover {
   color: #f5b700;
   padding: 1.2rem 1.8rem;
   cursor: pointer;
-}
-@media screen and (max-width: 56.5em) {
-  .logoout-link {
-    padding: 1.2rem;
-    align-self: flex-end;
-  }
+  font-size: 1.2em;
 }
 .logoout-link span {
   font-weight: bold;
@@ -3278,6 +3337,7 @@ footer .footer-links ul li a:hover {
 .searchBox .search_input-icon {
   border: none;
   background-color: inherit;
+  font-size: 2em;
   position: absolute;
   top: 0;
   right: 1rem;
