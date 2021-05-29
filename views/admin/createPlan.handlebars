@@ -1,7 +1,7 @@
 <div class="dash-nav">
     <a><i class="la la-bell"></i></a>
     <h5 class="h6">John Doe</h5>
-    <a > <i class="las la-cog"></i></a>
+    <a> <i class="las la-cog"></i></a>
 </div>
 <div class="dash-body">
 
@@ -11,27 +11,31 @@
     <!--            <p class="h6 mgT1"></p>-->
     <div>
         <!--               <h2 class="h6 ">Deposit Form</h2>-->
-        <form class="card_w"  method="post" action="/admin/createPlan">
-            <div class="form-input-box">
-                <input placeholder="Title" name="title" class="form-input"/>
-            </div>
+        <form class="card_w" method="post" action="/admin/createPlan">
+            <div class="auth__inputBox">
+                <input type="text" class="form-input" name="title" placeholder="Title" required />
 
-            <div class="form-input-box">
-                <input placeholder="cost" name="cost" class="form-input"/>
             </div>
-            <div class="form-input-box">
-                <input placeholder="Duration" name="duration" class="form-input"/>
+            <div class="auth__inputBox">
+                <input type="text" class="form-input" name="cost" placeholder="Cost" required />
+
             </div>
-            <div class="form-input-box">
-                <input placeholder="profit" name="profit" class="form-input"/>
+            <div class="auth__inputBox">
+                <input  class="form-input" name="duration" placeholder="Duration" required />
+
             </div>
-            <div class="form-input-box">
-                <input placeholder="Description" name="description" class="form-input"/>
+            <div class="auth__inputBox">
+                <input  class="form-input" name="profit" placeholder="Profit" required />
+
+            </div>
+              <div class="auth__inputBox">
+                <input  class="form-input" name="description" placeholder="Description" required />
+
             </div>
             <!--                   Toggle on request validity-->
 
 
-            <button class="btn btn-purple">New Plan</button>
+            <button class="btn btn-primary">New Plan</button>
         </form>
     </div>
 

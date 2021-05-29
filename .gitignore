@@ -84,3 +84,5 @@ web_modules/
 # Serverless directories
 .serverless/
 
+
+seedfile

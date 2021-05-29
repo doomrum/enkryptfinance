@@ -1,7 +1,7 @@
 <div class="dash-nav">
     <a><i class="la la-bell"></i></a>
     <h5 class="h6">Admin</h5>
-    <a > <i class="las la-cog"></i></a>
+    <a> <i class="las la-cog"></i></a>
 </div>
 <div class="dash-body">
 
@@ -9,26 +9,26 @@
     <h3 class="h4">Edit User Data</h3>
 
     <div>
-        <form class="card_w" method="post" action="/admin/users/edit/{{user._id}}" >
+        <form class="card_w" method="post" action="/admin/users/edit/{{user._id}}">
             <label class="h6">FullName</label>
-            <div class="form-input-box">
-                <input  name="fullName" value="{{user.fullName}}" disabled class="form-input"/>
+            <div class="auth__inputBox">
+                <input name="fullName" value="{{user.fullName}}" disabled class="form-input" />
             </div>
             <label class="h6">Current Returns</label>
-            <div class="form-input-box">
-                <input name="currentReturns" value="{{user.balance.currentReturns}}" class="form-input"/>
-                <input name="balanceId" hidden value="{{user.balance._id}}" class="form-input"/>
+            <div class="auth__inputBox">
+                <input name="currentReturns" value="{{user.balance.currentReturns}}" class="form-input" />
+                <input name="balanceId" hidden value="{{user.balance._id}}" class="form-input" />
             </div>
-             <label class="h6">Current Investments</label>
-            <div class="form-input-box">
-                <input  name="currentInvestment" value="{{user.balance.currentInvestment}}" class="form-input"/>
+            <label class="h6">Current Investments</label>
+            <div class="auth__inputBox">
+                <input name="currentInvestment" value="{{user.balance.currentInvestment}}" class="form-input" />
             </div>
-             <label class="h6">btc balance</label>
-            <div class="form-input-box">
-                <input  name="btcBalance" value="{{user.balance.btcBalance}}" class="form-input"/>
+            <label class="h6">btc balance</label>
+            <div class="auth__inputBox">
+                <input name="btcBalance" value="{{user.balance.btcBalance}}" class="form-input" />
             </div>
 
-            <button class="btn btn-purple">Save User</button>
+            <button class="btn btn-primary">Save User</button>
         </form>
     </div>
 

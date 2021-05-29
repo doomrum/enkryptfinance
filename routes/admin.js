@@ -60,12 +60,14 @@ router.get("/edit", async (req, res, next) => {
       res.status(403).send(err);
     });
 });
+
 router.get("/createPlan", (req, res, next) => {
   res.render("admin/createPlan", {
     layout: "admin",
     title: "EnkryptFinance |  Create plan",
   });
 });
+
 router.post("/createPlan", (req, res, next) => {
   console.log(req.body);
   const newPlan = PlanModel({
@@ -142,6 +144,7 @@ router.post("/transactions/edit/:id", (req, res, next) => {
     })
     .catch((err) => res.status(403).send(err));
 });
+
 router.get("/users/edit/:id", async (req, res) => {
   UserModel.findById(req.params.id)
     .lean()
@@ -155,6 +158,7 @@ router.get("/users/edit/:id", async (req, res) => {
     })
     .catch((err) => res.status(403).send(err));
 });
+
 router.post("/users/edit/:id", async (req, res) => {
   balanceModel
     .findById(req.body.balanceId)

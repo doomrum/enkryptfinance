@@ -14,7 +14,7 @@ router.get("/signup", async function (req, res, next) {
       .find({})
       .lean()
       .then((plan) => {
-        console.log(plan);
+        // console.log(plan);
         const countryInfo = response.data;
         let country = [];
         for (let i = 0; i < countryInfo.length; i++) {
@@ -24,7 +24,7 @@ router.get("/signup", async function (req, res, next) {
             code: item["callingCodes"][0],
           });
         }
-        console.log(country);
+        // console.log(country);
 
         res.render("auth/signup", {
           layout: "auth",
@@ -129,7 +129,7 @@ router.get("/login", (req, res, next) => {
 
 router.post("/register", async (req, res) => {
   ////merging first, mid & last name to give full name
-  console.log(req.body);
+  console.log('body',req.body);
   const fullName =
     req.body.firstName + " " + req.body.middleName + " " + req.body.lastName;
   const phoneNumber = req.body.code + req.body.phone;

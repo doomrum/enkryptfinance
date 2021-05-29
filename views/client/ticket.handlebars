@@ -1,18 +1,18 @@
 <div>
     <div class="tickets-section">
-     <h2 class="h4">   <i class="las la-envelope icon24"></i> Messages</h2>
+        <h2 class="h4"> <i class="las la-envelope icon24"></i> Messages</h2>
 
 
         <div class="tickets mgT2">
             {{#if tickets}}
-              {{#each tickets}}
-                  <div class="ticket">
-                      <p class="h5">{{subject}}</p>
-                      <h5 class="h5">{{msg}}</h5>
-                      <p class="h6">{{date}}</p>
-                  </div>
-              {{/each}}
-            {{else}}  <h5 class="h5">You have no tickets</h5>
+            {{#each tickets}}
+            <div class="ticket">
+                <p class="h5">{{subject}}</p>
+                <h5 class="h5">{{msg}}</h5>
+                <p class="h6">{{date}}</p>
+            </div>
+            {{/each}}
+            {{else}} <h5 class="h5">You have no tickets</h5>
             {{/if}}
 
 
@@ -21,18 +21,18 @@
     </div>
     <h2 class="h4">Open a newTicket</h2>
     <form method="post" action="/client/ticket/create" class=" card_w width50 mgT2">
-        <div class="form-input-box">
-            <input placeholder="Subject" name="subject" class="form-input"/>
+        <div class="auth__inputBox">
+            <input placeholder="Subject" name="subject" class="form-input" />
         </div>
-        <div class="form-input-box">
+        <div class="auth__inputBox">
             <textarea placeholder="Message" name="msg" class="form-textarea"></textarea>
         </div>
 
-        <button class="btn btn-purple">
+        <button class="btn btn-primary">
             <i class="las la-check-circle">
 
             </i>
-          <span class="mgL2">   SEND MESSAGE</span>
+            <span class="mgL2"> SEND MESSAGE</span>
         </button>
     </form>
 </div>

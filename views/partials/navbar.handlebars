@@ -22,12 +22,7 @@
         <li class="home-nav-list-item">
             <a href="/terms" class="home-nav-list-item-link">Terms & Policy</a>
         </li>
-        {{#if access }}
-        <li class="home-nav-list-item">
-            <a href="/auth/logout" class="btn btn-primary">Dash</a>
-            <a href="/auth/logout" class="btn btn-primary">logout</a>
-        </li>
-        {{else}}
+
         <li class="home-nav-list-item">
             <a href="/auth/signup" class="btn btn-primary">Sign up</a>
         </li>
@@ -35,6 +30,5 @@
             <a href="/auth/login" class="btn btn-primary">login</a>
         </li>
 
-        {{/if}}
     </ul>
 </nav>

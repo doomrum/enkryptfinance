@@ -88,3 +88,10 @@ select {
   width: 50vw;
   margin: 12rem auto;
 }
+
+.text-md-center {
+  @include media-query($small) {
+    text-align: center;
+    justify-content: center;
+  }
+}

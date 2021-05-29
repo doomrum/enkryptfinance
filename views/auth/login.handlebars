@@ -5,17 +5,17 @@
             <h2 class="auth__heading">Login</h2>
         </div>
     </header>
-    {{#if success_message}}
-    <div class="success-card mt-1">
-        <h2 class="h5">{{success_message}}</h2>
-    </div>
-    {{/if}}
-    {{#if failure_message}}
-    <div class="error-msg mgT2">
-        <h2 class="h6">{{failure_message}}</h2>
-    </div>
-    {{/if}}
     <div class="auth__container">
+        {{#if success_message}}
+        <div class="success-card mt-1">
+            <h2 class="h5">{{success_message}}</h2>
+        </div>
+        {{/if}}
+        {{#if failure_message}}
+        <div class="error-msg mgT2">
+            <h2 class="h6">{{failure_message}}</h2>
+        </div>
+        {{/if}}
         <form class="auth__form" method="post" action="/auth/login">
             <div>
                 <h1 class="text-primary h1">Account Login</h1>
