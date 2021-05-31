@@ -5,7 +5,8 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var logger = require('morgan');
 const hbs = require('express-handlebars');
-const fileUpload  = require('express-fileupload');
+const upload = require('express-fileupload')
+
 const cookieChecker = require('./helpers/cookieChecker');
 const mongoConnect = require('connect-mongo');
 const dbUrl = require('./helpers/dbURI');
@@ -64,8 +65,7 @@ app.use((req,res,next)=>{
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cookieParser());
-app.use(fileUpload())
+app.use(upload());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('trust proxy', 1)
 

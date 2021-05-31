@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const fileUpload = require('../helpers/multer_helper');
+const multer = fileUpload()
+const { uploadImage,getImage} = require('../helpers/imageUpload');
 const bcrypt = require('bcrypt');
 const userModel = require('../models/user');
 const planModel = require('../models/plan');
@@ -44,74 +47,77 @@ router.get('/reset',(req,res)=>{
         .catch(err=>res.status(403).send(err))
 })
 
-router.post('/register/:id', function(req, res, next) {
+router.post('/register/:id',async function(req, res) {
 
-
-    let proofIdFile;
-    let proofResidenceFile;
-    let uploadPathID;
-    let uploadPathRES;
 
     if (!req.files || Object.keys(req.files).length === 0) {
 
-       req.flash('failure_message', 'Please upload documents');
-       res.redirect('/auth/register');
+       req.flash('failure_message', 'Please Login & upload documents');
+       res.redirect('/auth/signup');
 
     }
 
-    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    proofIdFile =  req.files.proofID;
-    proofResidenceFile =  req.files.proofResidence;
-    uploadPathID = './public/uploads/' + proofIdFile.name;
-    uploadPathRES = './public/uploads/' + proofResidenceFile.name;
+
+    let proofID = req.files.proofID;
+    let proofResidenceFile = req.files.proofResidence;
+
+// //cloudinary//
+//     console.log(proofID)
+ const proofID_ =  await  uploadImage(proofID);
+ const proofRes = await  uploadImage(proofResidenceFile);
+
+
+
 
     // Use the mv() method to place the file somewhere on your server
-    proofIdFile.mv(uploadPathID, function(err) {
-        if (err)
-            return res.status(500).send(err);
-        proofResidenceFile.mv(uploadPathRES,(err)=>{
-            if(!err){
-                userModel.findByIdAndUpdate({_id:req.params.id},{
-                    urlProofId: uploadPathID,
-                    urlProofResidence: uploadPathRES
-                })
-                    .then(async (user)=>{
-                        let userInitial = user;
-                        ///Email is sent here
-                        const params = {
-                            senderName: "Okibe Obinna",
-                            sender: "EnkryptFinance",
-                            client:  user.email,
-                            text: `Hi ${user.fullName}, welcome enkryptFinance`,
-                            subject: `Welcome to enkryptFinance`,
-                            user: user.fullName,
-                            data: {
-                                header: `Hi ${user.fullName.split(' ',1)}! welcome to enkryptFinance` ,
-                                body:"Welcome to a world of investment and opportunities",
-                                imgPath: './public/images/logo.png',
-                                imgPathBody: './public/images/welcome3.png',
-                                imgName: 'logo.png',
-                                imgNameBody: 'welcome3.png',
-                                cid: 'unique@enkryptfin',
-                                cidBody:'uniquebody@enkrypt',
-
-                            },
-                            req,
-                            res
-
-                        };
-
-                      await emailSender(params);
-
-
-                    })
-                    .catch(err=>{
-                        console.log(err);
-                        res.send(err)
-                    })
-            }
+    if (proofID_ && proofRes) {
+        const proofIdUrl = proofID_.secure_url;
+        const proofResUrl = proofRes.secure_url;
+        userModel.findByIdAndUpdate({_id: req.params.id}, {
+            urlProofId: proofIdUrl,
+            urlProofResidence: proofResUrl
         })
-    });
+            .then(async (user) => {
+                // let userInitial = user;
+                ///Email is sent here
+                const params = {
+                    senderName: "Okibe Obinna",
+                    sender: "EnkryptFinance",
+                    client: user.email,
+                    text: `Hi ${user.fullName}, welcome enkryptFinance`,
+                    subject: `Welcome to enkryptFinance`,
+                    user: user.fullName,
+                    data: {
+                        header: `Hi ${user.fullName.split(' ', 1)}! welcome to enkryptFinance`,
+                        body: "Welcome to a world of investment and opportunities",
+                        imgPath: './public/images/logo.png',
+                        imgPathBody: './public/images/welcome3.png',
+                        imgName: 'logo.png',
+                        imgNameBody: 'welcome3.png',
+                        cid: 'unique@enkryptfin',
+                        cidBody: 'uniquebody@enkrypt',
+
+                    },
+                    req,
+                    res
+
+                };
+
+                await emailSender(params);
+
+
+            })
+            .catch(err => {
+                console.log(err);
+                res.send(err)
+            })
+    }
+    else{
+        req.flash('failure_message','sorry try again later');
+        const id = req.session.access
+        res.render('auth/signup-det',{layout:'auth',title:'Enkryptfinance | sign up', id: id});
+
+    }
 
 
 
