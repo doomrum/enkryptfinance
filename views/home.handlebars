@@ -70,7 +70,7 @@
         <section class="choice">
             <div class="container pt-17 pb-17">
                 <div class="container__row">
-                    <div class="container__col-sm-12 container__col-md-6 container__col-lg-6 pr-15">
+                    <div class="container__col-sm-12 container__col-md-6 container__col-lg-6 pr-lg-15">
                         <div>
                             <p class="choice__subheading text-primary">
                                 Why choose us
@@ -315,8 +315,128 @@
             </div>
         </section>
         <!--END OF PLANS SECTION-->
+        <section class="converter pt-10 pb-10">
+            <crypto-converter-widget live shadow symbol fiat="united-states-dollar" crypto="bitcoin" amount="1"
+                border-radius="0.60rem" background-color="#002e52" decimal-places="2" font-family="inherit">
+            </crypto-converter-widget>
+        </section>
 
+        <section>
+            <div class="container pt-10 pb-10">
+                <div class="container__row">
+                    <div class="container__col-lg-6 container__col-md-12 container__col-sm-12">
+                        <ul>
+                            <li>ABOUT US</li>
+                        </ul>
+                        <h3 class='text-primary'>WHY CHOOSE US? <br /> BECAUSE WE ARE THE BEST!</h3>
+                        <div class="mt-4">
+                            <p>Enkrypt is a cloud mining service created by the Cryptocurrency Mining specialists
+                                from United State of America in 2016. In a short time, Enkrypt became one of the
+                                fastest growing providers of computational power for mining bitcoin, litecoin, ethereum
+                                and other cryptocurrencies.
+                            </p>
+                            <p class="mt-2">
+                                Enkrypt is an independent company. The variety of equipment that is used for mining
+                                was significantly increased on the account such companies as Bitmain, Bitfury, Inno3d
+                                and many others
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="container__col-lg-6  container__col-md-12 container__col-sm-12 text-center counter__section">
+                        <div class="count__container">
+                            <h6 class=""><span class="count_text"></span>Total Investors</h6>
+                            <h3 data-target="40656" class="count">0</h3>
+                        </div>
+                        <div class="count__container">
+                            <h6 class=""><span class="count_text"></span>Total Users</h6>
+                            <h3 data-target="80897" class="count">0</h3>
+                        </div>
+                        <div class="count__container">
+                            <h6 class=""><span class="count_text"></span>Total Deposits</h6>
+                            <h3 data-target="1890900569" class="count">0</h3>
+                        </div>
+                        <div class="count__container">
+                            <h6 class=""><span class="count_text"></span>Total Withdrawal</h6>
+                            <h3 data-target="670879034087" class="count">0</h3>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </section>
+        <section>
+            <div class="container pt-10 pb-10">
+                <h4 class="text-center mb-3 text-primary">LATEST WITHDRAWALS</h4>
+                <div class="transaction-table-cont">
+                    <table class="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>Date</th>
+                                <th>AMOUNT</th>
+                                <th>PACKAGE</th>
+
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Martins</td>
+                                <td>28/04/2021</td>
+                                <td>$700,000</td>
+                                <td>Ruby</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Captain</td>
+                                <td>28/04/2021</td>
+                                <td>$350,000</td>
+                                <td>Ruby</td>
+                            </tr>
+                            <tr>
+                                <td>Captain</td>
+                                <td>28/04/2021</td>
+                                <td>$700,000</td>
+                                <td>Ruby</td>
+                            </tr>
+                            <tr>
+                                <td>Captain</td>
+                                <td>28/04/2021</td>
+                                <td>$700,000</td>
+                                <td>Ruby</td>
+                            </tr>
+                            <tr>
+                                <td>Modla</td>
+                                <td>28/04/2021</td>
+                                <td>$10,000</td>
+                                <td>Ruby</td>
+                            </tr>
+                            <tr>
+                                <td>Tina</td>
+                                <td>28/04/2021</td>
+                                <td>$101,000</td>
+                                <td>Ruby</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-primary mt-5">Only recent Investors that withdrew this Month, April, 2021 are displayed.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="container-fluid pt-10 pb-10">
+                <div class="text-center">
+                    <ul>
+                        <li>REAL TESTIMONIALS</li>
+                    </ul>
+                    <h2 class="text-primary">What They Say About Us</h2>
+                </div>
+                {{>testimonial}}
+            </div>
+        </section>
 
         <section class="mt-4 faq-section">
             <div class="container">
@@ -325,6 +445,7 @@
                 <a href="/faqs" class="btn-bordered-primary btn-bordered mt-2">Visit FAQs</a>
             </div>
         </section>
+
 
     </main>
 

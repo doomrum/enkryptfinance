@@ -20,11 +20,27 @@
             margin-top: 2em;
         }
     }
+    &__socialSection {
+        @include media-query($medium-down) {
+            margin-top: 2em;
+        }
+        a.social_icon_link {
+            color: $white;
+            text-decoration: none;
+            .social__icon {
+                font-size: 30px;
+            }
+        }
+    }
     &__copy {
         background: black;
-        padding: 1em 2em;
+        padding: 0em 2em;
         display: flex;
         justify-content: center;
         color: $white;
+        align-items: center;
+        @include media-query($medium-down) {
+            flex-direction: column;
+        }
     }
 }

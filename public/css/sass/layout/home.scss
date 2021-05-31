@@ -238,7 +238,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     @include media-query($medium-down) {
-      grid-template-columns: 1fr;;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+    @include media-query($small) {
+      grid-template-columns: 1fr;
     }
   }
 }
@@ -401,8 +404,13 @@ footer {
   background-color: $accent;
   padding: 3rem 0;
   display: flex;
+
   justify-content: center;
   align-self: center;
+}
+.converter {
+  background-color: $bg-dark;
+  color: $white;
 }
 .growth-section {
   padding: 6rem 0;
@@ -426,4 +434,29 @@ footer {
 .offer_header {
   background-color: #f3f3fc;
   padding: 3rem 0;
+}
+.count__container {
+  position: relative;
+  h6 {
+    font-size: 0.9em;
+  }
+}
+.counter__section {
+  width: 100%;
+}
+.count_text::before {
+  content: ".";
+  font-size: 2em;
+  padding: 0 0.3em;
+  color: $primary;
+}
+
+.count_text {
+  font-size: 1.2em;
+}
+.count {
+  @include media-query($medium-down) {
+    font-size: 2.5em;
+  }
+  font-size: 2.8em;
 }
