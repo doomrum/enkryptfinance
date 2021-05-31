@@ -1,7 +1,7 @@
 <div class="dash-nav">
     <a><i class="la la-bell"></i></a>
     <h5 class="h6">Admin</h5>
-    <a > <i class="las la-cog"></i></a>
+    <a> <i class="las la-cog"></i></a>
 </div>
 <div class="dash-body">
 
@@ -11,27 +11,35 @@
     <!--            <p class="h6 mgT1"></p>-->
     <div>
         <!--               <h2 class="h6 ">Deposit Form</h2>-->
-        <form class="card_w"  method="post" action="/admin/editPlan/{{plan._id}}">
-            <div class="form-input-box">
-                <input placeholder="Title" value="{{plan.title}}"  name="title" class="form-input"/>
+        <form class="card_w" method="post" action="/admin/editPlan/{{plan._id}}">
+
+            <div class="auth__inputBox">
+                <input type="text" class="form-input" name="title" placeholder="Title" value="{{plan.title}}" />
+
             </div>
 
-            <div class="form-input-box">
-                <input placeholder="cost" value="{{plan.cost}}" name="cost" class="form-input"/>
+            <div class="auth__inputBox">
+                <input type="text" class="form-input" name="cost" placeholder="Cost" value="{{plan.cost}}" />
+
             </div>
-            <div class="form-input-box">
-                <input placeholder="Duration" value="{{plan.duration}}" name="duration" class="form-input"/>
+
+
+            <div class="auth__inputBox">
+                <input placeholder="cost" value="{{plan.cost}}" name="cost" class="form-input" />
             </div>
-            <div class="form-input-box">
-                <input placeholder="profit" value="{{plan.profit}}" name="profit" class="form-input"/>
+            <div class="auth__inputBox">
+                <input placeholder="Duration" value="{{plan.duration}}" name="duration" class="form-input" />
             </div>
-            <div class="form-input-box">
-                <input placeholder="Description" value="{{plan.description}}" name="description" class="form-input"/>
+            <div class="auth__inputBox">
+                <input placeholder="profit" value="{{plan.profit}}" name="profit" class="form-input" />
+            </div>
+            <div class="auth__inputBox">
+                <input placeholder="Description" value="{{plan.description}}" name="description" class="form-input" />
             </div>
             <!--                   Toggle on request validity-->
 
 
-            <button class="btn btn-purple">Edit Plan</button>
+            <button class="btn btn-primary">Edit Plan</button>
         </form>
     </div>
 

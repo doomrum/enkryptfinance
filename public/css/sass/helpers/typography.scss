@@ -1,85 +1,88 @@
-.h1{
-  font-size: 7.2rem;
-  color:  #2b2b41;
-}
-.h2{
-  font-size: 4.8rem;
-  color:  #2b2b41;
-  @include respond(tabPort){
-    font-size: 3.6rem;
-  }
-}
-.h3{
-  font-size: 3.6rem;
-  color:  #2b2b41;
-  @include respond(tabPort){
-    font-size: 2.8rem;
-  }
-}
-.h4{
-  font-size: 2.4rem;
-  color:  #2b2b41;
-  //
-  @include respond(tabPort){
-    font-size: 1.8rem;
-  }
-}
-.h5{
-  font-size: 1.8rem;
-  color:  #2b2b41;
-}
-.h6{
-  font-size: 1.6rem;
-  color:  #2b2b41;
-}
-.h7{
-  font-size: 1.2rem;
-  color: #2b2b41;
-}
+// <<<<<<< HEAD
+// =======
+// .h1{
+//   font-size: 7.2rem;
+//   color:  #2b2b41;
+// }
+// .h2{
+//   font-size: 4.8rem;
+//   color:  #2b2b41;
+//   @include respond(tabPort){
+//     font-size: 3.6rem;
+//   }
+// }
+// .h3{
+//   font-size: 3.6rem;
+//   color:  #2b2b41;
+//   @include respond(tabPort){
+//     font-size: 2.8rem;
+//   }
+// }
+// .h4{
+//   font-size: 2.4rem;
+//   color:  #2b2b41;
+//   //
+//   @include respond(tabPort){
+//     font-size: 1.8rem;
+//   }
+// }
+// .h5{
+//   font-size: 1.8rem;
+//   color:  #2b2b41;
+// }
+// .h6{
+//   font-size: 1.6rem;
+//   color:  #2b2b41;
+// }
+// .h7{
+//   font-size: 1.2rem;
+//   color: #2b2b41;
+// }
 
-////ICON
-.iconBTC{
-  font-size: 30rem;
-}
-.icon64{
-  font-size: 6.4rem;
-}
-.icon48{
-  font-size: 4.8rem;
-}
-.icon24{
-  font-size: 2.4rem;
-}
-.icon36{
-  font-size: 3.6rem;
-}
-.icon16{
-  font-size: 1.6rem;
-}
-.link{
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: $primary;
-  text-decoration: none;
-}
-.greyText{
-  color: #73739f!important;
-}
-.centerText{
-  text-align: center;
-}
+// ////ICON
+// .iconBTC{
+//   font-size: 30rem;
+// }
+// .icon64{
+//   font-size: 6.4rem;
+// }
+// .icon48{
+//   font-size: 4.8rem;
+// }
+// .icon24{
+//   font-size: 2.4rem;
+// }
+// .icon36{
+//   font-size: 3.6rem;
+// }
+// .icon16{
+//   font-size: 1.6rem;
+// }
+// .link{
+//   font-size: 1.6rem;
+//   font-weight: bold;
+//   color: $primary;
+//   text-decoration: none;
+// }
+// .greyText{
+//   color: #73739f!important;
+// }
+// .centerText{
+//   text-align: center;
+// }
 
-.display_inline-table{
-  //display: inline-block;
-  //width: 30rem;
-}
-.white{
-  color: #f7f7f7;
-}
+// .display_inline-table{
+//   //display: inline-block;
+//   //width: 30rem;
+// }
+// .white{
+//   color: #f7f7f7;
+// }
 
-.fancy-H{
-  background-image: linear-gradient(#4233ff, #c637fa);
-  color: transparent;
-  -webkit-background-clip: text;
-  font-size: 3.6rem;
-}
+// .fancy-H{
+//   background-image: linear-gradient(#4233ff, #c637fa);
+//   color: transparent;
+//   -webkit-background-clip: text;
+//   font-size: 3.6rem;
+// }
+// >>>>>>> 2b96c8edbb2e75c0399a6f6231a76e6a4240d843

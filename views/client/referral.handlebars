@@ -2,36 +2,37 @@
 
     <h2 class="h4">Referral</h2>
     <div class="mgT1 info-msg">
-        <p class="h6">Refer A friend to join Enkrypt Finance and earn a percentage of their earnings</p>
+        <p>Refer A friend to join Enkrypt Finance and earn a percentage of their earnings</p>
     </div>
     <div class="mgT2">
         <div class="card width50">
             <h4 class="h5">Referral Link</h4>
-            <div class="form-input-box">
-                <input class="form-input" id="referral-link" value="{{referralLink}}" placeholder="Password"/>
+            <div class="auth__inputBox">
+                <input class="form-input" id="referral-link" value="{{referralLink}}" placeholder="Password" />
 
             </div>
-<!--            <input  id="referral-link" class="mgT1 h6"></input>-->
+            <!--            <input  id="referral-link" class="mgT1 h6"></input>-->
             <button id="linkBtn" class="btn btn-primary mgT1">Copy</button>
         </div>
         <div class="card width50 mgT2">
             <h5 class="h4">Send Referral invitation</h5>
             <form method="post" action="/client/referral/em/" class="mgT1">
-                <label  class="h6 mgT1" > Friend's Email</label>
-                <div class="form-input-box">
-                    <input  placeholder="email" name="email" class="form-input"/>
-                    <input hidden  placeholder="email" value="{{referralLink}}" name="refLink" class="form-input"/>
+                <label class="h6 mgT1"> Friend's Email</label>
+                <div class="auth__inputBox">
+                    <input placeholder="email" name="email" class="form-input" />
+                    <input hidden placeholder="email" value="{{referralLink}}" name="refLink" class="form-input" />
                 </div>
-                <label  class="h6 mgT1" > A brief personal note to your Friend</label>
+                <label class="h6 mgT1"> A brief personal note to your Friend</label>
                 <div class="form-input-box">
-                    <textarea placeholder="Message" class="form-textarea" name="msg" >t facere libero optio sed totam! Animi consequatur cumque debitis, dolor eius laudantium minima nihil rem ullam veritatis vero voluptatibus." class="form-textarea</textarea>
+                    <textarea placeholder="Message" class="form-textarea"
+                        name="msg">t facere libero optio sed totam! Animi consequatur cumque debitis, dolor eius laudantium minima nihil rem ullam veritatis vero voluptatibus." class="form-textarea</textarea>
                 </div>
 
-                <button class="btn btn-purple">
+                <button class="btn btn-primary">
                     <i class="las la-check-circle">
 
                     </i>
-                    <span class="mgL2">   SEND MESSAGE</span>
+                    <span class="mgL2"> SEND MESSAGE</span>
                 </button>
             </form>
         </div>
@@ -40,16 +41,16 @@
     <div class="mgT2 card width50">
         <h4 class="h4"><i class="la la-list icon24"></i><span class="mgL2">My Referrals</span></h4>
 
-     {{#if referrals}}
-         <div class="referrals">
-             <div class="referral">
-                 <p class="h5">Lukkke</p>
-                 <h5 class="h5">Work issue</h5>
-                 <p class="h6">1st May 2021</p>
-             </div>
-         </div>
-     {{else}}   <p class="h6 mgT1">You have no referrals</p>
-     {{/if}}
+        {{#if referrals}}
+        <div class="referrals">
+            <div class="referral">
+                <p class="h5">Lukkke</p>
+                <h5 class="h5">Work issue</h5>
+                <p class="h6">1st May 2021</p>
+            </div>
+        </div>
+        {{else}} <p class="h6 mgT1">You have no referrals</p>
+        {{/if}}
 
 
 

@@ -1,54 +1,52 @@
 ///MENU
-#menu{
+#menu {
   display: none;
 }
-.menu{
+.menu {
   background-color: #f7f7f7;
   justify-self: start;
   display: none;
   position: relative;
   cursor: pointer;
-  &-bar{
-    &,&:before,&:after{
+  &-bar {
+    &,
+    &:before,
+    &:after {
       width: 2.4rem;
-      height: .2rem;
+      height: 0.2rem;
       background-color: $primary;
       position: absolute;
       left: 0;
     }
-    &:before,&:after{
+    &:before,
+    &:after {
       content: " ";
-
     }
-    &:before{
-      top: -.8rem;
+    &:before {
+      top: -0.8rem;
     }
-    &:after{
-      top: .8rem;
+    &:after {
+      top: 0.8rem;
     }
-
   }
 
-  @include respond(tabPort){
+  @include respond(tabPort) {
     display: inline-block;
   }
 }
 
-#menu:checked ~ .sideBar-list{
-    @include respond(tabPort){
-      display: none;
-    }
+#menu:checked ~ .sideBar-list {
+  @include respond(tabPort) {
+    display: none;
+  }
 }
 
-
-
-.dashboard{
+.dashboard {
   display: flex;
-  @include respond(tabPort){
+  @include respond(tabPort) {
     flex-direction: column;
   }
-  .sideBar{
-    flex: .09;
+  .sideBar {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -57,15 +55,14 @@
     border-right: 1px solid $accent;
     background-color: #2b2b41;
 
-
-    &-list{
+    &-list {
       flex: 0.6;
       list-style: none;
       display: flex;
       flex-direction: column;
       width: 100%;
-      @include respond(tabPort){
-        border-radius: .8rem;
+      @include respond(tabPort) {
+        border-radius: 0.8rem;
         position: absolute;
         //flex: 1;
         z-index: 6;
@@ -73,25 +70,23 @@
         top: 6rem;
         right: -1rem;
         border: 1px solid lavender;
-        background-color: white ;
+        background-color: white;
       }
     }
-    @include respond(tabPort){
+    @include respond(tabPort) {
       flex-direction: row;
       min-height: 100%;
       max-height: 100%;
       align-items: center;
       flex: 1;
       border: none;
-//position: fixed;
-//      top: 0;
-//      left: 0;
+      //position: fixed;
+      //      top: 0;
+      //      left: 0;
       //width: 100%;
-
-
     }
-    figure{
-      font-size: 1.8rem;
+    figure {
+      //font: 1.8rem;
       font-weight: bold;
       display: flex;
       justify-content: center;
@@ -101,122 +96,116 @@
       //background-color: lavender;
       //width: 100%;
       border-bottom: 1px solid #2b2b41;
-      @include respond(tabPort){
-       border: none;
-        padding:1rem;
+      @include respond(tabPort) {
+        border: none;
+        padding: 1rem;
         justify-content: flex-start;
-
       }
-
     }
-    &-Top{
-      flex: .6;
+    &-Top {
+      flex: 0.6;
       //padding:  1.5rem ;
-      @include respond(tabPort){
-      flex: 1;
+      @include respond(tabPort) {
+        flex: 1;
         width: 100%;
-        padding:1rem 2rem;
+        padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-
       }
     }
-    &-item{
-
-      border-radius: .8rem;
+    &-item {
+      border-radius: 0.8rem;
       margin: 1rem 0;
       width: 100%;
-      &:hover{
+      &:hover {
         background-color: #222237;
-        transition: background-color .3s;
+        transition: background-color 0.3s;
 
-        .sideBar-item-link{
+        .sideBar-item-link {
           color: $primary !important;
           border-left: 4px solid $primary;
-          animation: shrink cubic-bezier(1,0,0,1) .45s .1s;
+          animation: shrink cubic-bezier(1, 0, 0, 1) 0.45s 0.1s;
         }
       }
 
-      @include respond(tabPort){
+      @include respond(tabPort) {
         margin: 0;
-
       }
 
-      &-link{
+      &-link {
         display: flex;
         align-items: center;
         color: #73739f;
-        transition: background-color .3s;
+        transition: background-color 0.3s;
         cursor: pointer;
         justify-content: center;
         align-items: center;
+        font-size: 1.2em;
         text-decoration: none;
         padding: 1.2rem 1.8rem;
-        &:active{
+        &:active {
           text-decoration: underline;
         }
 
-       span{
-         font-size: 1.8rem;
+        span {
+          //font: 1.8rem;
 
-         font-weight: bold;
-       }
-        i{
-          font-size: 3.2rem;
+          font-weight: bold;
+        }
+        i {
+          //font: 3.2rem;
           margin-right: 1rem;
         }
       }
     }
   }
 
-  .main-section{
+  .main-section {
     background-color: $accent;
     flex: 1;
     min-height: 100vh;
-    .dash-nav{
+    .dash-nav {
       width: 100%;
       display: flex;
       background-color: white;
       justify-content: flex-end;
-      padding: 2rem ;
+      padding: 2rem;
       align-items: center;
-      font-size: 1.6rem;
-      a{
-        font-size: 1.8rem;
+      font: 1.2rem;
+      a {
+        font: 1rem;
         margin: 0 1rem;
-        .la{
-          font-size: 3rem;
+        .la {
+          font: 2rem;
           color: #2b2b41;
-
-        }  .las{
-          font-size: 2.8rem;
+        }
+        .las {
+          font: 2rem;
           color: #2b2b41;
-
         }
       }
 
-
-      @include respond(tabPort){
+      @include respond(tabPort) {
         padding: 1.5rem;
         //background-color: #73739f;
         border-top: 1px solid lavender;
       }
-      &-item-link{
-        //font-size: 2.4rem;
+      &-item-link {
+        ////font: 2.4rem;
         //margin-left: 1.5rem;
         //color: $primary;
       }
     }
-    .dash-body{
-      margin-top: 4rem;
+    .dash-body {
+      // margin-top: 4rem;
 
-      padding:1.5rem 3.5rem;
-       @include respond(tabPort){
-         padding: 2rem 1.5rem;
-       }
+      padding: 1.5rem 3.5rem;
+      @include respond(tabPort) {
+        padding: 2rem 1.5rem;
+      }
 
-      .stats_icon-box{
+      .stats_icon-box {
         background-color: $accent;
         border-radius: 1.2rem;
         padding: 1.5rem;
@@ -226,66 +215,64 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        .la{
-          font-size: 3.6rem;
+        .la {
+          font-size: 2em;
           color: $darkGrey;
         }
       }
     }
   }
 }
-.stats_icon{
-  font-size: 2rem;
+.stats_icon {
+  //font: 2rem;
 }
-.logo{
+.logo {
   height: 2.4rem;
 }
-.logoout-link{
+.logoout-link {
   display: flex;
   align-items: center;
   color: $primary;
   padding: 1.2rem 1.8rem;
- cursor: pointer;
-  @include respond(tabPort){
-    padding:1.2rem ;
-    align-self: flex-end;
-    //background-color: #d7204b;
+  cursor: pointer;
+  font-size: 1.2em;
+  @include respond(tabPort) {
+    // padding: 1.2rem;
+    // align-self: flex-end;
+    // background-color: #d7204b;
   }
-  span{
-    font-size: 1.8rem;
+  span {
+    //font: 1.8rem;
 
     font-weight: bold;
   }
-  i{
-    font-size: 3.2rem;
+  i {
+    //font: 3.2rem;
     margin-left: 1rem;
   }
 }
 
-
 @keyframes shrink {
-  from{
-    transform: scale(.9);
+  from {
+    transform: scale(0.9);
   }
-  to{
+  to {
     transform: scale(1);
   }
 }
 
-
-
 ///Wallet
-.wallet-card{
+.wallet-card {
   display: flex;
   justify-content: space-between;
-  .la{
-    font-size: 6rem;
+  .la {
+    font-size: 2em;
     color: $lightGreen;
     padding: 2rem;
     background-color: #f7f7f7;
     border-radius: 1.2rem;
   }
-  .la-exchange-alt{
-    color: #EA3970;
+  .la-exchange-alt {
+    color: #ea3970;
   }
 }

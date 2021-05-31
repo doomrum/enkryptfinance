@@ -1,79 +1,108 @@
-<h6 class="h4">Account Registration</h6>
-
-
-{{#if failure_message}}
-    <div class="error-msg mgT2">
-        <h2 class="h6">{{failure_message}}</h2>
-    </div>
-{{/if}}
-<form id="signup" class=" auth-form" method="post" action="/auth/register">
-
-    <p class="h5">Estimated time to complete your registration is 2 Minutes</p>
-    <p class="h5 mgT1">Please complete the following form using English alphabet characters only.</p>
-    <p class="h5 mgT1"> Please complete the form below by using your first name and surname as they are displayed in your identity document.</p>
-    <p class="h5 mgT1">Please make sure that emails from <em class="link">support@enkryptfinance.com</em> do not get marked as spam so that you can receive all communication emails seamlessly.
-        </p>
-    <h5 class="h5 mgV2">Personal Details</h5>
-
-    <div class="grid">
-        <div class="grid-item2_4">
-            <div class="form-input-box">
-                <input id="first" class="form-input" name="firstName" placeholder="First Name"/>
-            </div>
-            <div class="form-input-box">
-                <input id="middle" class="form-input"  name="middleName" placeholder="Middle Name"/>
-
-            </div>
-            <div class="form-input-box">
-                <input id="last" class="form-input" name="lastName" placeholder="Last Name"/>
-
-            </div>
+{{> navbar}}
+<main class="auth">
+    <header>
+        <div class="auth__banner">
+            <h2 class="auth__heading">Login</h2>
         </div>
-        <div class="grid-item2_4">
-            <div class="form-input-box">
-               <select id="country" name="country" class="form-input">
-                   {{#each country}}
-                       <option>{{name}}</option>
-                   {{/each}}
-               </select>
-
-            </div>
-            <div class="form-input-box">
-                <input class="form-input" id="email" type="email" name="email" placeholder="Email"/>
-
-            </div>
-            <div class="form-input-box">
-                <input class="form-input" id="password" name="password" type="password" placeholder="Password"/>
-
-            </div>
+    </header>
+    <div class="auth__container">
+        {{#if success_message}}
+        <div class="success-card mt-1">
+            <h2 class="h5">{{success_message}}</h2>
         </div>
-    </div>
-            <div class="form-input-box">
-                <select name="code" id="code" class="form-input">
-                    {{#each country}}
-                        <option value="{{code}}">{{name}}&nbsp; +{{code}}</option>
-                    {{/each}}
-                </select>
-
-            </div>
-            <div class="form-input-box width50">
-                <input class="form-input" id="phone" type="tel" name="phone" placeholder="phone -- 805 567 5556 "/>
-            </div>
-    <div>
-        <label for="plan" class="h6">Select Plan</label>
-        <div class="form-input-box">
-            <select id="plan" name="plan" class="form-input">
-                {{#each plan}}
-                    <option value="{{_id}}">{{title}}</option>
-                {{/each}}
-            </select>
-
+        {{/if}}
+        {{#if failure_message}}
+        <div class="error-msg mgT2">
+            <h2 class="h6">{{failure_message}}</h2>
         </div>
+        {{/if}}
+
+        <form id="signup" class="auth__form" method="post" action="/auth/register">
+            <h1 class="text-primary h1">Account Registration</h1>
+
+            <p class="mt-1 mb-3">Estimated time to complete your registration is 2 Minutes</p>
+            <p class="mb-3">Please complete the following form using English alphabet characters only.</p>
+            <p class="mb-3"> Please complete the form below by using your first name and surname as they are displayed
+                in
+                your identity document.</p>
+            <p class='mb-3'>Please make sure that emails are from <em class="auth__mail"><a
+                        href="mailto:support@enkryptfinance.com">
+                        support@enkryptfinance.com
+                    </a></em> do not
+                get
+                marked as spam so that you can receive all communication emails seamlessly.
+            </p>
+            <h3 class="text-primary mt-2 mb-2">Personal Details</h3>
+
+            <div class="d-flex">
+                <div class="flex-column">
+                    <div class="auth__inputBox">
+                        <input class="form-input" name="firstName" placeholder="First Name" id="first" required />
+                    </div>
+                    <div class="auth__inputBox">
+                        <input class="form-input" name="middleName" placeholder="Middle Name" id="middle" required />
+
+                    </div>
+                    <div class="auth__inputBox">
+                        <input class="form-input" name="lastName" placeholder="Last Name" id="last"  required />
+
+                    </div>
+                </div>
+                <div class="flex-column">
+                    <div class="auth__inputBox">
+                        <select name="country" id="country" class="form-input">
+                            {{#each country}}
+                            <option>{{name}}</option>
+                            {{/each}}
+                        </select>
+
+                    </div>
+                    <div class="auth__inputBox">
+                        <input class="form-input" type="email" name="email" id="email" placeholder="Email" required />
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex-column">
+                <div class="auth__inputBox">
+                    <select name="code" id="code" class="form-input">
+                        {{#each country}}
+                        <option value="{{code}}">{{name}}&nbsp; {{code}}</option>
+                        {{/each}}
+                    </select>
+
+                </div>
+                <div class="auth__inputBox">
+                    <input class="form-input" type="tel" id="phone" name="phone" placeholder="phone" />
+                </div>
+            </div>
+            <div>
+                <label for="plan" class="h6">Select Plan</label>
+                <div class="auth__inputBox">
+                    <select id="plan" name="plan" class="form-input">
+                        {{#each plan}}
+                        <option value="{{_id}}">{{title}}</option>
+                        {{/each}}
+                    </select>
+
+                </div>
+            </div>
+            <div class="auth__inputBox">
+                <input class="form-input" name="password" id="password" type="password" placeholder="Password" required />
+
+            </div>
+
+            <div class="d-flex auth__agree">
+                <input type="checkbox" name="terms" id="terms">
+                <label for="terms">I agree to receive your newsletters, company news, and product
+                    updates.</label>
+            </div>
+            <button id="authBtn" class="btn btn-reg mt-2 mb-2">Register</button>
+            <div class="auth__account mt-3">
+                <p>Already got an Account? </p>
+                <a href="/auth/login" class="auth__register">Login</a>
+            </div>
+        </form>
     </div>
-  <div class="mgT2">
-      <input type="checkbox"  name="terms" id="terms">
-      <label class="h5 mgL2" for="terms">I agree to receive your newsletters, company news, and product updates.</label>
-  </div>
-    <button id="authBtn"   class="mgT2 btn btn-purple ">Register</button>
-    <p class="h6 mgV2">Already got an Account? <a href="/auth/login" class="link">Login</a></p>
-</form>
+</main>

@@ -1,27 +1,41 @@
-<h3 class="h5">Login</h3>
-{{#if success_message}}
-    <div class="success-card mgT1">
-        <h2 class="h5">{{success_message}}</h2>
-    </div>
-{{/if}}
+{{> navbar}}
+<main class="auth">
+    <header>
+        <div class="auth__banner">
+            <h2 class="auth__heading">Login</h2>
+        </div>
+    </header>
+    <div class="auth__container">
+        {{#if success_message}}
+        <div class="success-card mt-1">
+            <h2 class="h5">{{success_message}}</h2>
+        </div>
+        {{/if}}
+        {{#if failure_message}}
+        <div class="error-msg mgT2">
+            <h2 class="h6">{{failure_message}}</h2>
+        </div>
+        {{/if}}
+        <form class="auth__form" method="post" action="/auth/login">
+            <div>
+                <h1 class="text-primary h1">Account Login</h1>
+            </div>
+            <div class="auth__inputBox">
+                <input type="email" class="form-input" name="email" placeholder="Email" required />
 
-{{#if failure_message}}
-    <div class="error-msg mgT2">
-        <h2 class="h6">{{failure_message}}</h2>
+            </div>
+            <div class="auth__inputBox">
+                <input type="password" class="form-input" name="password" placeholder="Password" />
+            </div>
+            <div class="auth__forget">
+                <p class="text">Forgot Password?</p>
+                <a href="" class="auth__reset">Reset Password</a>
+            </div>
+            <button class="mb-2 btn btn-reg" type="sumit">Login</button>
+            <div class="auth__account">
+                <p>Don't have an Account?</p>
+                <a href="/auth/signup" class="auth__register">Register</a>
+            </div>
+        </form>
     </div>
-{{/if}}
-<form class="mgV4 auth-form"  method="post" action="/auth/login">
-    <!--                <h6 class="h5">Get best rates out of this</h6>-->
-    <p class="h6 mgT1">Fill the form to login</p>
-    <div class="form-input-box">
-        <input class="form-input" name="email" placeholder="Email"/>
-
-    </div>
-    <div class="form-input-box">
-        <input class="form-input" name="password" placeholder="Password"/>
-
-    </div>
-    <p class="h6 mgV2 red">Forgot Password? <a class="link mgL2">Reset Password</a></p>
-    <button class="mgT2 btn btn-purple ">Login</button>
-    <p class="h6 mgV2">Don't  got an Account? <a href="/auth/signup" class="link">Register</a></p>
-</form>
+</main>
