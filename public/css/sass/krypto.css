@@ -3110,6 +3110,9 @@ footer .footer-links ul li a:hover {
   border-left: 4px solid #f5b700;
   animation: shrink cubic-bezier(1, 0, 0, 1) 0.45s 0.1s;
 }
+.dashboard .sideBar-item:hover .sideBar-item-link .sideBar-item-link-overlay {
+  display: block;
+}
 .dashboard .sideBar-item:hover .sideBar-item-link .la {
   font-size: 2rem;
 }
@@ -3129,6 +3132,28 @@ footer .footer-links ul li a:hover {
   font-size: 1.2em;
   text-decoration: none;
   padding: 1.2rem 1.8rem;
+  position: relative;
+}
+.dashboard .sideBar-item-link-overlay {
+  background-color: #5cd993;
+  border-radius: 1.6rem;
+  position: absolute;
+  padding: 0.5rem;
+  right: -1.8rem;
+  color: white;
+  font-size: 0.8rem;
+  display: none;
+}
+.dashboard .sideBar-item-link-overlay:before {
+  position: absolute;
+  left: -0.5rem;
+  z-index: -2;
+  bottom: 0;
+  content: " ";
+  width: 1.8rem;
+  height: 1.8rem;
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  background-color: inherit;
 }
 .dashboard .sideBar-item-link:active {
   text-decoration: underline;

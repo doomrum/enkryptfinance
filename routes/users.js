@@ -135,9 +135,9 @@ router.get("/login", (req, res, next) => {
 
 router.post("/register", async (req, res) => {
   ////merging first, mid & last name to give full name
-  console.log('body',req.body);
-  const fullName =
-    req.body.firstName + " " + req.body.middleName + " " + req.body.lastName;
+  const middleName = req.body.middleName?req.body.middleName:' '
+    const fullName =
+    req.body.firstName + " " + middleName + " " + req.body.lastName;
   const phoneNumber = req.body.code + req.body.phone;
   const terms = req.body.terms === "on";
 

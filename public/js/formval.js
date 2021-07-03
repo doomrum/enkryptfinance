@@ -5,7 +5,6 @@ const phone = document.getElementById("phone");
 const email = document.getElementById("email");
 const plan = document.getElementById("plan");
 const first = document.getElementById("first");
-const middle = document.getElementById("middle");
 const last = document.getElementById("last");
 const country = document.getElementById("country");
 const code = document.getElementById("code");
@@ -136,7 +135,6 @@ function formValidity() {
     isValidPhone(phone) === true &&
     checkPassword(pass) === true &&
     checkName(first) === true &&
-    checkName(middle) === true &&
     checkName(last) === true &&
     isValidSelect(plan) === true &&
     isValidTerm(terms) === true &&
@@ -161,8 +159,6 @@ function formValidity() {
 form.addEventListener("input", (e) => {
   switch (e.target.name) {
     case "firstName":
-      return checkName(e.target);
-    case "middleName":
       return checkName(e.target);
     case "lastName":
       return checkName(e.target);
