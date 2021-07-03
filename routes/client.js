@@ -6,6 +6,8 @@ const transactionModel = require("../models/transaction");
 const balanceModel = require("../models/balance");
 const planModel = require("../models/plan");
 const qr = require("qrcode");
+const axios = require('axios');
+const bcrypt = require("bcrypt");
 // const cryptoData  = require('../helpers/userInfo');
 const { sendEmail } = require("../helpers/nodemailer");
 const moment = require("moment");
@@ -69,8 +71,8 @@ router.get("/wallet", async (req, res, next) => {
       balanceModel
         .findOne({ owner: req.session.access })
         .then((bal) => {
-          console.log(transactions);
-          console.log(bal);
+          // console.log(transactions);
+          // console.log(bal);
           const fullName = req.app.locals.username;
           res.render("client/wallet", {
             layout: "client",
@@ -211,7 +213,40 @@ router.get("/referral", (req, res, next) => {
       .catch((err) => err);
   });
 });
+router.get("/profile/edit/:_id", (req, res, next) => {
+    const ID = req.params._id;
 
+    userModel
+        .findOne(
+            { _id: ID },
+        )
+        .then(async (user) => {
+
+            await axios.get("https://restcountries.eu/rest/v2/all").then((response) => {
+                const countryInfo = response.data;
+                let country = [];
+                for (let i = 0; i < countryInfo.length; i++) {
+                    let item = countryInfo[i];
+                    country.push({
+                        name: item["name"],
+                        code: item["callingCodes"][0],
+                    });
+                }
+                res.render('client/editProfile',{
+                    layout: "client",
+                    title: "EnkryptFinance | Edit Profile",
+                    country: country
+                })
+            })
+                .catch(err=>{
+
+                })
+
+        })
+        .catch((err) => {
+            res.send(err);
+        });
+});
 router.post("/profile/edit/:_id", (req, res, next) => {
   const ID = req.params._id;
 
@@ -233,7 +268,7 @@ router.post("/profile/edit/:_id", (req, res, next) => {
 });
 router.get("/referral", (req, res, next) => {
   userModel.findOne({ _id: req.session.access }).then((user) => {
-    const newReferralLink = `http://:4000${req.baseUrl}/r/${
+    const newReferralLink = `http://4000${req.baseUrl}/r/${
       user.fullName.split(" ")[0]
     }`;
     const newReferral = referralModel({
@@ -283,11 +318,60 @@ router.post("/referral/em/", (req, res, next) => {
 
 router.get("/withdraw", (req, res, next) => {
   const fullName = req.app.locals.username;
-  res.render("client/withdraw", {
-    layout: "client",
-    title: "EnkryptFinance | wallet",
-    fullName,
-  });
+
+    balanceModel
+        .findOne({ owner: req.session.access })
+        .then((bal) => {
+            // console.log(transactions);
+            // console.log(bal);
+            const fullName = req.app.locals.username;
+            res.render("client/withdraw", {
+                layout: "client",
+                title: "EnkryptFinance | wallet",
+                fullName,
+                btcBalance:bal.btcBalance
+            });
+        })
+        .catch((err) => err);
+
+});
+router.post("/withdraw", (req, res, next) => {
+    ///NewTransaction
+    const fullName = req.app.locals.username;
+    userModel.findById(req.session.access)
+        .then(user=>{
+            if (user.btcBalance<req.body.amount){
+                req.flash('failure_message','error Loading Page');
+                res.redirect('/client/withdraw')
+            }
+           else{
+                const newWithdrawal = new transactionModel({
+                    type: 'Withdrawal',
+                    btcAddress: req.body.clientAddress,
+                    amount: req.body.amount,
+                    owner: req.session.access,
+                });
+                newWithdrawal.save()
+                    .then(tr=>{
+                        user.transactions.push(newWithdrawal);
+                        user.save()
+                            .then(e=>{
+                                res.render('client/payProcessing',{layout: "client",
+                                    title: "EnkryptFinance | Upgrade Plan",
+                                    fullName,})
+                            })
+                            .catch(err=>{
+                                req.flash('failure_message','transaction not successfull')
+                                res.render('client/withdraw')})
+
+                    }).catch(err=>{
+                    req.flash('failure_message','transaction not successfull')
+                    res.render('client/withdraw')
+                })
+            }
+        })
+        .catch(err=>req.flash('failure_message','error Loading Page'))
+
 });
 router.get("/upgrade", (req, res, next) => {
   const fullName = req.app.locals.username;
@@ -330,11 +414,38 @@ router.post("/upgrade/:id", (req, res, next) => {
 });
 router.get("/editPassword", (req, res, next) => {
   const fullName = req.app.locals.username;
-  res.render("client/editPassword", {
-    layout: "client",
-    title: "EnkryptFinance | Upgrade Plan",
-    fullName,
-  });
+  userModel.findById(req.session.access)
+      .lean()
+      .then((user)=>{
+          res.render("client/editPassword", {
+              layout: "client",
+              title: "EnkryptFinance | Upgrade Plan",
+              fullName,
+              user
+          });
+      })
+      .catch(err=>console.log(err))
+});
+router.post("/editPassword/:id", (req, res, next) => {
+    let newPassword = req.body.newPassword;
+  userModel.findById(req.params.id)
+      .then(async (user)=>{
+          if (newPassword!==''){
+
+              const salt = await bcrypt.genSalt(12);
+              const newPass = await bcrypt.hash(newPassword, salt);
+             user.password = newPass;
+             user.save()
+                 .then((user)=>{
+                     res.redirect('/client/profile')
+                 }).catch(err=>req.flash('failure_message','error changing password'))
+
+          }
+          res.redirect('/client/profile')
+      })
+      .catch(err=>{
+          console.log(err)
+      })
 });
 router.get("/logout", (req, res, next) => {
   req.session.destroy();

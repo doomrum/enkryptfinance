@@ -14,7 +14,7 @@
             <img src="{{data}}" />
         </div>
         <div class="auth__inputBox">
-            <input name="btcAddress" value="{{walletAddress}}" class="form-input h6">
+            <input name="btcAddress" id="copy" value="{{walletAddress}}" class="form-input h6"/>
         </div>
         {{else}}
         <div class="auth__inputBox">
@@ -29,9 +29,14 @@
             <input name="amount" placeholder="Amount" class="form-input" />
         </div>
         {{/if}}
+    {{#if data}}
+        <a id="copyBtn"  class="btn btn-primary">
+            Scan Or Copy To Pay
+        </a>
+    {{else}} <button class="btn btn-primary">
+        Pay
+    </button>
+        {{/if}}
 
-        <button class="btn btn-primary">{{#if data}}
-            Scan or Copy to Pay{{else}}pay
-            {{/if}}</button>
     </form>
 </div>

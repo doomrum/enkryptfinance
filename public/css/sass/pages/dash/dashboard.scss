@@ -54,7 +54,7 @@
     //align-items: center;
     min-height: 100vh;
     border-right: 1px solid $accent;
-    background-color: #2b2b41;
+    background-color: $bg-dark;
 
     &-list {
       flex: 1;
@@ -120,7 +120,7 @@
       margin: 1rem 0;
       width: 100%;
       &:hover {
-        background-color: #222237;
+        background-color: #163b7a;
         transition: background-color 0.3s;
 
         .sideBar-item-link {

@@ -64,14 +64,14 @@
     <div class="grid-item3_4 transaction-table-cont">
         <table class="transaction-table">
             <thead>
-            <tr><th>Transaction Id</th> <th>BTC Address</th><th><i class="la la-btc"></i>BTC</th><th>status</th></tr>
+            <tr><th>Type</th> <th>BTC Address</th><th><i class="la la-btc"></i>BTC</th><th>status</th></tr>
             </thead>
             <tbody>
 
             {{#if userInfo.transactions}}
                 {{#each userInfo.transactions}}
 
-                    <tr><td>{{_id}}</td><td>{{btcAddress}}</td><td>{{amount}}</td><td  class="{{status}}">{{status}}</td></tr>
+                    <tr><td>{{type}}</td><td>{{btcAddress}}</td><td>{{amount}}</td><td  class="{{status}}">{{status}}</td></tr>
                 {{/each}}
             {{/if}}
             </tbody>
@@ -93,7 +93,7 @@
 
             </h3>
 
-            <a href="/client/upgrade" class="btn btn-purple mgT1"><span>Upgrade </span> <i class="la la-chevron-circle-up"></i></a>
+<!--            <a href="/client/upgrade" class="btn btn-purple mgT1"><span>Upgrade </span> <i class="la la-chevron-circle-up"></i></a>-->
         </div>
         <!--                           <div class="card mgT2">-->
 

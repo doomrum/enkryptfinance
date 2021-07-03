@@ -99,3 +99,19 @@
 .form-msg {
   padding: 1.8rem 2rem;
 }
+
+.form{
+  .form-h{
+    font-size: 1.8rem;
+  }
+  .form-input-box{
+    background-color: #f7f7f7;
+    margin: 1rem 0;
+    input,select{
+      border: none;
+      padding: 1rem 1.4rem;
+      background-color: inherit;
+      width: 100%;
+    }
+  }
+}

@@ -3036,7 +3036,7 @@ footer .footer-links ul li a:hover {
   flex-direction: column;
   min-height: 100vh;
   border-right: 1px solid #f3f3fc;
-  background-color: #2b2b41;
+  background-color: #002e52;
 }
 .dashboard .sideBar-list {
   flex: 1;
@@ -3102,7 +3102,7 @@ footer .footer-links ul li a:hover {
   width: 100%;
 }
 .dashboard .sideBar-item:hover {
-  background-color: #222237;
+  background-color: #163b7a;
   transition: background-color 0.3s;
 }
 .dashboard .sideBar-item:hover .sideBar-item-link {
@@ -3743,6 +3743,20 @@ ol li {
 
 .form-msg {
   padding: 1.8rem 2rem;
+}
+
+.form .form-h {
+  font-size: 1.8rem;
+}
+.form .form-input-box {
+  background-color: #f7f7f7;
+  margin: 1rem 0;
+}
+.form .form-input-box input, .form .form-input-box select {
+  border: none;
+  padding: 1rem 1.4rem;
+  background-color: inherit;
+  width: 100%;
 }
 
 /*# sourceMappingURL=krypto.css.map */
