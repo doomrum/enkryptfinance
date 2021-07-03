@@ -16,7 +16,7 @@
         <aside class="sideBar">
             <div class="sideBar-Top">
                 <figure>
-                    <a href="/" class="link"> <img src="/images/lgo.jpg" class="logo" /></a>
+                    <a href="/" class="link"> <img src="/images/logo.svg" class="logo" /></a>
                 </figure>
                 <input type="checkbox" checked id="menu" />
                 <label for="menu" class="menu">
@@ -74,33 +74,22 @@
 
 
 
-    <!--        CHAT AREA TOGGLEABLE-->
-
-    <div class="chat_area" id="chat_area">
-        <div class="chat_area-top">
-            <div>
-                <h5>Enhance Trade Chat</h5>
-                <p>Send Us a message </p>
-            </div>
-            <i class="la la-minus-circle icon24" id="toggleChatBtn"></i>
-        </div>
-        <div class="chat_area-body" id="chat_area-body">
-
-        </div>
-        <div class="chart_area-msgBox">
-            <form class="chat-form" id="chat_form">
-                <input id="chat_input" placeholder="Type here" name="message" />
-                <button class="chat_btn"><i class="la la-send"></i></button>
-            </form>
-        </div>
-
-    </div>
-    <div class="msg_btn" id="msg_btn">
-        <i class="la la-comment-dots"></i>
-    </div>
 
 
 
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/60dc096665b7290ac638a027/1f9do9f2p';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
     <script src="https://cdn.socket.io/3.1.3/socket.io.min.js"
         integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh"
         crossorigin="anonymous"></script>
