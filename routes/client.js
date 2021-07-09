@@ -88,7 +88,7 @@ router.get("/wallet", async (req, res, next) => {
 });
 router.get("/ticket", (req, res, next) => {
   ticketModel
-    .find({})
+    .find({owner:req.session.access})
     .lean()
     .then((t) => {
       function ticketSort(t) {
@@ -113,7 +113,12 @@ router.get("/ticket", (req, res, next) => {
         fullName,
       });
     })
-    .catch((err) => res.send(err));
+    .catch((err) => {
+        res.render("client/ticket", {
+            layout: "client",
+            title: "EnkryptFinance | Support Ticket"
+        });
+    });
 });
 router.post("/ticket/create", (req, res, next) => {
   const newTicket = ticketModel({
