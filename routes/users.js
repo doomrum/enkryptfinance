@@ -5,10 +5,9 @@ const bcrypt = require("bcrypt");
 const userModel = require("../models/user");
 const planModel = require("../models/plan");
 const balanceModel = require("../models/balance");
-const { emailSender } = require("../helpers/nodemailer");
 const { validateLogin, validateNewUser } = require("../helpers/authValidator");
 const axios = require("axios");
-
+const Emailing = require('../helpers/Emailing');
 
 /* GET users listing. */
 router.get("/signup", async function (req, res, next) {
@@ -76,34 +75,42 @@ router.post('/register/:id', async (req, res) => {
         userModel.findByIdAndUpdate({_id: req.params.id}, {
             urlProofId: proofIdUrl,
             urlProofResidence: proofResUrl
-        })
+        },{useFindAndModify:false})
             .then(async (user) => {
                 // let userInitial = user;
                 ///Email is sent here
-                const params = {
-                    senderName: "Okibe Obinna",
-                    sender: "EnkryptFinance",
-                    client: user.email,
-                    text: `Hi ${user.fullName}, welcome enkryptFinance`,
-                    subject: `Welcome to enkryptFinance`,
-                    user: user.fullName,
-                    data: {
-                        header: `Hi ${user.fullName.split(' ', 1)}! welcome to enkryptFinance`,
-                        body: "Welcome to a world of investment and opportunities",
-                        imgPath: './public/images/logo.png',
-                        imgPathBody: './public/images/welcome3.png',
-                        imgName: 'logo.png',
-                        imgNameBody: 'welcome3.png',
-                        cid: 'unique@enkryptfin',
-                        cidBody: 'uniquebody@enkrypt',
 
-                    },
-                    req,
-                    res
+                ///HEADER
+                let emailHeader = {
+                    subject:'Welcome to enkrypt Finance',
+                    redirect:'/auth/login',
+                    id: user._id
+                }
 
-                };
+                ///MESSAGE
+                let emailMessage = {
+                    header: `Hi ${user.fullName.split(' ', 1)}! welcome to enkryptFinance`,
+                    imgPath: './public/images/welcome3.png',
+                    cidName: 'welcome3.png',
+                    cid: 'uniquebody@enkrypt',
+                }
 
-                await emailSender(params);
+                ///ACCOUNT MAILING
+                let emailAccount = {
+                    sender:'Tonda Miles',
+                    email: 'support'
+                }
+
+                ///RECEIVER
+                let mailedTo = {
+                    receiver: user.email,
+                    message:`Hi ${user.fullName.split(' ', 1)}, welcome to enkryptFinance`,
+                    header:'',
+                    name:user.fullName,
+                }
+
+                let newEmail = new Emailing('signUp', emailHeader, emailMessage, emailAccount,mailedTo,{req,res});
+                await newEmail.sendEmail();
 
 
             })
@@ -231,6 +238,7 @@ router.post("/login", async (req, res) => {
             req.session.access = user._id;
             req.session.accessType = "admin";
             req.app.locals.username = user.fullName;
+
             req.flash("success_message", "welcome");
             res.redirect("/admin");
           }
@@ -241,8 +249,37 @@ router.post("/login", async (req, res) => {
             req.session.access = user._id;
             req.session.accessType = "client";
             req.app.locals.username = user.fullName;
-            req.flash("success_message", "welcome ");
+              ///HEADER
+              let emailHeader = {
+                  subject:'New login ⭐⭐',
+                  redirect:'/client'
+              }
 
+
+              ///MESSAGE
+              let emailMessage = {
+                  header: `Hi ${user.fullName.split(' ', 1)}, There has been a new login to your account`,
+                  imgPath: './public/images/login.png',
+                  cidName: 'login.png',
+                  cid: 'uniquebody@enkrypt',
+              }
+
+              ///ACCOUNT MAILING
+              let emailAccount = {
+                  sender:'Enkrypt Support',
+                  email: 'support'
+              }
+
+              ///RECEIVER
+              let mailedTo = {
+                  receiver: user.email,
+                  message: user.email,
+                  header:'New login to Your Account 💥',
+                  name:user.fullName,
+              }
+
+              let newEmail = new Emailing('login', emailHeader, emailMessage, emailAccount,mailedTo,{req,res});
+              await newEmail.sendEmail();
             res.redirect("/client");
           }
         } else {
@@ -259,5 +296,19 @@ router.post("/login", async (req, res) => {
     res.redirect("/auth/login");
   }
 });
+
+router.get('/verification/:id',(req,res)=>{
+    userModel.findById(req.params.id)
+        .then(user=>{
+            if (user.verified===true){
+                res.render('client/allVerified',{layout: 'verified'})
+            }
+            user.verified = true;
+            user.save()
+                .then(u=>{
+                    res.render('client/verified',{layout: 'verified'})
+                })
+        })
+})
 
 module.exports = router;

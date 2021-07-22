@@ -161,6 +161,8 @@ function createEmailContent(data){
 `);
 }
 
+
+
 async function emailSender(params) {
     // let testAccount = await mailer.createTestAccount();
 
@@ -175,7 +177,7 @@ async function emailSender(params) {
             dkim:{
                 domainName: 'enkryptfinance.com',
                 keySelector: '2017',
-                privateKey: process.env["EmailPrivateKey"],
+                privateKey: process.env["EmailPrivateKey "],
                 cacheDir: false
             },
 
