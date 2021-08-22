@@ -84,7 +84,7 @@
         <main class="main-section">
             <div class="dash-nav">
                 <h5 class="h6">{{fullName}}</h5>
-                <a><i class="la la-bell"></i></a>
+<!--                <a><i class="la la-bell"></i></a>-->
             </div>
             <div class="dash-body">
                 {{{body}}}
@@ -121,12 +121,10 @@
 
     copyBtn.addEventListener('click',(e)=>copySelected(e))
 </script>
-    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js"
-        integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh"
-        crossorigin="anonymous"></script>
+
+
+    <script src="/socket.io/socket.io.js"></script>
     <script src="./js/ref.js"></script>
-    <script src="./js/navigation.js"></script>
-    <script src="./js/chat.js"></script>
     <script src="./js/liveCryptoTable.js"></script>
 
 

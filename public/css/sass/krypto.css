@@ -1272,6 +1272,10 @@ li {
   width: 100%;
 }
 
+.crypto-icons {
+  height: 4rem;
+}
+
 .flowImgP {
   width: 100%;
   border-radius: 0.5rem;
@@ -1458,7 +1462,7 @@ li {
 }
 
 .menu_home {
-  background-color: #ffffff;
+  background-color: rgba(16, 18, 27, 0.4);
   justify-self: flex-end;
   display: none;
   position: relative;
@@ -1889,6 +1893,9 @@ li {
   align-items: center;
   font-size: 1.6rem;
 }
+.dashboard .main-section .dash-nav .h6 {
+  color: #f7f7f7;
+}
 .dashboard .main-section .dash-nav a {
   font-size: 1.8rem;
   margin: 0 1rem;
@@ -1904,7 +1911,7 @@ li {
 @media screen and (max-width: 56.5em) {
   .dashboard .main-section .dash-nav {
     padding: 1.5rem;
-    border-top: 1px solid lavender;
+    border-top: 1px solid var(--border-color);
   }
 }
 .dashboard .main-section .dash-body {
@@ -2327,7 +2334,7 @@ ol li {
   padding: 1rem 0;
   width: 100%;
   border-radius: 1rem;
-  background-color: #f7f7f7;
+  background-color: rgba(16, 18, 27, 0.4);
 }
 .form-input-box:not(:first-child) {
   margin: 2rem 0;
@@ -2338,6 +2345,9 @@ ol li {
   background-color: inherit;
   width: 100%;
 }
+.form-input-box .form-input::-webkit-input-placeholder {
+  color: #f7f7f7;
+}
 .form-input-box .form-input:active, .form-input-box .form-input:focus {
   outline: none;
 }
@@ -2345,7 +2355,11 @@ ol li {
   border: none;
   padding: 1rem 1.6rem;
   background-color: inherit;
+  color: white;
   width: 100%;
+}
+.form-input-box .form-input-select option {
+  color: white;
 }
 .form-input-box .form-input-select option:focus {
   outline: none;

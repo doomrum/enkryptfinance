@@ -48,6 +48,7 @@ io.on('connection', socket => {
     axios.get(url)
       .then(async (result) => {
         socket.emit('liveChat', result.data)
+
       })
 
       .catch(err => {

@@ -52,7 +52,7 @@
   padding: 1rem 0;
   width: 100%;
   border-radius: 1rem;
-  background-color: #f7f7f7;
+  background-color: rgba(16 18 27 / 40%);
   //border-radius: 1rem;
 &:not(:first-child){
   margin: 2rem 0;
@@ -63,7 +63,9 @@
     padding:1rem 1.6rem ;
     background-color: inherit;
     width: 100%;
-
+    &::-webkit-input-placeholder{
+      color: #f7f7f7;
+    }
     &:active,&:focus{
 
       outline: none;
@@ -73,9 +75,11 @@
     border: none;
     padding:1rem 1.6rem ;
     background-color: inherit;
+
+    color: white;
     width: 100%;
     option{
-
+    color: white;
 &:focus{
   outline: none;
 }

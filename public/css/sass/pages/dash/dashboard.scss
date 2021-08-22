@@ -203,6 +203,9 @@
       padding: 2rem ;
       align-items: center;
       font-size: 1.6rem;
+      .h6{
+        color: #f7f7f7;
+      }
       a{
         font-size: 1.8rem;
         margin: 0 1rem;
@@ -221,11 +224,11 @@
       @include respond(tabPort){
         padding: 1.5rem;
         //background-color: #73739f;
-        border-top: 1px solid lavender;
+        border-top: 1px solid var(--border-color);
       }
       &-item-link{
-        //font-size: 2.4rem;
-        //margin-left: 1.5rem;
+        ////font-size: 2.4rem;
+        ////margin-left: 1.5rem;
         //color: $primary;
       }
     }
