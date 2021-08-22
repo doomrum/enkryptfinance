@@ -1420,8 +1420,8 @@ li {
     right: 0;
     height: 70vh;
     overflow-y: scroll;
-    border: 1px solid lavender;
-    background-color: white;
+    border: 1px solid var(--border-color);
+    background-color: rgba(16, 18, 27, 0.9);
   }
   .home-nav-list::-webkit-scrollbar {
     display: none;
@@ -1436,7 +1436,7 @@ li {
     padding: 2rem;
   }
   .home-nav-list-item:hover {
-    background-color: #f3f3f3;
+    background-color: rgba(16, 18, 27, 0.8);
   }
 }
 .home-nav-list-item-link {
