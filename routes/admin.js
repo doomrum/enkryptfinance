@@ -176,6 +176,16 @@ router.post("/users/edit/:id", async (req, res) => {
     })
     .catch((err) => res.status(403).send(err));
 });
+router.get("/users/deleteUser/:id", async (req, res) => {
+   UserModel.deleteOne({_id: req.params.id})
+       .then(()=>{
+           res.redirect("/admin/users");
+       })
+       .catch(err=>{
+           res.status(403).send(err);
+       })
+
+});
 
 router.post("/editPlan/:id", async (req, res, next) => {
   await PlanModel.findOne({ _id: req.params.id })
