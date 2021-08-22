@@ -1,5 +1,6 @@
 .transaction-table{
   width: 100%;
+  border: 2px solid var(--border-color);
   border-collapse: collapse;
   text-align: left;
   font-size: 1.6rem;
@@ -7,17 +8,19 @@
   padding: 1.5rem;
   overflow: hidden;
 
+  background-color: rgba(16 18 27 / 40%);
+  box-shadow: 0 4px 40px rgba(0,0,0,.3);
   &:hover{
     box-shadow: 0 4px 40px rgba(0,0,0,.1);
   }
   thead{
-    border-bottom: 1px solid $accent;
+    //border-bottom: 1px solid $accent;
     th{
       padding: 1.5rem 1.8rem;
-      background-color: white;
-      color: $grey;
+      //background-color: white;
+      color: white;
       text-transform: uppercase;
-      border-bottom: 1px solid $accent;
+      //border-bottom: 1px solid $accent;
       //&:hover{
       //  transform: scale(1.1);
       //
@@ -26,14 +29,17 @@
 
   }
   tbody{
-    background-color: white;
+    background-color:inherit;
     tr:hover{
-      background-color: $accent;
+      background-image: linear-gradient(34deg,#0002,#0009);
+      backdrop-filter: blur(10px);
     }
     td{
       padding: 1.8rem 2rem;
+      color: #f7f7f7;
     }
   }
+
 
 }
 .transaction-table-cont{
@@ -47,4 +53,48 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
   }
+}
+
+.glassTable{
+  width: 100%;
+  border: 2px solid #101010;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0,0,0,.3);
+
+  background-color: rgba(16 18 27 / 40%);
+  &:hover{
+    box-shadow: 0 4px 40px rgba(0,0,0,.1);
+  }
+  thead{
+    //border-bottom: 1px solid $accent;
+    th{
+      padding: 1.5rem 1.8rem;
+      //background-color: white;
+      color: white;
+      text-transform: uppercase;
+      //border-bottom: 1px solid $accent;
+      //&:hover{
+      //  transform: scale(1.1);
+      //
+      //}
+    }
+
+  }
+  tbody{
+    background-color:inherit;
+    tr:hover{
+      background-image: linear-gradient(34deg,#0002,#0009);
+      backdrop-filter: blur(10px);
+    }
+    td{
+      padding: 1.8rem 2rem;
+      color: #f7f7f7;
+    }
+  }
+
 }

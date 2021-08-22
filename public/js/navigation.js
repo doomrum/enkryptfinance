@@ -11,7 +11,7 @@ function checkScroll(el) {
 
   // console.log(scrollHeight + 'is here' + scrollPosY);
   if (scrollPosY > scrollHeight) {
-    el.style.backgroundColor = "white";
+    el.style.backgroundColor = "rgba(16 18 27 / 80%)";
     el.style.width = window.innerWidth.toString();
 
     el.style.boxShadow = "0 10px 30px rgba(0,0,0,.1)";

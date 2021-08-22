@@ -1,20 +1,39 @@
 .card{
   padding: 2.5rem;
   border-radius: 1.8rem;
-  background-color: white;
+  background-color: rgba(16 18 27 / 40%);
+  backdrop-filter: blur(50px);
   box-shadow: 0 10px 20px rgba(0,0,0,.1);
+
+  border: .5px solid var(--border-color);
   transition: all .35s ease;
   &:hover{
     box-shadow: 0 25px 40px rgba(0,0,0,.1);
   }
 
 }
+.card-content{
+  padding: 2.5rem;
+  border-radius: 1.8rem;
+  background-color: rgba(16 18 27 / 40%);
+  backdrop-filter: blur(50px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.1);
+  transition: all .35s ease;
+}
+.card-content-fl{
+  padding: 2.5rem;
+  background-color: rgba(16 18 27 / 40%);
+  backdrop-filter: blur(50px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.1);
+  transition: all .35s ease;
+}
 
 .card_w{
   padding:2.5rem;
   border-radius: 1.8rem;
  margin-top: 4rem;
-  background-color: white;
+  background-color: rgba(16 18 27 / 40%);
+  backdrop-filter: blur(50px);
   width: 30%;
   @include respond(tabLand){
     width: 70%;

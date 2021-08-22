@@ -1,7 +1,7 @@
 .tabs{
   .tab{
     margin-bottom: 2rem;
-    background-color: var(--deepblue3);
+    background-color: rgba(16 18 27 / 30%);
     padding: 1.5rem;
     border-radius: 2rem;
     .tab-label{
@@ -36,7 +36,7 @@
       font-size: 1.6rem;
       padding: 1rem 3rem;
       border-radius: 1rem;
-      background-color: #f7f7f7;
+      background-color: rgba(16 18 27 / 40%);
       margin-top: 1rem;
       transition: all .35s ease-in;
       animation: slideInDown .5s ease-in-out forwards;
@@ -44,6 +44,7 @@
       height: 0;
       transform-origin: 0;
       display: none;
+      color: #f7f7f7;
     }
     input:checked ~ .tab-content{
       height: auto;
@@ -112,7 +113,8 @@
 .auth__container{
   //position: absolute;
   width: 40%;
-  background-color: white;
+  background-color: rgba(16 18 27 / 40%);
+  backdrop-filter: blur(50px);
   border-radius: 1.5rem;
   padding: 1.6rem;
   margin: 1rem auto;
@@ -132,8 +134,10 @@
   position: relative;
   .auth__inputBox{
     padding: .2rem .6rem;
-    background-color: #f7f7f7;
+    background-color: rgba(16 18 27 / 20%);
+    border: 2px solid var(--border-color);
     margin: 1.6rem;
+    border-radius: 5px;
     input{
       background-color: inherit;
       border: none;

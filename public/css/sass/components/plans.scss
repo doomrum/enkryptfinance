@@ -15,7 +15,8 @@
   min-width: 30rem;
   border-radius: 0 2rem 0 2rem;
   transition: transform .35s ease-out;
-  background-color: white;
+
+  background-color: rgba(16 18 27 / 50%);
   margin: 4rem 0;
   //border: 1px solid #b8b8b8;
   animation: bgRotate 4s ease-in alternate;
@@ -28,7 +29,7 @@
     text-align: center;
     }
   .plan-card-h{
-    color: #101010;
+    color: #f7f7f7;
   }
 
   .overlayText{
@@ -58,7 +59,7 @@
     }
     li{
       font-size: 1.6rem;
-      //color: #f7f7f7;
+      color: #f7f7f7;
     }
   }
   box-shadow: 0 10px 20px rgba(0,0,0,.1);

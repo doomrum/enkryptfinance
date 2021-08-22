@@ -3,25 +3,25 @@
 }
 .h1{
   font-size: 7.2rem;
-  color:  #2b2b41;
+  color:  #f7f7f7;
 }
 .h2{
   font-size: 4.8rem;
-  color:  #2b2b41;
+  color:  #f7f7f7;
   @include respond(tabPort){
     font-size: 3.6rem;
   }
 }
 .h3{
   font-size: 3.6rem;
-  color:  #2b2b41;
+  color:  #f7f7f7;
   @include respond(tabPort){
     font-size: 2.8rem;
   }
 }
 .h4{
   font-size: 2.4rem;
-  color:  #2b2b41;
+  color:  #f7f7f7;
   //
   @include respond(tabPort){
     font-size: 1.8rem;
@@ -29,15 +29,15 @@
 }
 .h5{
   font-size: 1.8rem;
-  color:  #2b2b41;
+  color:  #f7f7f7;
 }
 .h6{
   font-size: 1.6rem;
-  color:  #2b2b41;
+  color:  #f7f7f7;
 }
 .h7{
   font-size: 1.2rem;
-  color: #2b2b41;
+  color: #f7f7f7;
 }
 
 ////ICON

@@ -44,18 +44,25 @@
 
 .dashboard{
   display: flex;
+
+  background-color: rgba(16 18 27 / 60%);
+  backdrop-filter: blur(50px);
+  opacity: 1;
   @include respond(tabPort){
     flex-direction: column;
   }
   .sideBar{
     flex: .09;
     display: flex;
+    white-space: nowrap;
+    background-color: rgba(16 18 27 / 40%);
     justify-content: space-between;
     flex-direction: column;
+    border-right: 1px solid var(--border-color);
     //align-items: center;
     min-height: 100vh;
     //border-right: 1px solid $accent;
-    background-color: #101010;
+    //background-color: #101010;
 
     &-list{
       //flex: 0.6;
@@ -75,7 +82,8 @@
 
         height: auto;
         border: 1px solid #2b3441;
-        background-color: #101010;
+
+        background-color: rgba(16 18 27 / 99%);
       }
     }
     @include respond(tabPort){
@@ -132,10 +140,10 @@
       position: relative;
       display: flex;
       &:hover{
-        background-color: #151515;
-        transition: background-color .3s;
+        //background-color: #151515;
+        //transition: background-color .3s;
         .sideBar-item-link{
-          color: $primary !important;
+          color: white ;
           animation: shrink cubic-bezier(1,0,0,1) .45s .1s;
 
         }
@@ -154,7 +162,7 @@
       &-link{
         display: flex;
         align-items: center;
-        color: #707070;
+        color: var(--inactive);
         transition: background-color .3s;
         cursor: pointer;
         justify-content: center;
@@ -176,13 +184,21 @@
 
   .main-section{
 
-    background-color:$accent;
+    //background-color:rgba(16 18 27 / 40%);
+
+
+
+
+
     flex: 1;
     min-height: 100vh;
     .dash-nav{
       width: 100%;
       display: flex;
-      background-color: #f7f7f7;
+      //background-color: #f7f7f7;
+
+      background-color: rgba(16 18 27 / 40%);
+      backdrop-filter: blur(20px);
       justify-content: flex-end;
       padding: 2rem ;
       align-items: center;
@@ -215,7 +231,8 @@
     }
     .dash-body{
       margin-top: 4rem;
-
+      opacity: .8;
+      width: 100%;
       padding:1.5rem 3.5rem;
        @include respond(tabPort){
          padding: 2rem 1.5rem;
@@ -304,4 +321,20 @@
   .la-exchange-alt{
     color: #EA3970;
   }
+}
+
+
+.table_newContainer{
+  backdrop-filter: blur(25px);
+  width: 100%;
+  @include respond(tabPort){
+    overflow-x: auto;
+    border-radius:1rem;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+  }
+
 }
