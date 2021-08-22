@@ -1,117 +1,92 @@
-.auth {
-  &__container {
-    margin: 0 auto;
-    width: 50%;
-    margin-top: -100px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    padding: 2em;
-    background: $white;
-    color: $text-color;
-    border-radius: 10px;
-    @include media-query($medium) {
-      width: 80%;
-      margin-top: 0;
-      background: none;
-      box-shadow: none;
-    }
-    @include media-query($medium-down) {
-      width: 100%;
-      padding: 0 1em;
-      margin-top: 0;
-      background: none;
-      box-shadow: none;
-    }
-    p {
-      font-size: 0.9em;
-    }
-  }
-  &__form {
-    margin: 1rem 0;
-  }
-  &__banner {
-    background-color: #2b2b41;
-    background-image: url("../../images/gtstart.jpg");
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    vertical-align: center;
-    height: 50vh;
+.Auth-box{
+  display: flex;
+
+  &-side{
     padding: 2rem;
+    background-image:linear-gradient(60deg, rgba(172, 156, 229, 0.7),rgba(0,0,0,.2)) ,url("../assets/bg2.jpg");
+    background-size:cover;
+    background-position: center;
+    flex: .4;
+    height:100vh;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //background-color: #3f09cd;
+    @include respond(tabPort){
+      flex: .2;
+    }
+    &-link{
+      font-size: 1.4rem;
+      color: #f3f3fc;
+      a {
+        text-decoration: none;
+        color: #73739f;
+      }
+    }
+  }
+  &-main{
+    padding: 4rem;
+    flex: .6;
+    display: flex;
+    align-items: flex-start;
     justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    @include respond(tabPort){
+      width: 100%;
+      flex: .8;
+    }
   }
-  &__heading {
-    color: #fff;
+}
+.auth-form{
+  width: 50%;
+  margin-top: 6rem;
+  @include respond(tabLand){
+    width: 80%;
   }
-  &__inputBox {
+@include respond(tabPort){
+  width: 100%;
+}
+
+}
+.form-input-box{
+  padding: 1rem 0;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #f7f7f7;
+  //border-radius: 1rem;
+&:not(:first-child){
+  margin: 2rem 0;
+
+}
+  .form-input{
+    border: none;
+    padding:1rem 1.6rem ;
+    background-color: inherit;
     width: 100%;
-    border-radius: 1rem;
-    background-color: #f7f7f7;
-    &:not(:first-child) {
-      margin: 1em 0;
-    }
-    .form-input {
-      border: none;
-      padding: 1rem 1.6rem;
-      background-color: inherit;
-      width: 100%;
 
-      &:active,
-      &:focus {
-        outline: none;
-      }
-    }
-    .form-input-select {
-      border: none;
-      padding: 1rem 1.6rem;
-      background-color: inherit;
-      width: 100%;
-      option {
-        &:focus {
-          outline: none;
-        }
-      }
-    }
-  }
-  &__forget {
-    display: flex;
-    margin-bottom: 1em;
-    flex-wrap: wrap;
-    a {
-      margin-left: 1em;
-      text-decoration: none;
-      color: $primary;
-    }
-  }
-  &__account {
-    display: flex;
-    flex-wrap: wrap;
-    a {
-      margin-left: 1em;
-      color: $primary;
-    }
-  }
-  &__agree {
-    font-size: 0.9em;
-  }
-}
-.form-msg {
-  padding: 1.8rem 2rem;
-}
+    &:active,&:focus{
 
-.form{
-  .form-h{
-    font-size: 1.8rem;
-  }
-  .form-input-box{
-    background-color: #f7f7f7;
-    margin: 1rem 0;
-    input,select{
-      border: none;
-      padding: 1rem 1.4rem;
-      background-color: inherit;
-      width: 100%;
+      outline: none;
     }
+  }
+  .form-input-select{
+    border: none;
+    padding:1rem 1.6rem ;
+    background-color: inherit;
+    width: 100%;
+    option{
+
+&:focus{
+  outline: none;
+}
+    }
+  }
+  .form-textarea{
+    width: 100%;
+    background-color: inherit;
+    padding: .2rem;
+    resize: none;
+    height: 8rem;
+    border: none;
   }
 }

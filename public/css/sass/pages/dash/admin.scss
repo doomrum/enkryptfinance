@@ -61,7 +61,7 @@
             border-radius: 1.5rem;
             background-color: #3f09cd;
             text-align: center;
-            //font: 1.45rem;
+            font-size: 1.45rem;
             color: $accent;
           }
         }
@@ -114,7 +114,7 @@
           background-color: #e5b4e5;
           padding: 1rem;
           border-radius: 0 1.5rem 1.5rem 1.5rem;
-          //font: 1.4rem;
+          font-size: 1.4rem;
           margin: 1rem 0;
           display: inline-block;
       }
@@ -125,7 +125,7 @@
           background-color: #e2e2e2;
           padding: 1rem;
           border-radius: 1.5rem 1.5rem 1.5rem 0;
-          //font: 1.4rem;
+          font-size: 1.4rem;
           margin: 1rem 0;
           display: inline-block;
         }
@@ -159,4 +159,44 @@
   background-color: $accent;
   padding: 1.5rem;
   border-radius: 1.5rem;
+}
+
+.centre-imgText{
+  background-image: url("../../images/pexels-enes-ersahin-6988826.jpg");
+  position: relative;
+  background-size: cover;
+  height: 50vh;
+  padding: 2rem;
+  filter: grayscale(25px);
+}
+.profile-img{
+  width: 20rem;
+ height: 20rem;
+  border-radius: 100rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.profile-data{
+  list-style: none;
+  li{
+    padding: 1rem;
+    border-radius: .5rem;
+    transition: all .35s ease-out;
+    &:hover{
+      background-color: $accent;
+    }
+  }
+}
+
+.tickets{
+  margin: 1.5rem 0;
+  .ticket{
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    padding: 1.5rem;
+    justify-content: space-between;
+  }
 }

@@ -1,97 +1,104 @@
-* {
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,200;1,300;1,400;1,600&display=swap');
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Poppins, sans-serif, cursive;
+  font-family: 'Poppins',
+  Roboto,Raleway,sans-serif;
 }
 
-option {
-  background-color: #f7f7f7;
-  border: none;
+
+:root{
+  --dark: #000814;
+  --deepblue:#001329;
+  --deepblue2:#001d3d;
+  --deepblue3:#001d3d;
+  --blue:#014E88;
+  --gold:#ffd60a;
+  --gold2:#ffc300;
+  --inbetweenGold:#807c33;
+  --red: #f7365d;
+  --deepred:#530303;
+  --green:#62EEA1;
+  --limegreen:#29CB29;
+  --deepgreen:#074121;
 }
-select {
-  border: none;
+html{
+  font-size: 62.25%;
+
+  @include respond(tabLand){
+    font-size: 68.75%;
+  }
+  @include respond(tabPort){
+    font-size: 62.5%;
+  }
+
+  @include respond(bigScreen){
+    font-size: 75%;
+  }
+}
+body{
+  //background-color: $accent;
 }
 
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  height: 100%;
-  width: 100%;
-}
 
-@include media-query($medium-up) {
-  .container {
-    width: 100%;
+
+footer{
+  padding: 2rem 0;
+  background-color: var(--deepblue3);
+  color: #f7f7f7;
+  border-top: 8px solid $primary;
+  .footer_cont{
+    margin: 10rem auto 0 auto;
+    width: 70%;
+    @include respond(tabPort){
+      margin: 5rem auto 0 auto;
+      width: 90%;
+    }
+  }
+  p,h4{
+    color: #f7f7f7!important;
+  }
+  .footer_list{
+    list-style: none;
+    li{
+  margin: 1.65rem 0;
+      a{
+        font-size: 1.6rem;
+        text-decoration: none;
+        color: #f7f7f7;
+        transition: color .35s ease-in-out;
+        &:hover{
+          color: $primary2;
+        }
+      }
+    }
   }
 }
 
-@include media-query($large) {
-  .container {
-    width: 970px;
-  }
+.footer__socialSection{
+  padding: 2rem 0;
+
+   a{
+     text-decoration: none;
+     transition: color .35s ease-in-out;
+
+     i{
+       font-size: 4.8rem;
+       color: #f7f7f7;
+       &:hover{
+         color: $primary2;
+       }
+     }
+   }
 }
-@include media-query($large-up) {
-  .container {
-    width: 1050px;
-  }
+.company{
+  font-size: 1.6rem;
+  color: #008bf8;
 }
 
-.text-center {
-  text-align: center;
-}
 
-.text {
-  color: $text-color-shade;
-}
-.icon48 {
-  font-size: 2em;
-}
-
-.text-primary {
-  color: $primary;
-}
-
-.red {
-  color: #ef3945 !important;
-}
-.yellow {
-  color: #ecc353 !important;
-}
-.success {
-  color: mediumseagreen !important;
-}
-.blue {
-  color: deepskyblue !important;
-}
-.pending {
-  color: coral !important;
-}
-.dark {
-  color: $text-color !important;
-}
-.bg-success {
-  background-color: #d5ffe8 !important;
-}
-.bg-yell {
-  background-color: #fffbce !important;
-}
-.h1 {
-  font-size: 1.5em;
-}
-select {
-  border: none;
-}
-.error-page-center {
-  width: 50vw;
-  margin: 12rem auto;
-}
-
-.text-md-center {
-  @include media-query($small) {
-    text-align: center;
-    justify-content: center;
-  }
+.logo{
+  height: 3.6rem;
 }

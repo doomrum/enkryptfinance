@@ -7,7 +7,6 @@
     "test": "nodemon ./bin/www",
     "scss": "sass --watch ./public/css/sass/krypto.scss:./public/css/sass/krypto.css "
   },
-
   "dependencies": {
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",

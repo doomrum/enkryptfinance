@@ -1,5 +1,5 @@
-.home-nav {
-  padding: 1rem 1.5rem;
+.home-nav{
+  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,54 +10,60 @@
   width: 100%;
   //background-color: rgba(43, 43, 65, 0.9);
   z-index: 6;
-  transition: all 0.35s ease-in;
+  transition: all .35s ease-in;
   //background-color: rgba(43, 43, 65, 0.1);
-  @include respond(tabPort) {
+  @include respond(tabPort){
+
   }
-  &-list {
+  &-list{
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex: 0.6;
-    @include respond(tabPort) {
+    flex: .5;
+    @include respond(tabPort){
+      flex: 1;
       width: 100%;
-      padding: 1.2rem;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;
+
       justify-content: space-between;
       align-items: center;
       flex-direction: column;
       position: absolute;
-      flex: 0.6;
+      //flex: 1;
       z-index: 6;
-      top: 0;
+      top: 6.5rem;
       right: 0;
-      height: 100vh;
+      height: 70vh;
+      overflow-y: scroll;
       border: 1px solid lavender;
-      background-color: white;
+      background-color: white ;
     }
-
-    &-item {
+    &-item{
       cursor: pointer;
-      @include respond(tabPort) {
-        border-bottom: 2px solid lavender;
+      @include respond(tabPort){
         width: 100%;
-        padding: 1.6rem;
-        &:last-child,
-        &:nth-child(6) {
-          border-bottom: none;
+        padding: 2rem;
+        &:hover{
+          background-color: #f3f3f3;
         }
       }
 
-      &-link {
+      &-link{
         text-decoration: none;
-        //font: 1.6rem;
+        font-size: 1.6rem;
         font-weight: 400;
-        color: $white;
-        &:hover {
-          color: lighten($primary, 3%);
-          @include respond(tabPort) {
+        color: #f7f7f7;
+
+        &:hover{
+          @include respond(tabPort){
             font-weight: bold;
-            //font: 1.8rem;
+            font-size: 1.8rem;
+            padding: 2rem;
           }
         }
       }
@@ -65,11 +71,11 @@
   }
 }
 
-#menu_home {
+#menu_home{
   display: none;
 }
 
-.menu_home {
+.menu_home{
   background-color: #ffffff;
   justify-self: flex-end;
   display: none;
@@ -77,70 +83,74 @@
   cursor: pointer;
   padding: 2.3rem;
   width: 2.5rem;
-  margin-right: 0.5rem;
-  border-radius: 1rem;
-  z-index: 20;
-  &-bar {
-    &,
-    &:before,
-    &:after {
+  margin-right: .5rem;
+  //border-radius: 1rem;
+  z-index: 7;
+  &-bar{
+    &,&:before,&:after{
       width: 2.4rem;
-      height: 0.3rem;
-      background-color: #3f09cd;
+      height: .3rem;
+      background-image: repeating-conic-gradient($primary2, var(--deepblue));
       position: absolute;
       border-radius: 3rem;
-      transition: all 0.35s;
-      left: 0.5rem;
-      @include respond(tabPort) {
+      transition: all .35s;
+      left: .5rem;
+      @include respond(tabPort){
         //background-color: white;
       }
     }
-    &:before,
-    &:after {
+    &:before,&:after{
       content: " ";
+
     }
-    &:before {
-      top: -0.6rem;
+    &:before{
+      top: -.6rem;
     }
-    &:after {
-      top: 0.6rem;
+    &:after{
+      top: .6rem;
     }
+
   }
 
-  @include respond(tabPort) {
+
+  @include respond(tabPort){
     display: inline-block;
   }
 }
 
-#menu_home:checked ~ .home-nav-list {
-  @include respond(tabPort) {
+#menu_home:checked ~ .home-nav-list{
+  @include respond(tabPort){
     display: none;
   }
 }
-#menu_home ~ .menu_home > .menu_home-bar:before {
-  transform: rotate(45deg) translate(0.75rem, 1.25rem);
+#menu_home ~ .menu_home > .menu_home-bar:before{
+  transform: rotate(45deg) translate(.75rem,1.25rem);
 }
-#menu_home ~ .menu_home > .menu_home-bar {
+#menu_home ~ .menu_home > .menu_home-bar{
   background-color: transparent;
 }
-#menu_home ~ .menu_home > .menu_home-bar:after {
-  transform: rotate(-45deg) translate(0.75rem, -1.25rem);
+#menu_home ~ .menu_home > .menu_home-bar:after{
+  transform: rotate(-45deg)  translate(.75rem,-1.25rem);
 }
-#menu_home:checked ~ .menu_home > .menu_home-bar:before {
+#menu_home:checked ~ .menu_home > .menu_home-bar:before{
   transform: rotate(0deg);
 }
-#menu_home:checked ~ .menu_home > .menu_home-bar:after {
+#menu_home:checked ~ .menu_home > .menu_home-bar:after{
   transform: rotate(0deg);
 }
 
+
+
+
+
+
+
 .header {
   position: relative;
-  // background-image: url("../../images/topbg.jpg");
-  //clip-path: polygon(0 0, 100% 100%, 100% 100%, 100% 100%);
-  height: 70vh;
-  padding: 2rem;
+  height: 80vh;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -149,18 +159,18 @@
   }
 
   h1 {
-    color: #f6f4eb;
+    color: #f7f7f7;
   }
 
   p {
-    color: $white;
+    color: #f7f7f7;
 
     a {
-      color: $white;
+      color: #f7f7f7;
       text-decoration: none;
-      //font: 1.2rem;
+      font-size: 1.2rem;
       @include respond(phone) {
-        //font: 1rem;
+        font-size: 1rem;
       }
     }
   }
@@ -174,289 +184,169 @@
   }
 }
 
-.home_layout {
+.home_layout{
   width: 70%;
-  margin: 2rem auto;
-
-  @include respond(tabPort) {
-    // margin: 5rem auto;
-    width: 90%;
-  }
-}
-.liveCrypto-section {
-  width: 70%;
-  //background-color: #73739f;
   margin: 10rem auto;
-  @include respond(tabPort) {
+
+  @include respond(tabPort){
     margin: 5rem auto;
     width: 90%;
   }
+
 }
-.crypto-card {
+.liveCrypto-section{
+  width: 70%;
+  //background-color: #73739f;
+  margin: 10rem auto;
+  @include respond(tabPort){
+    margin: 5rem auto;
+    width: 90%;
+  }
+
+}
+.crypto-card{
   border-radius: 1.2rem;
   padding: 2.5rem;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  transition: all 0.35s ease-in;
+  transition: all .35s ease-in;
   border: 1px solid lavender;
-  &-text {
-    .crytpo-currency {
+  &-text{
+    .crytpo-currency{
       background-color: $grey;
     }
-    .crypto-rate {
-      //font: 2.4rem;
-    }
+  .crypto-rate{
+    font-size: 2.4rem;
   }
-  &-icon-box {
+  }
+  &-icon-box{
     margin-right: 1rem;
     //background-color: #f4f4fa;
     padding: 2rem;
     border-radius: 1rem;
-    &-icon {
+    &-icon{
       text-align: center;
-      .la-btc {
-        color: #ecc353;
-        //font: 2.8rem;
-      }
-      .la-ethereum {
-        color: #53eca5;
-        //font: 2.8rem;
-      }
+     .la-btc{
+       color: #ecc353;
+       font-size: 2.8rem;
+     }
+      .la-ethereum{
+       color: #53eca5;
+       font-size: 2.8rem;
+     }
     }
+
   }
-  &:hover {
+  &:hover{
     background-color: white;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
   }
 }
+
+
 
 ///PLAN SECTION
 
-.plan {
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    @include media-query($medium-down) {
-      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    }
-    @include media-query($small) {
-      grid-template-columns: 1fr;
-    }
-  }
-}
 
-footer {
-  background-color: $bg-dark;
-  border-top: 4px solid $dark-light;
-  .footer_cont {
-    margin: 10rem auto 0 auto;
-    width: 70%;
-    @include respond(tabPort) {
-      margin: 5rem auto 0 auto;
-      width: 90%;
-    }
-  }
-  p,
-  h4 {
-    color: $white !important;
-  }
-  ol {
-    li {
-      //font: 1.8rem;
-      color: #73739f;
-      margin: 1.6rem 0;
-    }
-  }
-  .footer-links {
-    width: 70%;
-    padding: 2rem 0;
 
-    ul {
-      list-style: none;
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      @include respond(tabPort) {
-        flex-direction: column;
-      }
-      li {
-        font-weight: bold;
-        @include respond(tabPort) {
-          margin: 2rem 0;
-        }
-        a {
-          text-decoration: none;
-          //font: 1.8rem;
-          cursor: pointer;
-          transition: all 0.35s;
-          color: $white;
-          &:hover {
-            color: #73739f;
-          }
-        }
-      }
-    }
-  }
-}
-.about {
-  &-card {
+.about{
+  //padding: 2rem 0;
+  &-card{
     padding: 1.5rem;
-    cursor: pointer;
+    //background-color: #ef3945;
     text-align: center;
-    @include respond(tabPort) {
+    @include respond(tabPort){
       margin: 2rem 0;
     }
-    .la {
-      color: $dark-light;
+    .la{
+      color: #3378EA;
       font-weight: bold;
-      font-size: 3rem;
-      transition: all 0.3s ease-in;
-      &:hover {
-        color: $yellow;
+      font-size: 6rem;
+      transition: all .3s ease-in;
+      &:hover{
+        color: #1FBA8F;
         transform: rotate(15deg);
       }
     }
   }
 }
-.top-container {
+.top-container{
   position: relative;
-  background-color: #285d94;
-  height: 6rem;
+  background-color: var(--deepblue);
+  height: 8rem;
   display: block;
 }
 
+
 ///COVID
-.covid {
-  padding: 3rem;
+.covid{
+
+  padding: 6rem 4rem;
+  //width: 80%;
   margin: 0 auto;
   text-align: center;
-  background-color: $bg-dark;
-  border-bottom: 4px solid $dark-light;
-  // border-top: 4px solid $bg-dark;
-  h2 {
-    font-size: 1.5em;
-    color: $white !important;
+  background-color: rgb(0, 46, 82);
+  color: #f7f7f7;
+  border-bottom: 8px solid var(--inbetweenGold);
+
+  h2,p{
+    color: #f7f7f7!important;
   }
-  p {
-    font-size: 1em;
-    color: $white !important;
-  }
-  a {
+  a{
     color: $primary !important;
-    cursor: pointer;
-    font-size: 1em;
   }
 }
-.service {
-  background-color: $bg-dark;
-  padding: 3rem;
-  color: $primary;
-  &__heading {
-    color: $white;
-    font-size: 2em;
-  }
-  ol {
-    font-size: 1em;
-  }
-}
-.black-box {
+.black-box{
   padding: 3rem;
   width: 100%;
   text-align: center;
-  background-color: $bg-dark;
-  color: $white;
-  border-bottom: 4px solid $dark-light;
-  h2,
-  p {
-    color: $white !important;
+  background-color: rgb(0, 46, 82);
+  color: #f7f7f7;
+  border-bottom: 8px solid var(--blue);
+  h2,p{
+    color: #f7f7f7!important;
   }
-  .offer_link {
-    color: $primary;
-    font-size: 0.8em;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .offer_link:hover {
-    color: lighten($primary, 8%);
-  }
-}
-.choice {
-  &__heading {
-    font-size: 2em;
-    color: primary;
-  }
-  .image__part {
-    width: auto;
-  }
-  &__img {
-    height: 600px;
-    width: auto;
-    @include media-query($large-down) {
-      height: 500px;
-    }
-    @include media-query($medium-down) {
-      height: 300px;
-    }
-  }
-}
-.process-section {
-  background-color: $accent;
-  padding: 3rem 0;
-  display: flex;
 
-  justify-content: center;
-  align-self: center;
 }
-.converter {
-  background-color: $bg-dark;
-  color: $white;
+.text{
+  color: $primary2;
+  margin-bottom: 1rem;
 }
-.growth-section {
+
+.process-section{
+  background-color: $accent;
   padding: 6rem 0;
-  background-color: $white;
-  // img {
-  //   height: 50rem;
-  //   @include respond(phone) {
-  //     height: 100%;
-  //     width: 100%;
-  //   }
-  // }
 }
-.faq-section {
+.growth-section{
+  padding: 6rem 0;
+  background-color: #cbecf1;
+  img{
+    height: 50rem;
+    @include respond(phone){
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+.faq-section{
   background-color: $accent;
   padding: 2rem 0;
 }
-.getting-section {
+.getting-section{
   background-color: #f3f3fc;
   padding: 3rem 0;
 }
-.offer_header {
+.offer_header{
   background-color: #f3f3fc;
   padding: 3rem 0;
-}
-.count__container {
-  position: relative;
-  h6 {
-    font-size: 0.9em;
-  }
-}
-.counter__section {
-  width: 100%;
-}
-.count_text::before {
-  content: ".";
-  font-size: 2em;
-  padding: 0 0.3em;
-  color: $primary;
+
 }
 
-.count_text {
-  font-size: 1.2em;
-}
-.count {
-  @include media-query($medium-down) {
-    font-size: 2.5em;
+.invest-section{
+  h4,h2,p{
+    color: #f7f7f7;
   }
-  font-size: 2.8em;
 }
+
+

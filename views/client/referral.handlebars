@@ -2,13 +2,13 @@
 
     <h2 class="h4">Referral</h2>
     <div class="mgT1 info-msg">
-        <p>Refer A friend to join Enkrypt Finance and earn a percentage of their earnings</p>
+        <p class="h5">Refer A friend to join Enkrypt Finance and earn a percentage of their earnings</p>
     </div>
     <div class="mgT2">
         <div class="card width50">
             <h4 class="h5">Referral Link</h4>
-            <div class="auth__inputBox">
-                <input class="form-input" id="copy" value="{{referralLink}}" placeholder="Password" />
+            <div class="form-input-box">
+                <input class="form-input" disabled id="copy" value="{{referralLink}}" placeholder="Password" />
 
             </div>
             <!--            <input  id="referral-link" class="mgT1 h6"></input>-->
@@ -18,7 +18,7 @@
             <h5 class="h4">Send Referral invitation</h5>
             <form method="post" action="/client/referral/em/" class="mgT1">
                 <label class="h6 mgT1"> Friend's Email</label>
-                <div class="auth__inputBox">
+                <div class="form-input-box">
                     <input placeholder="email" name="email" class="form-input" />
                     <input hidden placeholder="email" value="{{referralLink}}" name="refLink" class="form-input" />
                 </div>

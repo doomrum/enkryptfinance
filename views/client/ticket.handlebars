@@ -1,8 +1,8 @@
 <div>
-    <div class="tickets-section">
+    <div class="tickets-section width50">
         <h2 class="h4"> <i class="las la-envelope icon24"></i> Messages</h2>
 
-        <div class="tickets mgT2">
+        <div class="tickets  mgT2">
             {{#if tickets}}
             {{#each tickets}}
             <div class="ticket">
@@ -18,12 +18,12 @@
 
         </div>
     </div>
-    <h2 class="h4">Open a newTicket</h2>
+    <h2 class="h5">Open a newTicket</h2>
     <form method="post" action="/client/ticket/create" class=" card_w width50 mgT2">
-        <div class="auth__inputBox">
+        <div class="form-input-box">
             <input placeholder="Subject" name="subject" class="form-input" />
         </div>
-        <div class="auth__inputBox">
+        <div class="form-input-box">
             <textarea placeholder="Message" name="msg" class="form-textarea"></textarea>
         </div>
 

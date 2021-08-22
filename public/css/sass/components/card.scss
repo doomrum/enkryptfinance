@@ -1,216 +1,102 @@
-.card {
-  padding: 1.8rem;
-  border-radius: 1.2rem;
-  transition: box-shadow 0.35s ease-out;
+.card{
+  padding: 2.5rem;
+  border-radius: 1.8rem;
   background-color: white;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
-  &:hover {
-    transform: scale(1.05);
-    cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,.1);
+  transition: all .35s ease;
+  &:hover{
+    box-shadow: 0 25px 40px rgba(0,0,0,.1);
   }
+
 }
 
-.card_w {
-  padding: 2.5rem;
-  border-radius: 1.2rem;
-  margin-top: 4rem;
+.card_w{
+  padding:2.5rem;
+  border-radius: 1.8rem;
+ margin-top: 4rem;
   background-color: white;
   width: 30%;
-  @include respond(tabLand) {
+  @include respond(tabLand){
     width: 70%;
   }
-  @include respond(tabPort) {
+  @include respond(tabPort){
     width: 100%;
   }
 }
-.grid {
+.grid{
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  @include respond(tabPort) {
+  @include respond(tabPort){
     flex-direction: column;
-    align-items: center;
   }
-  &-item-f {
+  &-item-f{
     flex: 1;
   }
-  &-item1_4 {
-    flex: 0.25;
-    margin: 1rem;
-    @include respond(tabLand) {
-      flex: 0.5;
-      width: 100%;
+  &-item1_4{
+    flex: .25;
+    margin:1rem;
+    @include respond(tabLand){
+      flex:.5;
+      width:100% ;
     }
-    @include respond(tabPort) {
-      flex: 1;
-      width: 100%;
-      margin: 1rem 0;
+     @include respond(tabPort){
+    flex:1;
+       width:100% ;
+       margin: 1rem 0;
+  }
+  }
+  &-item2_4{
+    flex: .50;
+    margin:1rem;
+     @include respond(tabLand){
+      flex:.5;
+      width:100% ;
     }
+     @include respond(tabPort){
+    flex:1;
+       width:100% ;
+       margin: 1rem 0;
   }
-  &-item2_4 {
-    flex: 0.5;
-    margin: 1rem;
-    @include respond(tabLand) {
-      flex: 0.5;
-      width: 100%;
+  }
+  &-item3_4{
+    flex: .75;
+    margin:1rem;
+     @include respond(tabLand){
+      flex:.5;
+      width:100% ;
     }
-    @include respond(tabPort) {
-      flex: 1;
-      width: 100%;
-      margin: 1rem 0;
+     @include respond(tabPort){
+    flex:1;
+       width:100% ;
+       margin: 1rem 0;
+  }
+  }
+  &-item1_3{
+    flex: .33;
+    margin:1rem;
+     @include respond(tabLand){
+      flex:.5;
+      width:100% ;
     }
+     @include respond(tabPort){
+    flex:1;
+       width:100%;
+       margin: 1rem 0;
   }
-  &-item3_4 {
-    flex: 0.75;
-    margin: 1rem;
-    @include respond(tabLand) {
-      flex: 0.5;
-      width: 100%;
+  }
+  &-item2_3{
+    flex: .62;
+    margin:1rem;
+     @include respond(tabLand){
+      flex:.5;
+      width:100% ;
     }
-    @include respond(tabPort) {
-      flex: 1;
-      width: 100%;
-      margin: 1rem 0;
-    }
+     @include respond(tabPort){
+    flex:1;
+       width:100% ;
+       margin: 1rem 0;
   }
-  &-item1_3 {
-    flex: 0.33;
-    margin: 1rem;
-    @include respond(tabLand) {
-      flex: 0.5;
-      width: 100%;
-    }
-    @include respond(tabPort) {
-      flex: 1;
-      width: 100%;
-      margin: 1rem 0;
-    }
-  }
-  &-item2_3 {
-    flex: 0.62;
-    margin: 1rem;
-    @include respond(tabLand) {
-      flex: 0.5;
-      width: 100%;
-    }
-    @include respond(tabPort) {
-      flex: 1;
-      width: 100%;
-      margin: 1rem 0;
-    }
-  }
-}
-
-.success-card {
-  padding: 1rem;
-  border-radius: 1.2rem;
-  background-color: #bdf6bd;
-  background-image: linear-gradient(#d4fdea, #c8fae1);
-  width: 80%;
-  margin: 2rem auto;
-  //transform: translate(-50%,-50%);
-  border-radius: 1rem;
-  display: inline-block;
-  transition: all 0.35s;
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  a {
-    color: $green;
-  }
-  z-index: 250;
-}
-
-.info-card {
-  padding: 1rem;
-  border-radius: 1.2rem;
-  background-color: #f3f3fc;
-}
-
-.plan-btn {
-  position: absolute;
-  bottom: -1rem;
-  left: 50%;
-  transform: translate(-50%, 5%);
-  z-index: 0;
-}
-
-.plan-card {
-  text-align: center;
-  background-color: #ffffff;
-  // border-radius: 3rem;
-  padding: 2rem;
-  transition: all 0.35s;
-  //border: 1px solid lavender;
-  position: relative;
-  // min-width: 35rem;
-  margin: 2.4rem 1rem;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-
-  @include respond(tabPort) {
-    margin: 1rem auto;
-  }
-
-  .overlayText {
-    position: absolute;
-    top: 2.4rem;
-    left: -1rem;
-    padding: 1.5rem;
-    border-radius: 0 3rem 3rem 0;
-    //font-size: 1.8rem;
-    color: #f7f7f7;
-    background-image: linear-gradient(#4233ff, #5a35f3);
-  }
-  .plan-card-h {
-    background-image: linear-gradient(#4233ff, #c637fa);
-    color: $white;
-  }
-  .plan-details {
-    padding: 1rem;
-    border-radius: 1.2rem;
-    //background-color: #f3f3fc;
-    ul {
-      list-style: none;
-      padding: 1rem 0;
-      border-top: 1px solid lavender;
-      li {
-        padding: 1rem 0;
-        //font-size: 2.4rem;
-      }
-    }
-  }
-
-  &:hover {
-    transform: translateY(-0.5rem) scale(1.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.referral-coupon {
-  background-color: lavender;
-  padding: 2.4rem;
-  border-radius: 20rem;
-  text-align: center;
-  background-image: linear-gradient(#aca6ff, #e299ff);
-}
-.pending-msg {
-  background-color: #bb80091a;
-  color: #e3b341;
-  padding: 2.4rem;
-  font-size: 2.4rem;
-  display: inline-block;
-  margin-top: 2rem;
-  h5 {
-    display: flex;
-    align-items: center;
-  }
-  .las {
-    font-size: 4.8rem;
-    color: #e3b341;
   }
 }

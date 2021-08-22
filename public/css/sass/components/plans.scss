@@ -1,0 +1,125 @@
+.flowImgP{
+  width: 100%;
+  border-radius: .5rem;
+}
+
+
+.plan-section{
+
+  background-image:linear-gradient(-45deg, rgba(0, 29, 61, 0.7), hsl(0,120%, 60%,.2),url('/images/home/hero-4.jpg'));
+  background-position: right;
+  background-size: cover;
+
+}
+.plan-card{
+  min-width: 30rem;
+  border-radius: 0 2rem 0 2rem;
+  transition: transform .35s ease-out;
+  background-color: white;
+  margin: 4rem 0;
+  //border: 1px solid #b8b8b8;
+  animation: bgRotate 4s ease-in alternate;
+
+  @include respond(tabLand){
+    margin: 4rem 2rem;
+  }
+  @include respond(tabPort){
+      margin: 4rem 0;
+    text-align: center;
+    }
+  .plan-card-h{
+    color: #101010;
+  }
+
+  .overlayText{
+    background-image: repeating-conic-gradient($primary2, var(--deepblue));
+    padding: 1rem;
+    margin: 2rem 0 0 2rem;
+    border-radius: 2rem 0 0 2rem;
+    p{
+      color: #f7f7f7!important;
+    }
+  }
+
+  &-body{
+    padding: 2rem;
+    .plan-details{
+
+
+    }
+
+
+  }
+  ul{
+    list-style: none;
+    @include respond(tabPort){
+
+      text-align:left;
+    }
+    li{
+      font-size: 1.6rem;
+      //color: #f7f7f7;
+    }
+  }
+  box-shadow: 0 10px 20px rgba(0,0,0,.1);
+  &:hover{
+    transform: translateY(-.5rem) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    border: none;
+  }
+
+  position: relative;
+}
+@keyframes bgRotate {
+
+}
+
+.plan-btn{
+  &:link,&{
+    text-decoration: none;
+    padding: 1.6rem 2.4rem;
+    border-radius: .8rem;
+    font-size: 1.6rem;
+    //background-image: repeating-conic-gradient(var(--gold),var(--deepblue3),var(--green));
+    text-align: center;
+    color: #f7f7f7;
+    width: 100%;
+    margin-top: 2rem;
+    display: block;
+    background-color: var(--blue);
+overflow: hidden;
+    &:hover{
+      background-color: #015799;
+    }
+  }
+  position: relative;
+  &:before{
+    position: absolute;
+    content: " ";
+    left: 0;
+    top: 0;
+    height: 100%;
+    width:100%;
+    background-image: linear-gradient(45deg,var(--blue),var(--deepblue));
+    //transition: width .25s ease-out;
+    border-radius: .5rem;
+    background-position: left;
+    display:none;
+    animation: slide .5s ease-out alternate;
+    transform: scale(0);
+  }
+  &:hover:before{
+    display: block;
+    background-position: 1rem;
+  }
+  span,.las{
+    z-index: 2;
+  }
+}
+@keyframes slide {
+  100%{
+    background-position: right;
+    transform: scale(1.5);
+  }
+
+}

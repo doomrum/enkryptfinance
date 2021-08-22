@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-const axios = require("axios");
 const planModel = require("../models/plan");
 
 /* GET home page. */
@@ -17,14 +16,14 @@ router.get("/", async function (req, res, next) {
 });
 
 router.get("/about", async function (req, res, next) {
-  res.render("about", { title: "EnkryptFinance | About", layout: "main" });
+  res.render("about", { title: "EnkryptFinance | About", layout: "index" });
 });
 router.get("/terms", async function (req, res, next) {
   res.render("terms", { title: "EnkryptFinance |Terms", layout: "index" });
 });
 
 router.get("/faqs", async function (req, res, next) {
-  res.render("faqs", { title: "EnkryptFinance | FAQs", layout: "main" });
+  res.render("faqs", { title: "EnkryptFinance | FAQs", layout: "index" });
 });
 
 router.get("/plans", async function (req, res, next) {

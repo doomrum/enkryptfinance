@@ -13,11 +13,11 @@
         <div class="form-btc_box">
             <img src="{{data}}" />
         </div>
-        <div class="auth__inputBox">
+        <div class="form-input-box">
             <input name="btcAddress" id="copy" value="{{walletAddress}}" class="form-input h6"/>
         </div>
         {{else}}
-        <div class="auth__inputBox">
+        <div class="form-input-box">
             <select name="investmentType" class="form-input-select">
                 {{#each plan}}
                 <option value="{{title}}">{{title}}</option>
@@ -25,7 +25,7 @@
                 {{/each}}
             </select>
         </div>
-        <div class="auth__inputBox">
+        <div class="form-input-box">
             <input name="amount" placeholder="Amount" class="form-input" />
         </div>
         {{/if}}

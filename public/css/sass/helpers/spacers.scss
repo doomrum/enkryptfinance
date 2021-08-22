@@ -1,109 +1,115 @@
-.mg-0 {
-  margin: 0 !important;
-}
-.mgT1 {
+.mgT1{
   margin-top: 1rem;
-  @include respond(tabPort) {
-  }
+   @include respond(tabPort){
+
+
+    }
 }
-.mgT2 {
+.mgT2{
   margin-top: 2rem;
-  @include respond(tabPort) {
-  }
+   @include respond(tabPort){
+
+
+    }
 }
-.mgT3 {
+.mgT3{
   margin-top: 3rem;
-  @include respond(tabPort) {
+   @include respond(tabPort){
     margin-top: 2rem;
-  }
+
+    }
 }
-.mgT4 {
+.mgT4{
   margin-top: 4rem;
-  @include respond(tabPort) {
-    margin-top: 3rem;
-  }
+   @include respond(tabPort){
+     margin-top: 3rem;
+
+    }
 }
-.mgV6 {
+.mgV6{
   margin: 8rem 0;
 }
-.mgV2 {
-  margin: 2rem 0;
-  @include respond(tabPort) {
-  }
+.mgV2{
+  margin:2rem 0;
+   @include respond(tabPort){
+
+
+    }
 }
-.mgV4 {
+.mgV4{
   margin: 4rem 0;
-  @include respond(tabPort) {
+  @include respond(tabPort){
     margin: 3rem;
+
   }
 }
-.mgL2 {
+.mgL2{
   margin-left: 2rem;
 }
-.pdMax {
+.pdMax{
   padding: 6rem;
-  @include respond(tabPort) {
-    padding: 3rem;
-  }
+   @include respond(tabPort){
+      padding: 3rem;
+
+    }
 }
-.pdV2 {
+.pdV2{
   padding: 0 2rem;
-  @include respond(tabPort) {
-  }
+   @include respond(tabPort){
+
+
+    }
 }
-.pd2 {
+.pd2{
   padding: 2rem;
-  @include respond(tabPort) {
-  }
+   @include respond(tabPort){
+
+
+    }
 }
-.pd4 {
+.pd4{
   padding: 4rem;
-  @include respond(tabPort) {
-    padding: 2rem;
-  }
+   @include respond(tabPort){
+   padding: 2rem;
+
+    }
 }
-.width50 {
+.width50{
   width: 50%;
-  @include respond(tabPort) {
-    width: 100%;
-  }
+   @include respond(tabPort){
+      width: 100%;
+
+    }
 }
 
-.display_flex {
+.display_flex{
   justify-content: space-between;
   display: flex;
 }
-.profile-centre {
-  justify-content: center;
-  display: flex;
-  align-items: center;
-}
-.centre-imgText {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-image: url("/images/topbg.jpg");
-  background-size: contain;
-  height: 30rem;
-  width: 100%;
-}
-
-.center_home {
+.center_home{
   margin: 10rem auto;
 }
 
-.wallet-just {
-  justify-content: normal !important;
+.wallet-just{
+  justify-content: normal!important;
 }
-.flowImg {
+.flowImg{
   width: 100%;
 }
-.flowImgP {
-  //height: 20rem;
-  margin: 0 auto;
-  width: 100%;
-  border-radius: 1rem;
+.width90{
+  width: 90%;
+  @include respond(tabPort){
+    width: 99.9%;
+  }
 }
-.flex-dir-c {
-  flex-direction: column !important;
+.width35{
+  width: 35%;
 }
+.width65_{
+  width: 65%;
+  @include respond(tabPort){
+    width: 90%;
+
+  }
+}
+

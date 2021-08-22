@@ -151,6 +151,7 @@ function formValidity() {
     } else {
       const errEl = document.createElement("small");
       errEl.id = "small_error";
+      errEl.className += "small_error";
       errEl.innerText = "Please Make sure all the fields are filled";
       form.appendChild(errEl);
     }
