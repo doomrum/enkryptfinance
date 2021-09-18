@@ -48,3 +48,20 @@ $lightRed: #d78496;
 .H20{
   height: 20rem;
 }
+.overflow-hidden{
+  overflow-x: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.list-style-none{
+  list-style: none;
+}
+.white{
+  color: white;
+}
+.jus-end{
+  justify-content: flex-end;
+}

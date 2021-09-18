@@ -44,9 +44,9 @@
 
 .dashboard{
   display: flex;
-
-  background-color: rgba(16 18 27 / 60%);
-  backdrop-filter: blur(50px);
+  //background-color: rgba(16 18 27 / 99%);
+  background-image: linear-gradient(rgba(16 18 27 / 90%),rgba(16 18 27 / 99%));
+  backdrop-filter: blur(10px);
   opacity: 1;
   @include respond(tabPort){
     flex-direction: column;
@@ -55,8 +55,8 @@
     flex: .09;
     display: flex;
     white-space: nowrap;
-    background-color: rgba(16 18 27 / 40%);
-    justify-content: space-between;
+    background-color: rgba(16 18 27 / 90%);
+    //justify-content: space-between;
     flex-direction: column;
     border-right: 1px solid var(--border-color);
     //align-items: center;
@@ -100,7 +100,7 @@
 
 
     }    &-Top{
-           flex: .6;
+           //flex: .6;
            padding:  1.5rem ;
            @include respond(tabPort){
              flex: 1;
@@ -140,7 +140,7 @@
       position: relative;
       display: flex;
       &:hover{
-        //background-color: #151515;
+        background-color: #000000;
         //transition: background-color .3s;
         .sideBar-item-link{
           color: white ;
@@ -195,10 +195,10 @@
     .dash-nav{
       width: 100%;
       display: flex;
-      //background-color: #f7f7f7;
+      //background-color: #101010;
 
-      background-color: rgba(16 18 27 / 40%);
-      backdrop-filter: blur(20px);
+      background-color: rgba(16 18 27 / 90%);
+      //backdrop-filter: blur(20px);
       justify-content: flex-end;
       padding: 2rem ;
       align-items: center;
@@ -242,7 +242,7 @@
        }
 
       .stats_icon-box{
-        background-color: $accent;
+        background-color: #000000;
         border-radius: 1.2rem;
         padding: 1.5rem;
         margin-right: 1rem;

@@ -15,6 +15,11 @@ const schema = mongoose.Schema({
         type: String,
         required:true,
     },
+    hash:String,
+    hash_plan:{
+        ref: 'plans',
+        type:mongoose.Schema.Types.ObjectId,
+    },
     owner:{
         ref: 'users',
         type:mongoose.Schema.Types.ObjectId,

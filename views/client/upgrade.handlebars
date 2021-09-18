@@ -1,23 +1,17 @@
 <h6 class="h4">Upgrade Plan</h6>
 
-<form class="card auth-form" method="post" action="/client/upgrade/{{userId}}">
+<form class="card auth-form" method="post" action="/client/upgrade/verify/{{userId}}">
     <label class="h5" for="plans">Select Plan</label>
             <div class="form-input-box">
 
                 <select id="plans" name="plan" class="form-input">
                    {{#each plan}}
-                       <option  value="{{title}}">{{title}}</option>
+                       <option  value="{{_id}}">{{title}}</option>
                    {{/each}}
                 </select>
 
             </div>
-    {{#if selectedPlan}}
-        <div class="form-input-box">
 
-            <p id="plans" name="plan" class="form-input">{{selectedPlan}}</p>
-
-        </div>
-    {{/if}}
 
 
     <button  class="mgT2 btn btn-green "> Save Upgrade</button>

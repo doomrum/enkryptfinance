@@ -1,0 +1,35 @@
+
+<div class="dash-nav">
+    <a><i class="la la-bell"></i></a>
+    <h5 class="h6">Admin</h5>
+    <a > <i class="las la-cog"></i></a>
+</div>
+<div class="dash-body">
+
+    <h2 class="h4"> Upgrade Transactions</h2>
+    <div class="grid mgV2">
+        <div class="grid-item3_4 transaction-table-cont">
+            <table class="transaction-table">
+                <thead>
+                <tr><th>Transaction Id</th>
+                    <th>owner</th>
+                    <th>Amount</th>
+                    <th>status</th>
+                    <th>Verification</th></tr>
+                </thead>
+                <tbody>
+                  {{#each transaction}}
+                      <tr>
+                          <td>{{_id}}</td>
+                          <td>{{owner.fullName}}</td>
+                          <td>{{amount}}</td>
+                          <td  class="{{status}}">{{status}}</td>
+                          <td><a href="/admin/upgrade/pl/{{_id}}" class="btn btn-primary">Upgrade</a></td>
+                      </tr>
+
+                  {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

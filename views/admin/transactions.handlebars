@@ -9,14 +9,16 @@
 
     <h3 class="h3">User Transactions</h3>
     <p class="h6">Below You will find a list of valid Users and transactions</p>
-    <form class="mgV2">
-        <div class="searchBox">
-            <input placeholder="search" class="search_input" />
-            <button class="search_input-icon"><i class="la la-search"></i></button>
-        </div>
-    </form>
-    <div class="table_newContainer width65_">
-        <table class="glassTable">
+<!--    <form class="mgV2">-->
+<!--        <div class="searchBox">-->
+<!--            <input placeholder="search" class="search_input" />-->
+<!--            <button class="search_input-icon"><i class="la la-search"></i></button>-->
+<!--        </div>-->
+<!--    </form>-->
+
+    <div class="mgT4 grid">
+        <div class="grid-item-f transaction-table-cont width65_">
+            <table class="transaction-table">
             <thead>
             <tr>
                 <th>Transaction Id</th>
@@ -25,7 +27,7 @@
                 <th>Status</th>
                 <th>Btc Address</th>
                 <th>Owner</th>
-                <th></th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -44,7 +46,6 @@
         <td>{{ owner.fullName}}</td>
         <td>
             <a href="/admin/transactions/edit/{{_id}}" class="btn btn-success">Update</a>
-
         </td>
     </tr>
 {{/each}}
@@ -52,4 +53,5 @@
         </table>
     </div>
 
+</div>
 </div>

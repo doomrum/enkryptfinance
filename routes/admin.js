@@ -237,6 +237,79 @@ router.get("/users", async (req, res, next) => {
       res.status(400).send(err);
     });
 });
+
+//
+
+
+//UPGRADE LEVEL
+
+
+router.get('/allPendingUpgrades',(req,res)=>{
+
+    transactionModel.find({type:'upgrade'})
+        .lean()
+        .populate({ path: "owner", model: "users" })
+        .then(tr=>{
+            console.log(tr)
+            res.render(
+                'admin/allUpgrades',{
+                    layout: "admin",
+                    title: "EnkryptFinance | upgradeTransactions",
+                    transaction:tr
+            })
+        })
+        .catch(err=>{
+
+        })
+
+});
+
+
+router.get("/upgrade/pl/:id", (req, res) => {
+    const fullName = req.app.locals.username;
+    ///get transaction and update it then upgrade the current user balance and plan
+    //TODO: balance update
+    console.log('openned')
+    transactionModel.findById(req.params.id)
+        .then((transaction)=>{
+            if (transaction.status==='pending') transaction.status='verified';
+           transaction.save()
+               .then(()=>{
+                   PlanModel.findById(transaction.hash_plan)
+                       .then((plan)=>{
+                           console.log(transaction.owner)
+                           UserModel.findById(transaction.owner)
+                               .then(user=>{
+                                   console.log(user)
+
+                                   console.log(plan)
+                                   user.plan = plan._id;
+
+                                   balanceModel.findById(user.balance)
+                                       .then(bal=>{
+                                           console.log(bal);
+                                           bal.currentInvestment = Number(bal.currentInvestment) + Number(transaction.amount);
+                                           bal.save()
+                                               .then(()=>{
+                                                   
+                                                   user.save()
+                                                       .then(() => {
+                                                           res.redirect("/admin/allPendingUpgrades");
+                                                       })
+                                                       .catch((err) => res.status(403).send(`${err} in user`));
+                                               })  .catch((err) => res.status(500).send(`${err} in user`));
+                                       })  .catch((err) => res.status(403).send(`${err} in user`));
+
+                               })  .catch((err) => res.status(403).send(`${err} in user`));
+                       })  .catch((err) => res.status(403).send(`${err} in user`));
+
+               }) .catch((err) => res.status(403).send(`${err} in user`));
+
+
+        })  .catch((err) => res.status(403).send(`${err} in user`));
+});
+
+
 router.get("/logout", (req, res, next) => {
   req.session.destroy();
   res.redirect("/auth/login");

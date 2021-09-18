@@ -54,6 +54,61 @@
     scrollbar-width: none;
   }
 }
+.dark-cont{
+  width: 100%;
+  @include respond(tabPort){
+    overflow-x: auto;
+    border-radius:1rem;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+  }
+}
+
+.darkTable{
+  width: 100%;
+  border: 2px solid #101010;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  //box-shadow: 0 4px 40px rgba(0,0,0,.3);
+
+  background-color: rgba(16 18 27 / 90%);
+  thead{
+    //border-bottom: 1px solid $accent;
+    th{
+      padding: 1.5rem 1.8rem;
+      //background-color: white;
+      color: white;
+      text-transform: uppercase;
+      //border-bottom: 1px solid $accent;
+      //&:hover{
+      //  transform: scale(1.1);
+      //
+      //}
+    }
+
+  }
+  tbody{
+    background-color:inherit;
+    tr:hover{
+      background-image: linear-gradient(34deg,#0002,#0009);
+      backdrop-filter: blur(10px);
+    }
+    td{
+      padding: 1.8rem 2rem;
+      color: #f7f7f7;
+    }
+  }
+
+}
+
+
 
 .glassTable{
   width: 100%;

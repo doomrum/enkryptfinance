@@ -6,8 +6,14 @@
     </h1>
 
 {{#if success_message}}
-    <div class="success-card mgT2">
+    <div class="success-msg mgT2">
         <h2 class="h6">{{success_message}}</h2>
+    </div>
+{{/if}}
+
+{{#if failure_message}}
+    <div class="error-msg mgT2">
+        <h2 class="h6">{{failure_message}}</h2>
     </div>
 {{/if}}
 <div class="mgT2 grid">
@@ -42,7 +48,7 @@
     </div>
     <div class="grid-item2_4 card  display_flex">
         <div class="stats_icon-box bg-yell">
-            <i class="la la-btc yellow"></i>
+            <i class="la la-btc gold"></i>
         </div>
         <div class="stats_textBox">
             <h4 class="h6 ">Wallet Balance</h4>
@@ -62,7 +68,7 @@
 <h2 class="h5 mgT4">Transactions</h2>
 <div class="grid mgV2">
     <div class="grid-item3_4 transaction-table-cont">
-        <table class="transaction-table">
+        <table class="darkTable">
             <thead>
             <tr><th>Type</th> <th>BTC Address</th><th><i class="la la-btc"></i>BTC</th><th>status</th></tr>
             </thead>
@@ -84,7 +90,7 @@
     </div>
     <div class="grid-item1_4">
         <div class="card">
-            <p class="h6 light grey">Current plan</p>
+            <p class="h6 ">Current plan</p>
             <h3 class="h5">{{#if userInfo.plan}}
                {{userInfo.plan.title}}
             {{else}}   Silver Plan
@@ -92,11 +98,9 @@
 
             </h3>
 
-<!--            <a href="/client/upgrade" class="btn btn-purple mgT1"><span>Upgrade </span> <i class="la la-chevron-circle-up"></i></a>-->
+            <a href="/client/upgrade" class="btn btn-purple mgT1"><span>Upgrade </span> <i class="la la-chevron-circle-up"></i></a>
         </div>
-        <!--                           <div class="card mgT2">-->
 
-        <!--                           </div>-->
 
     </div>
 </div>

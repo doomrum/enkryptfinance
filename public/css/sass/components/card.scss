@@ -12,6 +12,7 @@
   }
 
 }
+
 .card-content{
   padding: 2.5rem;
   border-radius: 1.8rem;
@@ -118,4 +119,98 @@
        margin: 1rem 0;
   }
   }
+}
+
+.teamArea{
+  &Bottom{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-item{
+      width: 2rem;
+      height: 2rem;
+      background-color: rgba(16 18 27 / 50%);
+      border-radius: 20rem;
+      padding: 1rem;
+      position: relative;
+      transition: all .35s ease-out;
+      margin: 0 2rem;
+      &:before{
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        border: 1px solid #fcab65;
+        border-radius: 20rem;
+        content: "";
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        opacity: 0;
+
+        transition: all .5s ease-out;
+      }
+      &:hover{
+        transform: scale(1.1);
+      }
+      &:hover:before,&:focus:before{
+        opacity: 1;
+      }
+
+    }
+  }
+  .teamCard{
+    overflow: hidden;
+    //background-color: #000814;
+    min-width: 25rem;
+    height: 50vh;
+    border-radius: 1.5rem;
+    position: relative;
+    &:before{
+     content: " ";
+      width: 0;
+      height: 1rem;
+      background-color: #fcab65;
+      position: absolute;
+      bottom: 30%;
+      left: 0;
+      z-index: 10;
+      transition: all .5s ease-out;
+      @include respond(phone){
+        width: 45%;
+      }
+    }
+    &:hover:before{
+      width: 100%;
+
+    }
+    &Bottom{
+      background-color: rgba(16 18 27 / 60%);
+      padding: 2rem;
+      transform: translateY(70%);
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      right: 0;
+      transition: all .5s ease-out ;
+      @include respond(phone){
+        transform: translateY(0);
+      }
+    }
+    &:hover .teamCardBottom{ transform: translateY(10%);
+    }
+  }
+}
+
+@keyframes slideInDown {
+  to{
+
+
+  }
+}
+
+.contact-card{
+  padding: 2.5rem;
+  border-radius: 3rem;
+  background-color: #000814;
 }

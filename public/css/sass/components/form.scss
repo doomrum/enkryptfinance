@@ -1,3 +1,31 @@
-form{
 
+.auth__form{
+  //text-align: left;
+  position: relative;
+  .auth__inputBox{
+    padding: .2rem .6rem;
+    background-color: rgba(16 18 27 / 20%);
+    border: 2px solid var(--border-color);
+    margin: 1.6rem;
+    border-radius: 5px;
+    color: white;
+    input{
+      background-color: inherit;
+      border: none;
+      padding: 1.2rem 1.6rem;
+      width: 100%;
+      color: white;
+    }
+    select{
+      border: none;
+      background-color: inherit;
+      border: none;
+      color: white;
+      padding: 1.2rem 1.6rem;
+      width: 100%;
+    }
+  }
+}
+textarea{
+  color: white;
 }

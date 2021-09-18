@@ -9,59 +9,52 @@
 
     <h3 class="h3">Edit Plans</h3>
     <p class="h6">Below You will find a list of valid Plans</p>
-<!--    <form class="mgV2">-->
-<!--        <div class="searchBox">-->
-<!--            <input placeholder="search" class="search_input" />-->
-<!--            <button class="search_input-icon"><i class="la la-search"></i></button>-->
-<!--        </div>-->
-<!--    </form>-->
-    <div class="mgT2">
+
+    <div class="mgV2">
         <a href="/admin/createPlan" class="btn btn-green"><i class="las la-plus icon16"></i><span class="mgL2">Create Plan</span></a>
     </div>
-   <div class="">
-       <div class="mgT4 transaction-table-cont">
-           <table class="transaction-table">
-               <thead>
-               <tr>
-                   <th>#</th>
-                   <th>Plan Title </th>
-                   <!--                          ADD IMAGE SPACE-->
-                   <th>Cost</th>
-                   <th>Duration</th>
-                   <th>Profit</th>
-                   <th>Description</th>
-                   <th></th>
-                   <th> </th>
-               </tr>
-               </thead>
-               <tbody>
+
+    <div class="mgT4 grid">
+        <div class="grid-item-f transaction-table-cont">
+            <table class="transaction-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Plan Title </th>
+                    <!--                          ADD IMAGE SPACE-->
+                    <th>Cost</th>
+                    <th>Duration</th>
+                    <th>Profit</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
 
 
 
-{{#each plan}}
-                   <tr>
-                       <td>{{_id}}</td>
-                       <td>{{title}}</td>
-                       <td>{{cost}}</td>
+                {{#each plan}}
+                    <tr>
+                        <td>{{_id}}</td>
+                        <td>{{title}}</td>
+                        <td>{{cost}}</td>
 
-                       <td>{{duration}}</td>
-                       <td>{{profit}}</td>
-                       <td class="display_inline-table" ><h6 class="h6">
-                           {{description}}
-                       </h6></td>
+                        <td>{{duration}}</td>
+                        <td>{{profit}}</td>
+                        <td class="display_inline-table" ><h6 class="h6">
+                            {{description}}
+                        </h6></td>
 
 
-                       <td>
-                           <a href="/admin/editPlan/{{_id}}" class="btn btn-success">Update</a>
+                        <td>
+                            <a href="/admin/editPlan/{{_id}}" class="btn btn-success">Update</a>
 
-                       </td>
-                       <td> <a href="/admin/deletePlan/{{_id}}" class="btn btn-red">Delete</a></td>
-                   </tr>
-{{/each}}
-               </tbody>
-           </table>
-       </div>
+                         <a href="/admin/deletePlan/{{_id}}" class="btn btn-red mgT2">Delete</a></td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
    </div>
-
-</div>

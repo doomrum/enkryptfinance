@@ -1,6 +1,7 @@
 .Auth-box{
   display: flex;
 
+
   &-side{
     padding: 2rem;
     //background-image:linear-gradient(60deg, rgba(172, 156, 229, 0.7),rgba(0,0,0,.2)) ,url("../assets/bg2.jpg");
@@ -63,6 +64,7 @@
     padding:1rem 1.6rem ;
     background-color: inherit;
     width: 100%;
+    color: #f7f7f7!important;
     &::-webkit-input-placeholder{
       color: #f7f7f7;
     }
@@ -92,5 +94,6 @@
     resize: none;
     height: 8rem;
     border: none;
+    color: #f7f7f7;
   }
 }

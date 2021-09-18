@@ -8,7 +8,7 @@ const balanceModel = require("../models/balance");
 const { validateLogin, validateNewUser } = require("../helpers/authValidator");
 const axios = require("axios");
 const Emailing = require('../helpers/Emailing');
-
+const accessModel = require('../models/four-digit-code');
 /* GET users listing. */
 router.get("/signup", async function (req, res, next) {
   await axios.get("https://restcountries.eu/rest/v2/all").then((response) => {

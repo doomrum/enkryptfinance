@@ -49,6 +49,21 @@ router.get("/security", async function (req, res, next) {
   });
 });
 
+
+router.get("/testimonials", async function (req, res, next) {
+  res.render("testimonials", {
+    title: "EnkryptFinance | Testimonials",
+    layout: "index",
+  });
+});
+
+router.get("/contact", async function (req, res, next) {
+  res.render("contactUs", {
+    title: "EnkryptFinance | Contact Us",
+    layout: "index",
+  });
+});
+
 router.get("/offers", async function (req, res, next) {
   res.render("offers", { title: "EnkryptFinance | Offers", layout: "index" });
 });

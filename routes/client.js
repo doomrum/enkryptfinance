@@ -3,6 +3,7 @@ const userModel = require("../models/user");
 const ticketModel = require("../models/supportTicket");
 const referralModel = require("../models/referral");
 const transactionModel = require("../models/transaction");
+const upTransactionModel = require("../models/transaction");
 const balanceModel = require("../models/balance");
 const planModel = require("../models/plan");
 const qr = require("qrcode");
@@ -378,45 +379,127 @@ router.post("/withdraw", (req, res, next) => {
         .catch(err=>req.flash('failure_message','error Loading Page'))
 
 });
-router.get("/upgrade", (req, res, next) => {
+router.get("/upgrade", (req, res) => {
   const fullName = req.app.locals.username;
   const userId = req.session.access;
-  planModel
-    .find({})
-    .lean()
-    .then((plan) => {
-      res.render("client/upgrade", {
-        layout: "client",
-        title: "EnkryptFinance | Upgrade Plan",
-        fullName,
-        plan,
-        userId,
-      });
-    });
-});
-router.post("/upgrade/:id", (req, res, next) => {
-  const fullName = req.app.locals.username;
-  console.log(req.params.id);
-  userModel
-    .findById(req.params.id)
-    .then((user) => {
-      planModel
-        .findOne({ title: req.body.plan })
-        .then((plan) => {
-          console.log(plan);
-          user.plan = plan._id;
+  userModel.findById(userId)
+      .then(user=>{
+          planModel
+              .find({})
+              .lean()
+              .then((plan) => {
+                   planModel.findById(user.plan)
+                       .then(currentPlan=>{
+                           res.render("client/upgrade", {
+                               layout: "client",
+                               title: "EnkryptFinance | Upgrade Plan",
+                               fullName,
+                               plan,
+                               userId,
+                               currentPlan
+                           });
+                       }).catch(err=>{
+                       res.status(500).send(err);
+                   })
+              }).catch(err=>{
+                  res.status(500).send(err);
+          })
+      })
+      .catch(err=>{
 
-          user
-            .save()
-            .then((user) => {
-              res.redirect("/client");
-            })
-            .catch((err) => res.status(403).send(`${err} in user`));
-        })
-        .catch((err) => res.status(403).send(`${err} in plan`));
-    })
-    .catch((err) => res.status(403).send(err));
+      })
 });
+
+
+router.post('/upgrade/verify/:id',(req,res)=>{
+    const fullName = req.app.locals.username;
+    const id = req.params.id;
+    const body = req.body;
+    //Find the current plan subtract the amount required to pay and then send it
+    userModel.findById(id)
+        .populate({path:'balance',model:'balances'})
+        .then(user=>{
+            let _bal  = Number(user.balance.currentInvestment);
+            planModel.findById(body.plan)
+                .then(pl=>{
+                    ///compare the plans
+                    let amount_toPay  = 0;
+                    const _pl = Number(pl.cost.split("-")[0]);
+                    if (_pl>_bal) amount_toPay = _pl - _bal;
+
+
+                    qr.toDataURL(
+                        "1BoJgppjynvKpzpHdtRdyFrdC5Pa7wdDYK",
+                        (err, data) => {
+                            if (err) throw err;
+                            res.render("client/upgradePay", {
+                                layout: "client",
+                                title: "EnkryptFinance | Upgrade Pay",
+                                fullName,
+                                data,
+                                amount_toPay,
+                                hash_plan:pl.title,
+                                hash_code:pl._id,
+                                id,
+                                walletAddress: "1BoJgppjynvKpzpHdtRdyFrdC5Pa7wdDYK",
+                            });
+                        }
+                    );
+                })
+        })
+
+
+})
+
+
+
+///use a form to
+
+router.post("/upgrade/:id", (req, res) => {
+  const _status = 'pending';
+  const body = req.body;
+    console.log(req.body.hash)
+
+
+        let newUpgrade = new transactionModel({
+            status:_status,
+            hash_plan: req.body.plan,
+            btcAddress: req.body.btcAddress,
+            amount: req.body.amount,
+            hash:req.body.hash,
+            type:'upgrade',
+            owner:req.params.id
+        });
+
+        newUpgrade.save()
+            .then((upgrade)=>{
+                userModel.findById(req.params.id)
+                    .then(user=>{
+                        user.transactions.push(upgrade._id);
+                        user.save()
+                            .then(()=>{
+                                req.flash('success_message',"Upgrade pending");
+                                res.redirect('/client');
+                            })
+                            .catch(()=>{
+                                req.flash('failure_message',"Upgrade unsuccessful ");
+                                res.redirect('/client');
+                            })
+                    })
+
+            })
+            .catch((err)=>{
+                req.flash('failure_message',err.toString());
+                res.redirect('/client');
+            })
+
+
+
+});
+
+
+
+
 router.get("/editPassword", (req, res, next) => {
   const fullName = req.app.locals.username;
   userModel.findById(req.session.access)

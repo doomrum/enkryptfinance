@@ -1,7 +1,7 @@
 .error-msg{
   padding: 1.5rem;
   font-size: 1.8rem;
-  background-color: #fff7fa;
+  background-color: #000000;
   border-radius: 1rem;
   transition: all .35s;
   h1,h2,h3,h4,h5,h6,p,a{
@@ -11,8 +11,7 @@
 }
 .success-msg{
   padding: 1.5rem;
-  font-size: 1.8rem;
-  background-color: #f1fff7;
+  font-size: 1.8rem; background-color: #000000;
   position: fixed;
   top: 10%;
   left: 50%;
