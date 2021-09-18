@@ -1,9 +1,8 @@
 <div class="dash-nav">
-    <a><i class="la la-bell"></i></a>
+
     <h5 class="h6">Admin</h5>
-    <a > <i class="las la-cog"></i></a>
 </div>
-<div class="dash-body">
+<div class="dash-body ">
 
     <!--                   Users SECTION-->
 
@@ -15,45 +14,53 @@
             <button class="search_input-icon"><i class="la la-search"></i></button>
         </div>
     </form>
-    <div class="transaction-table-cont width65_">
-        <table class="transaction-table">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>UserId</th>
-                <th>User Name </th>
-                <!--                          ADD IMAGE SPACE-->
-                <th>Current Plan</th>
-                <th>Current Returns</th>
-                <th>Btc Balance</th>
-                <th>Total Invested</th>
-                <th></th>
-                <th> </th>
-            </tr>
-            </thead>
-            <tbody>
+    <div class="mgT4 grid">
+        <div class="grid-item-f transaction-table-cont">
+           <table class="transaction-table">
+               <thead>
+               <tr>
+<!--                   <th>#</th>-->
+<!--                   <th>UserId</th>-->
+                   <th>User Name </th>
+                   <!--                          ADD IMAGE SPACE-->
+                   <th>Current Plan</th>
+                   <th>Current Returns</th>
+                   <th>Btc Balance</th>
+                   <th>Total Invested</th>
+                   <th>Images</th>
+                   <th></th>
+                   <th> </th>
+               </tr>
+               </thead>
+               <tbody>
 
 
 
-{{#each users}}
-    <tr>
-        <td>1</td>
-        <td>{{_id}}</td>
-        <td>{{fullName}}</td>
+               {{#each users}}
+                   <tr>
 
-        <td>{{plan.title}}</td>
-        <td>{{balance.currentReturns}}</td>
-        <td>{{balance.btcBalance}}</td>
-        <td>{{balance.currentInvestment}}</td>
-        <td>
-            <a href="/admin/users/edit/{{_id}}" class="btn btn-success">Update</a>
+                       <td>{{fullName}}</td>
 
-        </td>
-        <td><a  href="/admin/users/deleteUser/{{_id}}" class="btn btn-red">Delete</a></td>
-    </tr>
-{{/each}}
-            </tbody>
-        </table>
-    </div>
+                       <td>{{plan.title}}</td>
+                       <td>{{balance.currentReturns}}</td>
+                       <td>{{balance.btcBalance}}</td>
+                       <td>{{balance.currentInvestment}}</td>
+                       <td>
+                           <div class="display_flex width35">
+                               <img src={{urlProofId}} alt="{{urlProofId}}" class="smlImg"/>
+                               <img src="{{urlProofResidence}}" alt="{{urlProofResidence}}" class="smlImg mgL2"/>
+                           </div>
+                       </td>
+                       <td>
+                           <a href="/admin/users/edit/{{_id}}" class="btn btn-success">Update</a>
+
+                       </td>
+                       <td><a  href="/admin/users/deleteUser/{{_id}}" class="btn btn-red">Delete</a></td>
+                   </tr>
+               {{/each}}
+               </tbody>
+           </table>
+       </div>
+   </div>
 
 </div>

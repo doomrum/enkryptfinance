@@ -715,6 +715,10 @@ li {
   color: #f7f7f7;
 }
 
+.smlImg {
+  width: 10rem;
+}
+
 .card {
   padding: 2.5rem;
   border-radius: 1.8rem;
