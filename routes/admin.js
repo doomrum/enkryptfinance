@@ -146,35 +146,59 @@ router.post("/transactions/edit/:id", (req, res, next) => {
 });
 
 router.get("/users/edit/:id", async (req, res) => {
+
   UserModel.findById(req.params.id)
     .lean()
     .populate({ path: "balance", model: "balances" })
     .then((user) => {
-      res.render("admin/editUsers", {
-        layout: "admin",
-        title: "EnkryptFinance | Edit user",
-        user,
-      });
+        PlanModel.find({})
+            .lean()
+            .then(plans=>{
+                console.log(plans)
+                res.render("admin/editUsers", {
+                    layout: "admin",
+                    title: "EnkryptFinance | Edit user",
+                    user,
+                    plans
+                });
+            })
+            .catch(err=>{
+                res.render('error');
+            })
     })
     .catch((err) => res.status(403).send(err));
 });
 
 router.post("/users/edit/:id", async (req, res) => {
-  balanceModel
-    .findById(req.body.balanceId)
-    .then((b) => {
-      console.log(b);
-      b.currentReturns = req.body.currentReturns;
-      b.btcBalance = req.body.btcBalance;
-      b.currentInvestment = req.body.currentInvestment;
-      b.save()
-        .then((result) => {
-          console.log(result);
-          res.redirect("/admin/users");
-        })
-        .catch((err) => res.status(403).send(err));
-    })
-    .catch((err) => res.status(403).send(err));
+
+   UserModel.findById(req.params.id)
+       .then(user=>{
+
+           user.plan = req.body.plan_change;
+
+           user.save()
+               .then(
+                   ()=>{
+                       balanceModel
+                           .findById(req.body.balanceId)
+                           .then((b) => {
+                               b.currentReturns = req.body.currentReturns;
+                               b.btcBalance = req.body.btcBalance;
+                               b.currentInvestment = req.body.currentInvestment;
+
+                               b.save()
+                                   .then((result) => {
+                                       console.log(result);
+                                       res.redirect("/admin/users");
+                                   })
+                                   .catch((err) => res.status(403).send(err));
+                           })
+                           .catch((err) => res.status(403).send(err));
+                   }
+               )
+               .catch((err) => res.status(403).send(err));
+       })
+       .catch((err) => res.status(403).send(err));
 });
 router.get("/users/deleteUser/:id", async (req, res) => {
    UserModel.deleteOne({_id: req.params.id})
@@ -308,6 +332,8 @@ router.get("/upgrade/pl/:id", (req, res) => {
 
         })  .catch((err) => res.status(403).send(`${err} in user`));
 });
+
+
 
 
 router.get("/logout", (req, res, next) => {

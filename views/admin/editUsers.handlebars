@@ -11,21 +11,29 @@
     <div>
         <form class="card_w" method="post" action="/admin/users/edit/{{user._id}}">
             <label class="h6">FullName</label>
-            <div class="auth__inputBox">
+            <div class="form-input-box">
                 <input name="fullName" value="{{user.fullName}}" disabled class="form-input" />
             </div>
             <label class="h6">Current Returns</label>
-            <div class="auth__inputBox">
+            <div class="form-input-box">
                 <input name="currentReturns" value="{{user.balance.currentReturns}}" class="form-input" />
                 <input name="balanceId" hidden value="{{user.balance._id}}" class="form-input" />
             </div>
             <label class="h6">Current Investments</label>
-            <div class="auth__inputBox">
+            <div class="form-input-box">
                 <input name="currentInvestment" value="{{user.balance.currentInvestment}}" class="form-input" />
             </div>
             <label class="h6">btc balance</label>
-            <div class="auth__inputBox">
+            <div class="form-input-box">
                 <input name="btcBalance" value="{{user.balance.btcBalance}}" class="form-input" />
+            </div>
+            <div class="form-input-box">
+                <select name="plan_change" >
+                    {{#each plans}}
+                        <option value="{{_id}}">{{title}}</option>
+
+                    {{/each}}
+                </select>
             </div>
 
             <button class="btn btn-primary">Save User</button>

@@ -219,6 +219,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+
 router.post("/login", async (req, res) => {
   const { error } = validateLogin({
     email: req.body.email.trim().toLowerCase(),
