@@ -10,35 +10,55 @@ const axios = require("axios");
 const Emailing = require('../helpers/Emailing');
 const accessModel = require('../models/four-digit-code');
 /* GET users listing. */
-router.get("/signup", async function (req, res, next) {
-  await axios.get("https://restcountries.eu/rest/v2/all").then((response) => {
-    planModel
-      .find({})
-      .lean()
-      .then((plan) => {
-        // console.log(plan);
-        const countryInfo = response.data;
-        let country = [];
-        for (let i = 0; i < countryInfo.length; i++) {
-          let item = countryInfo[i];
-          country.push({
-            name: item["name"],
-            code: item["callingCodes"][0],
-          });
+router.get("/signup",async function (req, res) {
+   //Universal main token
+    const genUniversalToken = '7rpn3k8wphyEHyy8ZdYOUUPbQsffrs5U7EHu8iypsKyZT6oMNRHztlPThNCcgAMZAEU';
+    axios.get("https://www.universal-tutorial.com/api/getaccesstoken",{
+        headers:{
+            "Accept": "application/json",
+            "api-token": genUniversalToken,
+            "user-email": "okechukwuomeh3@gmail.com"
         }
-        // console.log(country);
+    })
+        .then(async result=>{
+            // console.log(res.data)
+            const tk = result.data.auth_token;
+            await axios.get("https://www.universal-tutorial.com/api/countries/",{
+                headers: {
+                    'Authorization':'Bearer ' + tk,
+                    "Accept": "application/json"
+                }
+            }).then((countries) => {
 
-        res.render("auth/signup", {
-          layout: "auth",
-          title: "Enkryptfinance | sign up",
-          country,
-          plan,
-        });
-      })
-      .catch((err) => {
-        res.status(403).send(err);
-      });
-  });
+              planModel
+                .find({})
+                .lean()
+                .then((plan) => {
+
+                  const country = countries.data;
+
+                    console.log(country)
+                  res.render("auth/signup", {
+                    layout: "auth",
+                    title: "Enkryptfinance | sign up",
+                    country,
+                    plan,
+                  });
+                })
+                  .catch(err=>   {
+                      console.log(err);
+                      res.status(403).send(err);
+                  });
+            })
+                  .catch(err=>   {
+                      console.log(err);
+                      res.status(403).send(err);
+                  });
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+
 });
 
 router.get("/reset", (req, res) => {

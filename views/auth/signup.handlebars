@@ -49,7 +49,7 @@
                             <div class="auth__inputBox">
                                 <select name="country" id="country" class="form-input">
                                     {{#each country}}
-                                        <option>{{name}}</option>
+                                        <option>{{country_name}}</option>
                                     {{/each}}
                                 </select>
 
@@ -65,7 +65,7 @@
                         <div class="auth__inputBox">
                             <select name="code" id="code" class="form-input">
                                 {{#each country}}
-                                    <option value="{{code}}">{{name}}&nbsp; {{code}}</option>
+                                    <option value="{{country_phone_code}}">{{country_name}}&nbsp; {{country_phone_code}}</option>
                                 {{/each}}
                             </select>
 
