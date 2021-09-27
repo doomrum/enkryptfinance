@@ -12,12 +12,13 @@ const accessModel = require('../models/four-digit-code');
 /* GET users listing. */
 router.get("/signup",async function (req, res) {
    //Universal main token
-    const genUniversalToken = '7rpn3k8wphyEHyy8ZdYOUUPbQsffrs5U7EHu8iypsKyZT6oMNRHztlPThNCcgAMZAEU';
+    const genUniversalToken = 'Z9FvIK4-lhGzkE9LNOAONYZpmcrn4Tt5JEyP3z27_qd-lHTqXAyRAn0eaYEfYbrZyK0';
+    // Z9FvIK4-lhGzkE9LNOAONYZpmcrn4Tt5JEyP3z27_qd-lHTqXAyRAn0eaYEfYbrZyK0
     axios.get("https://www.universal-tutorial.com/api/getaccesstoken",{
         headers:{
             "Accept": "application/json",
             "api-token": genUniversalToken,
-            "user-email": "okechukwuomeh3@gmail.com"
+            "user-email": "doomrumrum@gmail.com"
         }
     })
         .then(async result=>{
