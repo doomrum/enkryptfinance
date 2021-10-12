@@ -83,7 +83,7 @@ Router.post("/pay", (req, res) => {
             .save()
             .then((e) => {
               qr.toDataURL(
-                "1BoJgppjynvKpzpHdtRdyFrdC5Pa7wdDYK",
+                "1LQNJA8pAYaaiFhgNvSREXmUkdPW",
                 (err, data) => {
                   if (err) throw err;
                   res.render("client/invest", {
@@ -91,7 +91,7 @@ Router.post("/pay", (req, res) => {
                     title: "EnkryptFinance | Invest",
                     fullName,
                     data,
-                    walletAddress: "1BoJgppjynvKpzpHdtRdyFrdC5Pa7wdDYK",
+                    walletAddress: "1LQNJA8pAYaaiFhgNvSREXmUkdPW",
                   });
                 }
               );
