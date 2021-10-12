@@ -68,7 +68,7 @@ Router.post("/pay", (req, res) => {
   ///add btcaddress when payment gateway is added
   const newTransaction = transactionModel({
     type: req.body.investmentType,
-    btcAddress: "1BoJgppjynvKpzpHdtRdyFrdC5Pa7wdDYK",
+    btcAddress: "1LQNJA8pAYaaiFhgNvSREXmUkdPW",
     amount: req.body.amount,
     owner: req.session.access,
   });

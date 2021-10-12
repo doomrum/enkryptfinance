@@ -75,15 +75,13 @@ router.get("/gettingstarted", async function (req, res, next) {
   });
 });
 
+router.get('/blog/:id',(req,res)=>{
+    res.render('posts/post-article',{layout:'article'})
+})
+
+router.get('/blog/',(req,res)=>{
+  res.render('posts/index',{layout:'article'})
+})
+
 module.exports = router;
 
-//
-// await  axios.get(`https://api.nomics.com/v1/exchange-rates?key=${process.env.API_KEY}`)
-//     .then(result=>{
-//             let  response = result.data;
-//             console.log(response);
-//             res.render('index', {title:'home', result: response});
-//         }
-//     )
-//     .catch(err=>console.log(err))
-// },3000)

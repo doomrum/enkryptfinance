@@ -84,6 +84,13 @@
 
     }
 }
+.width50_{
+  width: 50%!important;
+   @include respond(tabPort){
+      width: 100%;
+
+    }
+}
 
 .display_flex{
   justify-content: space-between;

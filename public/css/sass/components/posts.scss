@@ -1,0 +1,51 @@
+.post-article{
+  padding: 1.5rem;
+  &-body{
+
+  }
+  &-img{
+    margin-top: 1.5rem;
+  }
+}
+
+.dark-bg{
+  background-color: rgba(16 18 27 / 99%);
+}
+.emSm{
+  background-color: #cf7e39;
+  padding: .6rem;
+}
+.centered-box{
+  width: 70%;
+  margin: 2rem auto;
+
+  @include respond(tabPort){
+    margin: 5rem auto;
+    width: 90%;
+  }
+}
+
+.relatedPost{
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: .5rem;
+  transition: all .35s ease-in-out;
+  &:hover{
+    background-color: $darkGrey
+  }
+}
+.article-card{
+  max-width: 35rem;
+  min-width: 30rem;
+  padding: 1.5rem;
+  background-color: #0b0b0b;
+  border-radius: 1.5rem;
+  margin: 2rem;
+}
+.allArticles{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  //justify-content: ;
+
+}

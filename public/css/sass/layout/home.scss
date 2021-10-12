@@ -10,6 +10,8 @@
   width: 100%;
   right: 0;
   //background-color: rgba(43, 43, 65, 0.9);
+
+  background-color: rgba(16 18 27 / 40%);
   z-index: 6;
   transition: all .35s ease-in;
   //background-color: rgba(43, 43, 65, 0.1);
@@ -276,7 +278,9 @@
 }
 .top-container{
   position: relative;
-  background-color: var(--deepblue);
+  //background-color: var(--deepblue);
+
+  background-color: rgba(16 18 27 / 20%);
   height: 8rem;
   display: block;
 }

@@ -25,6 +25,7 @@ var  clientRouter = require('./routes/client');
 var  adminRouter = require('./routes/admin');
 const payRouter = require('./routes/payment');
 const emailRouter = require('./routes/emailroute');
+const postRouter = require('./routes/PostRoutes');
 const referralRouter = require('./routes/referall');
 var app = express();
 
@@ -95,6 +96,7 @@ app.use('/auth', authRouter);
 app.use('/client', cookieChecker, clientRouter);
 app.use('/admin',cookieChecker, adminRouter);
 app.use('/p',cookieChecker, payRouter);
+app.use('/admin/post',cookieChecker, postRouter);
 app.use('/e',cookieChecker, emailRouter);
 app.use('/r', referralRouter);
 app.use(function (req, res, next) {

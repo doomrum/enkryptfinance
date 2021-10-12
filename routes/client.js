@@ -20,7 +20,7 @@ router.all("/*", (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
+router.get("/", async (req, res) => {
   //sessions IDs are stored in the user browser as cookies
   //when a request s sent and there's no cookie with the session ID it will result in the failure of the request
 
@@ -29,26 +29,28 @@ router.get("/", async (req, res, next) => {
 
   await userModel
     .findOne({ _id: ID })
-    .populate("transactions")
+    .populate({path:"transactions",model:"transactions"})
     .populate({ path: "balance", model: "balances" })
     .populate({ path: "plan", model: "plans" })
+
     .then((user) => {
       const userInfo = user.toJSON();
-      console.log(user.plan);
-      // console.log(user)
+      // console.log(user.transactions);
+      let transactions = userInfo.transactions.slice(0,7)
       const fullName = req.app.locals.username;
       res.render("client/index", {
         layout: "client",
         title: "EnkryptFinance | Client",
         userInfo,
         fullName,
+          transactions
       });
     })
 
     .catch((err) => err);
 });
 
-router.get("/invest", async (req, res, next) => {
+router.get("/invest", async (req, res) => {
   const fullName = req.app.locals.username;
   planModel
     .find({})
@@ -64,7 +66,7 @@ router.get("/invest", async (req, res, next) => {
     .catch((err) => err);
 });
 
-router.get("/wallet", async (req, res, next) => {
+router.get("/wallet", async (req, res) => {
   transactionModel
     .find({ owner: req.session.access })
     .lean()
@@ -72,8 +74,6 @@ router.get("/wallet", async (req, res, next) => {
       balanceModel
         .findOne({ owner: req.session.access })
         .then((bal) => {
-          // console.log(transactions);
-          // console.log(bal);
           const fullName = req.app.locals.username;
           res.render("client/wallet", {
             layout: "client",
@@ -87,7 +87,7 @@ router.get("/wallet", async (req, res, next) => {
     })
     .catch((err) => err);
 });
-router.get("/ticket", (req, res, next) => {
+router.get("/ticket", (req, res) => {
   ticketModel
     .find({owner:req.session.access})
     .lean()
@@ -121,7 +121,7 @@ router.get("/ticket", (req, res, next) => {
         });
     });
 });
-router.post("/ticket/create", (req, res, next) => {
+router.post("/ticket/create", (req, res) => {
   const newTicket = ticketModel({
     subject: req.body.subject,
     msg: req.body.msg,
@@ -140,7 +140,7 @@ router.post("/ticket/create", (req, res, next) => {
     .catch((err) => err);
 });
 
-router.get("/profile", (req, res, next) => {
+router.get("/profile", (req, res) => {
   const ID = req.session.access;
 
   userModel.findOne({ _id: ID }).then((user) => {
@@ -156,7 +156,7 @@ router.get("/profile", (req, res, next) => {
   });
 });
 
-router.get("/referral", (req, res, next) => {
+router.get("/referral", (req, res) => {
   userModel.findOne({ _id: req.session.access }).then((user) => {
     const newReferralLink =
       process.env.NODE_ENV === "production"
@@ -187,7 +187,7 @@ router.get("/referral", (req, res, next) => {
   });
 });
 
-router.get("/referral", (req, res, next) => {
+router.get("/referral", (req, res) => {
   userModel.findOne({ _id: req.session.access }).then((user) => {
     const newReferralLink =
       process.env.NODE_ENV === "production"
@@ -219,7 +219,7 @@ router.get("/referral", (req, res, next) => {
       .catch((err) => err);
   });
 });
-router.get("/profile/edit/:_id", (req, res, next) => {
+router.get("/profile/edit/:_id", (req, res) => {
     const ID = req.params._id;
 
     userModel
@@ -253,7 +253,7 @@ router.get("/profile/edit/:_id", (req, res, next) => {
             res.send(err);
         });
 });
-router.post("/profile/edit/:_id", (req, res, next) => {
+router.post("/profile/edit/:_id", (req, res) => {
   const ID = req.params._id;
 
   userModel
@@ -272,7 +272,7 @@ router.post("/profile/edit/:_id", (req, res, next) => {
       res.send(err);
     });
 });
-router.get("/referral", (req, res, next) => {
+router.get("/referral", (req, res) => {
   userModel.findOne({ _id: req.session.access }).then((user) => {
     const newReferralLink = `http://4000${req.baseUrl}/r/${
       user.fullName.split(" ")[0]
@@ -301,7 +301,7 @@ router.get("/referral", (req, res, next) => {
       .catch((err) => err);
   });
 });
-router.post("/referral/em/", (req, res, next) => {
+router.post("/referral/em/", (req, res) => {
   const params = {
     senderName: "Okibe Obinna",
     sender: "EnkryptFinance",
@@ -322,7 +322,7 @@ router.post("/referral/em/", (req, res, next) => {
 
 ///REFERRAL URL
 
-router.get("/withdraw", (req, res, next) => {
+router.get("/withdraw", (req, res) => {
   const fullName = req.app.locals.username;
 
     balanceModel
@@ -341,7 +341,7 @@ router.get("/withdraw", (req, res, next) => {
         .catch((err) => err);
 
 });
-router.post("/withdraw", (req, res, next) => {
+router.post("/withdraw", (req, res) => {
     ///NewTransaction
     const fullName = req.app.locals.username;
     userModel.findById(req.session.access)
@@ -500,7 +500,7 @@ router.post("/upgrade/:id", (req, res) => {
 
 
 
-router.get("/editPassword", (req, res, next) => {
+router.get("/editPassword", (req, res) => {
   const fullName = req.app.locals.username;
   userModel.findById(req.session.access)
       .lean()
@@ -514,7 +514,7 @@ router.get("/editPassword", (req, res, next) => {
       })
       .catch(err=>console.log(err))
 });
-router.post("/editPassword/:id", (req, res, next) => {
+router.post("/editPassword/:id", (req, res) => {
     let newPassword = req.body.newPassword;
   userModel.findById(req.params.id)
       .then(async (user)=>{
@@ -535,7 +535,7 @@ router.post("/editPassword/:id", (req, res, next) => {
           console.log(err)
       })
 });
-router.get("/logout", (req, res, next) => {
+router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/auth/login");
 });

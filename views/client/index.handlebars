@@ -74,9 +74,8 @@
             </thead>
             <tbody>
 
-            {{#if userInfo.transactions}}
-                {{#each userInfo.transactions}}
-
+            {{#if transactions}}
+                {{#each transactions}}
                     <tr><td>{{type}}</td><td>{{btcAddress}}</td><td>{{amount}}</td><td  class="{{status}}">{{status}}</td></tr>
                 {{/each}}
             {{else}}

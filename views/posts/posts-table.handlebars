@@ -1,0 +1,73 @@
+<div class="dash-body">
+    <h4 class="h4">Blog Posts</h4>
+
+    <div class="mgT4 width65_">
+        <div class="mgV2">
+            <a href="/admin/post/p/create"  class="btn btn-primary">Create Post</a>
+        </div>
+        <h5 class="h5">All Posts</h5>
+        <div class="card dark-cont  mgT2">
+            <table class="glassTable">
+                <thead>
+                <tr>
+                    <th>
+                        id
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        description
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        file
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        CATEGORY
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each posts}}
+                    <tr>
+                        <td>
+                            {{_id}}
+                        </td>
+                        <td>
+                            {{title}}
+                        </td>
+                        <td>
+                            {{description}}
+                        </td>
+                        <td>
+                            {{date}}
+                        </td>
+                        <td>
+                            <img alt="{{file}}" class="img-fluid"  src="/uploads/posts/{{file}}">
+
+                        </td>
+                        <td>
+                            {{status}}
+                        </td>
+                        <td>
+                            {{category.category}}
+                        </td>
+                        <td>
+                            <a href="/admin/p/posts/edit/{{_id}}" class="btn btn-success">edit</a>
+                            <form method="post" action="/admin/p/posts/edit/{{_id}}?_method=DELETE">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

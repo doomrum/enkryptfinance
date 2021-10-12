@@ -230,6 +230,7 @@ html {
 }
 
 body {
+  background-color: rgba(16, 18, 27, 0.99);
   background-image: url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-dark-wwdc-2020-5120x2880-1432.jpg);
   background-attachment: fixed;
   background-size: cover;
@@ -297,6 +298,10 @@ li {
 
 .logo {
   height: 3.6rem;
+}
+
+#top_nav {
+  background-color: rgba(16, 18, 27, 0.1);
 }
 
 .mgT1 {
@@ -376,6 +381,15 @@ li {
 }
 @media screen and (max-width: 56.5em) {
   .width50 {
+    width: 100%;
+  }
+}
+
+.width50_ {
+  width: 50% !important;
+}
+@media screen and (max-width: 56.5em) {
+  .width50_ {
     width: 100%;
   }
 }
@@ -1567,6 +1581,58 @@ textarea {
     transform: scale(1.5);
   }
 }
+.post-article {
+  padding: 1.5rem;
+}
+.post-article-img {
+  margin-top: 1.5rem;
+}
+
+.dark-bg {
+  background-color: rgba(16, 18, 27, 0.99);
+}
+
+.emSm {
+  background-color: #cf7e39;
+  padding: 0.6rem;
+}
+
+.centered-box {
+  width: 70%;
+  margin: 2rem auto;
+}
+@media screen and (max-width: 56.5em) {
+  .centered-box {
+    margin: 5rem auto;
+    width: 90%;
+  }
+}
+
+.relatedPost {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.35s ease-in-out;
+}
+.relatedPost:hover {
+  background-color: #2b3441;
+}
+
+.article-card {
+  max-width: 35rem;
+  min-width: 30rem;
+  padding: 1.5rem;
+  background-color: #0b0b0b;
+  border-radius: 1.5rem;
+  margin: 2rem;
+}
+
+.allArticles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .home-nav {
   padding: 1.5rem;
   display: flex;
@@ -1577,6 +1643,7 @@ textarea {
   left: 0;
   width: 100%;
   right: 0;
+  background-color: rgba(16, 18, 27, 0.4);
   z-index: 6;
   transition: all 0.35s ease-in;
 }
@@ -1821,7 +1888,7 @@ textarea {
 
 .top-container {
   position: relative;
-  background-color: var(--deepblue);
+  background-color: rgba(16, 18, 27, 0.2);
   height: 8rem;
   display: block;
 }
