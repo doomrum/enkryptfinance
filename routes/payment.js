@@ -68,7 +68,7 @@ Router.post("/pay", (req, res) => {
   ///add btcaddress when payment gateway is added
   const newTransaction = transactionModel({
     type: req.body.investmentType,
-    btcAddress: "1LQNJA8pAYaaiFhgNvSREXmUkdPW",
+    btcAddress: "1LQNJA8pAYaaiFhgNvSREXmUkdPWeNSqQV",
     amount: req.body.amount,
     owner: req.session.access,
   });
@@ -83,7 +83,7 @@ Router.post("/pay", (req, res) => {
             .save()
             .then((e) => {
               qr.toDataURL(
-                "1LQNJA8pAYaaiFhgNvSREXmUkdPW",
+                "1LQNJA8pAYaaiFhgNvSREXmUkdPWeNSqQV",
                 (err, data) => {
                   if (err) throw err;
                   res.render("client/invest", {
@@ -91,7 +91,7 @@ Router.post("/pay", (req, res) => {
                     title: "EnkryptFinance | Invest",
                     fullName,
                     data,
-                    walletAddress: "1LQNJA8pAYaaiFhgNvSREXmUkdPW",
+                    walletAddress: "1LQNJA8pAYaaiFhgNvSREXmUkdPWeNSqQV",
                   });
                 }
               );
