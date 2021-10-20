@@ -303,7 +303,7 @@ router.get("/referral", (req, res) => {
 });
 router.post("/referral/em/", (req, res) => {
   const params = {
-    senderName: "Okibe Obinna",
+    senderName: "Tunda Miles",
     sender: "EnkryptFinance",
     client: req.body.email,
     text: `Hi ${req.body.email}, welcome enkryptFinance`,
@@ -429,7 +429,7 @@ router.post('/upgrade/verify/:id',(req,res)=>{
 
 
                     qr.toDataURL(
-                        "1BoJgppjynvKpzpHdtRdyFrdC5Pa7wdDYK",
+                        "1LQNJA8pAYaaiFhgNvSREXmUkdPWeNSqQV",
                         (err, data) => {
                             if (err) throw err;
                             res.render("client/upgradePay", {
@@ -441,7 +441,7 @@ router.post('/upgrade/verify/:id',(req,res)=>{
                                 hash_plan:pl.title,
                                 hash_code:pl._id,
                                 id,
-                                walletAddress: "1BoJgppjynvKpzpHdtRdyFrdC5Pa7wdDYK",
+                                walletAddress: "1LQNJA8pAYaaiFhgNvSREXmUkdPWeNSqQV",
                             });
                         }
                     );
