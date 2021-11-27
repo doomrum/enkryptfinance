@@ -15,7 +15,7 @@
             <div class="form-input-box">
                 <select name="Country" class="form-input">
                     {{#each country}}
-                        <option>{{name}}</option>
+                        <option>{{country_name}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -23,7 +23,7 @@
             <div class="form-input-box">
                 <select name="code" class="form-input">
                     {{#each country}}
-                        <option>{{code}}</option>
+                        <option value="{{country_phone_code}}">{{country_name}}&nbsp; {{country_phone_code}}</option>
                     {{/each}}
                 </select>
 

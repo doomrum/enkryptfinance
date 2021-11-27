@@ -231,20 +231,11 @@ router.get("/profile/edit/:_id", (req, res) => {
         )
         .then(async (user) => {
             await getCountries().then((response) => {
-                const countryInfo = response.data;
-                let country = [];
-                // console.log(response)
-                for (let i = 0; i < countryInfo.length; i++) {
-                    let item = countryInfo[i];
-                    country.push({
-                        name: item["country_name"],
-                        code: item["country_phone_code"],
-                    });
-                }
+
                 res.render('client/editProfile',{
                     layout: "client",
                     title: "EnkryptFinance | Edit Profile",
-                    country: country
+                    country: response.data
                 })
             })
                 .catch(err=>{
