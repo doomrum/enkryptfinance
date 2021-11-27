@@ -10,7 +10,10 @@ const qr = require("qrcode");
 const axios = require('axios');
 const bcrypt = require("bcrypt");
 // const cryptoData  = require('../helpers/userInfo');
-const { sendEmail } = require("../helpers/nodemailer");
+
+const getCountries  = require('../helpers/countryGetter');
+const {sendEmail} = require("../helpers/nodemailer");
+
 const moment = require("moment");
 router.all("/*", (req, res, next) => {
   if (req.session.accessType !== "client") {
@@ -227,15 +230,15 @@ router.get("/profile/edit/:_id", (req, res) => {
             { _id: ID },
         )
         .then(async (user) => {
-
-            await axios.get("https://restcountries.eu/rest/v2/all").then((response) => {
+            await getCountries().then((response) => {
                 const countryInfo = response.data;
                 let country = [];
+                // console.log(response)
                 for (let i = 0; i < countryInfo.length; i++) {
                     let item = countryInfo[i];
                     country.push({
-                        name: item["name"],
-                        code: item["callingCodes"][0],
+                        name: item["country_name"],
+                        code: item["country_phone_code"],
                     });
                 }
                 res.render('client/editProfile',{

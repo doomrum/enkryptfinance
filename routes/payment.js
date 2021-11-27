@@ -109,4 +109,8 @@ Router.post("/pay", (req, res) => {
     });
 });
 
+Router.get('/cardPayment',(req,res)=>{
+
+})
+
 module.exports = Router;
