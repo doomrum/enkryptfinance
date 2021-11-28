@@ -8,7 +8,7 @@ const schema = mongoose.Schema({
         required:true
     },
     description:{
-        type: [String],
+        type: Array,
         required: true
     },
     file:{
@@ -21,13 +21,12 @@ const schema = mongoose.Schema({
        type: String
     },
     comments:[
-        {type: mongoose.Schema.Types.ObjectId, ref:'comment'}
+        {type: mongoose.Schema.Types.ObjectId, ref:'comments'}
     ],
     date:{
         type: Date,
         default: Date.now()
-    },
-    subtitle:String
+    }
 })
 
 module.exports = mongoose.model('posts',schema);

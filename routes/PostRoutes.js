@@ -39,44 +39,33 @@ Router.get('/p/create', (req,res)=>{
 
 });
 //CREATE POST
-Router.post('/p/post/c',async (req,res)=>{
+Router.post('/p/post/c',(req,res)=>{
     //file
-    console.log(req.body);
-//paragraghs
+    // console.log(req.body.data);
+// //paragraghs
+    const body = JSON.parse(req.body.data);
 
-
-  if(isEmpty(req.files)){
-        const files = req.files;
-        const fileName = Date.now() + "_" + files.file.name;
-
-        files.file.mv('./public/uploads/' + fileName,(err)=>err);
-      let p = req.body.description.split('\r\n');
-
-
-      let newPost = postModel({
-          title:req.body.title,
-          subtitle: req.body.subtitle,
-          description: p,
-          file:fileName,
-          author:req.body.author
-      });
-      console.log(newPost)
-      await newPost.save()
-          .then((post)=>{
-              console.log(post)
-              res.redirect('/admin/post/p')
-          })
-          .catch(err=>res.send(err))
+    if ( body.description.length>0 && body.title!==""&&body.author!==""){
+        console.log( body.description)
+        let newPost = new postModel({
+            title:body.title,
+            description: body.description,
+            author:body.author
+        });
+        console.log(newPost)
+       newPost.save()
+            .then((post)=>{
+                console.log(post)
+                res.send({status:'successful'})
+            })
+            .catch(err=>res.status(500).send(err))
+    }else {
+        res.status(500).send('Internal Conflict')
     }
-  else{
-      res.status(401).send('error in form')
-  }
-
-    ///create new post instance
-
 });
 
 ///EDIT POST
+
 Router.get('/p/posts/edit/:id',(req,res)=>{
     PostModel.findOne({_id:req.params.id})
         .lean()

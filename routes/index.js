@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const planModel = require("../models/plan");
-
+const PostModel = require('../models/Post');
 /* GET home page. */
 router.get("/", async function (req, res, next) {
   planModel
@@ -75,12 +75,33 @@ router.get("/gettingstarted", async function (req, res, next) {
   });
 });
 
-router.get('/blog/:id',(req,res)=>{
+router.get('/blog/post/:id/:title',(req,res)=>{
     res.render('posts/post-article',{layout:'article'})
 })
+router.get('/gt/blog/post/:id/:title',(req,res)=>{
+  console.log(req.params.id)
+    PostModel.findOne({_id:req.params.id})
+        // .populate({path:'comments',model:'comment'})
+        .then(post=>{
+          console.log(post);
+          res.send(post)
+        })
+        .catch(err=>res.status(500).send('Internal Server Error'))
+})
 
+
+//get all posts and render
 router.get('/blog/',(req,res)=>{
+
   res.render('posts/index',{layout:'article'})
+})
+router.get('/getAllPosts/',(req,res)=>{
+  PostModel.find({})
+      .then(
+          posts=> {
+           res.send(posts);
+          })
+      .catch(e=>e)
 })
 
 module.exports = router;

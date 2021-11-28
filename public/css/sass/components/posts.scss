@@ -35,17 +35,37 @@
   }
 }
 .article-card{
-  max-width: 35rem;
-  min-width: 30rem;
+  width: 26%;
   padding: 1.5rem;
   background-color: #0b0b0b;
   border-radius: 1.5rem;
   margin: 2rem;
+  min-height: 20rem;
+  min-width: 25%;
+  transition: all .35s ease;
+  &:hover{
+    transform: translateY(-1rem) scale(1.1);
+    box-shadow: 0 4px 30px #008bf8;
+  }
+  @include respond(tabLand){
+    max-width: 40%;
+
+    min-width: 35%;
+  }
+  @include respond(tabPort){
+    max-width: 45%;
+
+    min-width: 45%;
+  }
+  @include respond(phone){
+    max-width: 90%;
+    min-width: 89%;
+  }
 }
 .allArticles{
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  //justify-content: ;
+  align-items: flex-start;
+  justify-content: flex-start ;
 
 }
