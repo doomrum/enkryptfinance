@@ -8,7 +8,7 @@ router.get("/", async function (req, res, next) {
     .find({})
     .lean()
     .then((plan) => {
-      res.render("home", { title: "EnkryptFinance | Home", plan });
+      res.render("home", { title: "EnkryptFinance | Home", plan ,layout:'index'});
     })
     .catch((err) => {
       res.status(403).send(err);
