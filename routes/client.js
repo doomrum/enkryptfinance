@@ -40,12 +40,11 @@ router.get("/", async (req, res) => {
       const userInfo = user.toJSON();
       // console.log(user.transactions);
       let transactions = userInfo.transactions.slice(0,7)
-      const fullName = req.app.locals.username;
+
       res.render("client/index", {
         layout: "client",
         title: "EnkryptFinance | Client",
         userInfo,
-        fullName,
           transactions
       });
     })

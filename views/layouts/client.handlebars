@@ -86,7 +86,7 @@
         </aside>
         <main class="main-section">
             <div class="dash-nav">
-                <h5 class="h6">{{fullName}}</h5>
+                <h5 class="h6">{{#if  userInfo.fullName}}{{userInfo.fullName}}{{else}}{{fullName}}{{/if}}</h5>
 <!--                <a><i class="la la-bell"></i></a>-->
             </div>
             <div class="dash-body">
