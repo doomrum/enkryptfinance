@@ -2,6 +2,8 @@ var cron  = require('node-cron')
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
+
+var debug = require('debug')('cryptotrade:server');
 var session = require("express-session");
 var flash = require("connect-flash");
 var logger = require("morgan");
@@ -17,6 +19,8 @@ require("dotenv").config();
 
 const db = require("./helpers/db");
 
+const socket = require('socket.io')
+const axios = require('axios');
 
 //
 var indexRouter = require('./routes/index');
@@ -28,6 +32,8 @@ const emailRouter = require('./routes/emailroute');
 const postRouter = require('./routes/PostRoutes');
 const referralRouter = require('./routes/referall');
 var app = express();
+
+var http = require('http');
 
 if (process.env.NODE_ENV === "production") {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
@@ -121,4 +127,87 @@ app.use(function (err, req, res, next) {
   // res.render('error',{});
 });
 
-module.exports = app;
+
+
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
+
+    if (port >= 0) {
+        // port number
+        return port;
+    }
+
+    return false;
+}
+
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    var bind = typeof port === 'string' ?
+        'Pipe ' + port :
+        'Port ' + port;
+
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+    var addr = server.address();
+    var bind = typeof addr === 'string' ?
+        'pipe ' + addr :
+        'port ' + addr.port;
+    debug('Listening on ' + bind);
+}
+
+var port = normalizePort(process.env.PORT || '4000');
+app.set('port', port);
+var server = http.createServer(app);
+const io = socket(server);
+
+
+io.on('connection', socket => {
+    setInterval(() => {
+
+        const url = "https://api.nomics.com/v1/currencies/ticker?key=873ae0cc86815e29c223f548bcae6cd5&ids=BTC,ETH,BNB,XRP,LINK,DOGE,USDT,USDC,BCH,LTC,ADA&interval=1d,30d&convert=USD&per-page=100&page=1"
+        axios.get(url)
+            .then(async (result) => {
+                socket.emit('liveChat', result.data)
+
+            })
+
+            .catch(err => {
+                socket.emit('liveError', 'Error Found')
+            });
+    }, 1000)
+
+});
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+

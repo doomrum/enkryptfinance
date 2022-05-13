@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "nodemon ./bin/www",
+    "test": "nodemon app",
     "scss": "node-sass --watch ./public/css/sass/krypto.scss ./public/css/sass/krypto.css -w"
   },
   "dependencies": {
