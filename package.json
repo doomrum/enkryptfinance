@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
-    "test": "nodemon server.js",
+    "start": "node app.js",
+    "test": "nodemon app.js",
     "scss": "node-sass --watch ./public/css/sass/krypto.scss ./public/css/sass/krypto.css -w"
   },
   "dependencies": {
