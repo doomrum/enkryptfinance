@@ -179,6 +179,7 @@ function onListening() {
         'pipe ' + addr :
         'port ' + addr.port;
     debug('Listening on ' + bind);
+    console.log('Listening  on  port '+ addr.port)
 }
 
 var port = normalizePort(process.env.PORT || '4000');
