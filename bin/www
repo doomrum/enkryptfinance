@@ -6,7 +6,7 @@
 
 
 const formatMessage = require('../helpers/messages');
-var app = require('../server');
+var app = require('../app');
 var debug = require('debug')('cryptotrade:server');
 var http = require('http');
 const socket = require('socket.io')

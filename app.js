@@ -31,12 +31,12 @@ const payRouter = require('./routes/payment');
 const emailRouter = require('./routes/emailroute');
 const postRouter = require('./routes/PostRoutes');
 const referralRouter = require('./routes/referall');
-var server = express();
+var app = express();
 
 var http = require('http');
 
 if (process.env.NODE_ENV === "production") {
-  server.use(enforce.HTTPS({ trustProtoHeader: true }));
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
 //
 // cron.schedule('5  *  *  *  *  *',()=>{
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === "production") {
 // })
 
 // view engine setup
-server.engine(
+app.engine(
   "handlebars",
   hbs({
     defaultLayout: "main",
@@ -53,9 +53,9 @@ server.engine(
     // helpers: mailHelper
   })
 );
-server.set("view engine", "handlebars");
+app.set("view engine", "handlebars");
 
-server.use(
+app.use(
   session({
     secret: process.env.Secret,
     resave: false,
@@ -72,51 +72,51 @@ server.use(
     }),
   })
 );
-server.use(flash());
+app.use(flash());
 ///Flash Message
-server.use((req, res, next) => {
+app.use((req, res, next) => {
   res.locals.success_message = req.flash("success_message");
   res.locals.failure_message = req.flash("failure_message");
   next();
 });
 
 // user is authenticated
-server.use((req, res, next) => {
+app.use((req, res, next) => {
   res.locals.access = req.session.access;
   next();
 });
 
-server.use(logger("dev"));
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-server.use(fileUpload());
-server.use(express.static(path.join(__dirname, "public")));
-server.set("trust proxy", 1);
+app.use(fileUpload());
+app.use(express.static(path.join(__dirname, "public")));
+app.set("trust proxy", 1);
 
 
 
-server.use('/', indexRouter);
-server.use('/auth', authRouter);
+app.use('/', indexRouter);
+app.use('/auth', authRouter);
 
-server.use('/client', cookieChecker, clientRouter);
-server.use('/admin',cookieChecker, adminRouter);
-server.use('/p',cookieChecker, payRouter);
-server.use('/admin/post',cookieChecker, postRouter);
-server.use('/e',cookieChecker, emailRouter);
-server.use('/r', referralRouter);
-server.use(function (req, res, next) {
+app.use('/client', cookieChecker, clientRouter);
+app.use('/admin',cookieChecker, adminRouter);
+app.use('/p',cookieChecker, payRouter);
+app.use('/admin/post',cookieChecker, postRouter);
+app.use('/e',cookieChecker, emailRouter);
+app.use('/r', referralRouter);
+app.use(function (req, res, next) {
     res.render('404page')
 });
 
 
 // catch 404 and forward to error handler
-server.use(function (req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-server.use(function (err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
@@ -179,11 +179,11 @@ function onListening() {
         'pipe ' + addr :
         'port ' + addr.port;
     debug('Listening on ' + bind);
-    console.log('Listening  on  port '+ addr.port)
+    console.log('listening...')
 }
 
 var port = normalizePort(process.env.PORT || '4000');
-var server = http.createServer(server);
+var server = http.createServer(app);
 const io = socket(server);
 
 
