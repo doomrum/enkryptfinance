@@ -9,6 +9,7 @@ db.on('open',()=>{
     console.log('DB CONNECTED')
 });
 
+
 db.on('error',()=>{
     console.log('Error Found')
 })
